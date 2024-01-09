@@ -171,8 +171,6 @@ pickupRouter.get('/data/:code', async (req, res) => {
         const {code} = req.params;
         const pedido = await Pickup.findOne({code: code});
 
-        
-
         if(!code){
             res.send('Error: El datos inválidos');
 
