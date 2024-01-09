@@ -41,9 +41,7 @@ window.addEventListener('DOMContentLoaded', async () => {
                     alignment: 'center'
                 },
                 { text: 'Aquí está el código QR de tu pedido Pick-Up:\n\n', alignment: 'center'},
-                {
-                image: 'QR', alignment: 'center', margin: [2, 20]
-                },
+
                 {
     
                 },
@@ -70,7 +68,6 @@ window.addEventListener('DOMContentLoaded', async () => {
             ],
     
             images: {
-                QR: `http://api.qrserver.com/v1/create-qr-code/?data=${id}&size=100x100`,
                 logo: 'https://kaiju-sushi-bar.onrender.com/imagenes/Logo2.png'
             },
     
