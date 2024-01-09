@@ -91,6 +91,7 @@ app.use('/opciones', adminAuth, express.static(path.resolve('views','admin','opc
 app.use('/pedidos', adminAuth, express.static(path.resolve('views','admin','pedidos')));
 app.use('/reservaciones', adminAuth, express.static(path.resolve('views','admin','reservas')));
 app.use('/analiticas', adminAuth, express.static(path.resolve('views','admin','analiticas')));
+
 app.use('/scanner-R', adminAuth, express.static(path.resolve('views', 'admin', 'scanReservas')));
 app.use('/scanner-D', adminAuth, express.static(path.resolve('views', 'admin', 'scanDelivery')));
 app.use('/scanner-P', adminAuth, express.static(path.resolve('views', 'admin', 'scanPickup')));
