@@ -46,7 +46,7 @@ userRouter.post('/', async (request, response) => {
                 <br>
                 Por favor dale click al siguiente enlace para poder verificar tu cuenta:
                 <br>
-                <a href="http://localhost:4000/api/users/confirm/${email}" target="_blank">Autenticar tu cuenta</a>
+                <a href="https://kaiju-sushi-bar.onrender.com/api/users/confirm/${email}" target="_blank">Autenticar tu cuenta</a>
                 </p>
               `, 
             });
@@ -320,9 +320,9 @@ userRouter.get('/lista-users', async (req,res) => {
 //*EDITAR USUARIO:
 userRouter.post('/edit-user', async (req, res) => {
 
-  const { name, email, password, telefono, id } = req.body;
-
     try{
+
+      const { name, email, password, telefono, id } = req.body;
 
       if(!name && !email && !password && !telefono){
 
