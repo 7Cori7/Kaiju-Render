@@ -241,7 +241,7 @@ deliveryRouter.post('/scan', async (req, res) => {
 
         const {id} = req.body
 
-        const pedido = await Delivery.findOne({id});
+        const pedido = await Delivery.findOne({_id: id});
 
         if(!id){
 

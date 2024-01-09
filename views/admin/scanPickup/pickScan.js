@@ -28,7 +28,6 @@ scanner.render(success, error);
 
 async function success(result){
 
-    console.log(result)
     document.querySelector('#result').innerHTML=`
     <p>${result}</p>
     `

@@ -301,7 +301,7 @@ reservacionRouter.post('/scan', async (req, res) => {
 
       const {id, hoy, hora, minutos} = req.body
 
-      const reserva = await Reservacion.findOne({id});
+      const reserva = await Reservacion.findOne({_id: id});
 
       if(!id){
 
