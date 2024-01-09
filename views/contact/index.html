@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <link rel="stylesheet" href="contactos.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Kaiju - Contáctanos</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function onSubmit(token) {
+          console.log('bieeen');
+          enviarMsj();
+        };
+    </script>
+</head>
+<body class="crema">
+    <header>
+        <div class="loader">
+            <div class="ball"></div>
+        </div>
+        <!--Barra de navegacion-->
+        <nav id="navBar" class="azul h-16 flex items-center justify-center"></nav>
+    </header>
+
+    <main>
+        <section>
+
+            <div class="h-full w-full relative overflow-hidden">
+
+                <div class="sushi-banner relative">
+                    <div class="overlay2 z-10"></div>
+                </div>
+
+                <div class="logo absolute top-0 bottom-0 right-0 left-0 z-20">
+                    <div class="flex justify-center items-center my-10">
+                        <img src="/imagenes/Logo1.png" alt="logo de kaiju sushi-bar" class="w-52 lg:w-[15%]">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="h-full m-[5%]">
+                
+                <h1 class="fuente-A text-azul text-5xl uppercase text-center mt-16">contáctanos</h1>
+                <h2 class="fuente-A text-2xl text-center mt-2">Has tu reservación hoy con nosotros</h2>
+                <p class="text-justify mt-5 lg:mx-[10%] lg:text-center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora architecto dolorem incidunt. Laborum esse quidem mollitia iure quos sapiente in quisquam odit cupiditate, possimus exercitationem eligendi dicta cumque quasi assumenda quam deserunt at vero culpa minus blanditiis. Eveniet, corporis id.</p>
+
+            <!--Separador-->
+                <div class="sep-Contact  flex justify-center items-center pt-[20%] pb-[8%] lg:pt-[10%] lg:pb-[5%]">
+                    <img src="/imagenes/waves-blue.png" alt="ondas azules" class="w-[40%] opacity-50 lg:w-[20%] md:w-[20%]">
+                </div>
+            
+            <!--informacion de contacto-->
+                <div class="info-Contact flex flex-col justify-center items-center gap-10 mt-16 mb-4 lg:flex-row lg:justify-between lg:gap-5 lg:h-80 lg:mt-0">
+                   
+                    <div class="text-center lg:w-[25%] lg:h-[30%]">
+                        <h1 class="fuente-A text-azul text-2xl uppercase mb-2">Dónde Estamos</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor, consequuntur?</p>
+                    </div>
+                    <div class="text-center lg:w-[25%] lg:h-[30%]">
+                        <h1 class="fuente-A text-azul text-2xl uppercase mb-2">Horarios de trabajo</h1>
+                        <p>Lunes a Viernes</p>
+                        <span>10:00 am - 10:00 pm</span>
+                        <p>Sábados</p>
+                        <span>10:00 am - 12:00am</span>
+                        <p>Domingos</p>
+                        <span>10:00 am - 8:00pm</span>
+                    </div>
+                    <div class="text-center lg:w-[25%] lg:h-[30%]">
+                        <h1 class="fuente-A text-azul text-2xl uppercase mb-2">Contacto</h1>
+                        <p>+58 000-0000-00</p>
+                        <p>sushi-bar@kaiju.com</p>
+                    </div>
+                </div>
+            
+            <!--Separador-->
+                <div class="sep-Contact flex justify-center items-center pt-[20%] pb-[8%] lg:pt-[10%] lg:pb-[5%]">
+                    <img src="/imagenes/waves-blue.png" alt="ondas azules" class="w-[40%] opacity-50 lg:w-[20%] md:w-[20%]">
+                </div>
+
+            <div class="form-Contact flex flex-col justify-center items-center md:flex-row">
+                <!--Formulario-->
+                    <div class="bg-gray-300 rounded-lg h-full m-[10%] lg:m-[5%] md:m-[5%] pt-5 pb-10 shadow-2xl lg:h-[100%] lg:w-[40%] md:h-[100%] md:w-[60%]">
+                        <form id="formulario-contactos" class="formulario-contactos flex flex-col justify-center items-center lg:py-5 md:py-1">
+
+                            <!--nombre-->
+                            <input type="text" id="nombre-input" name="nombre" placeholder="Coloque su Nombre y Apellido" autocomplete="off" class="py-3 mt-[4%] w-[90%] rounded-md focus:outline-blue-400">
+
+                            <!--email-->
+                            <input type="email" id="email-input" name="email" placeholder="Coloque su e-mail" autocomplete="off" class="py-3 mt-[8%] w-[90%] rounded-md focus:outline-blue-400">
+
+                            <!--asunto-->
+                            <input type="text" id="asunto-input" name="nombre" placeholder="Coloque el asunto" autocomplete="off" class="py-3 mt-[8%] w-[90%] rounded-md focus:outline-blue-400">
+
+                            <!--area de texto-->
+                            <textarea id="texto-input" name="texto" rows="4" cols="50" autocomplete="off" class="py-3 px-3 mt-[8%] w-[90%] rounded-md focus:outline-blue-400"></textarea>
+
+                            <div class="g-recaptcha"
+                                data-sitekey="6Ldm2BQpAAAAAJIUHhlzYNXw9VIFcLT_6jQi-dZC"
+                                data-callback="onSubmit"
+                                data-size="invisible">
+                            </div>
+
+                            <!--boton-->
+                            <div class="mt-8">
+                                <button disabled id="enviar-formulario" class="py-2 px-14 rounded mx-2 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl hover:scale-110 duration-300 disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">ENVIAR</button>
+                            </div>
+                        </form>
+                        </div>
+
+                <!--Mapa-->
+                        <div class="Map shadow-2xl lg:hidden h-80 w-96 mb-16">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.037699235603!2d-66.8458558260589!3d10.497694364275384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a59b1f75ae1e5%3A0x124565c970e18c0a!2sParque%20Cristal%2C%20Avenida%20Francisco%20de%20Miranda%2C%20Caracas%201060%2C%20Miranda!5e0!3m2!1ses!2sve!4v1698768182310!5m2!1ses!2sve" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                        <div class="Map shadow-2xl hidden lg:flex">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.037699235603!2d-66.8458558260589!3d10.497694364275384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2a59b1f75ae1e5%3A0x124565c970e18c0a!2sParque%20Cristal%2C%20Avenida%20Francisco%20de%20Miranda%2C%20Caracas%201060%2C%20Miranda!5e0!3m2!1ses!2sve!4v1698768182310!5m2!1ses!2sve" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+            </div>
+            
+            </div>
+        </section>
+
+    </main>
+
+
+    <footer id="foot" class="h-full w-full md:pt-64"></footer>
+
+
+
+<script src="../components/navBar.js"></script>
+<script src="../components/footer.js"></script>
+<script src="../components/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="contact.js"></script>
+<script src="../components/notificaciones.js"></script>
+</body>
+</html>

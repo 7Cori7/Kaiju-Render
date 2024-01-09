@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <link rel="stylesheet" href="/calamar/admin.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Kaiju - Administrar Clientes</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function onSubmit(token) {
+          console.log('bieeen');
+          crear();
+        };
+    </script>
+</head>
+<body class="crema">
+    
+    <main class="relative">
+
+        <!--BOTON PERFIL-->
+        <div class="absolute top-0 right-0 p-8">
+            <div class="flex justify-center items-center border-2 border-black py-2 px-5 rounded-3xl cursor-pointer gap-1 hover:border-blue-400 hover:text-blue-400 ease-in-out delay-150 duration-300">
+                <i class='bx bxs-user'></i>
+                <a href="#">Admin</a>
+            </div>
+        </div>
+        
+    
+        <!--MINI SIDEBAR-->
+        <aside class="sidebar fixed top-0 left-0 azul text-white min-h-screen w-14 py-2 px-3 z-50"></aside>
+
+        <!--CONTENIDO-->
+        <section class="seccion-contenido pb-10">
+
+            <div class="flex flex-col lg:flex-row lg:justify-center lg:items-center lg:gap-5 text-3xl lg:text-5xl uppercase pb-5">
+                <h1 class="fuente-A text-azul">perfil del administrador</h1>
+            </div>
+
+            <h2 class="uppercase text-xl py-3 border-b border-gray-400 mb-8">Bienvenido, Admin!</h2>
+
+            <div class="pb-5 pt-3 text-base px-3 flex justify-between">
+
+                <p id="nombreAdmin" class="font-bold">Nombre administrador</p>
+                <a href="#" id="editar-admin" class="text-azul hover:text-blue-950">Editar</a>
+            
+            </div>
+
+            <!--Editar Admin-->
+            <div id="editando-admin" class="hidden py-5 lg:px-3 transition-all duration-500 ease-in-out delay-150">
+                <form id="admin-edit-form" class="flex flex-col gap-5">
+                    <input type="text" id="nombre-admin" name="alias" placeholder="Coloque su nuevo alias" class="py-3 w-full rounded-md focus:outline-blue-400">
+                    <input type="email" id="email-admin" name="email" placeholder="Coloque su nuevo email" class="py-3 w-full rounded-md focus:outline-blue-400">
+                    <input type="password" id="nuevo-password" name="nuevo-password" class="py-3 w-full rounded-md focus:outline-blue-400" placeholder="Coloque el nuevo password">
+                    <input type="password" id="match-password" name="match-password" class="py-3 w-full rounded-md focus:outline-blue-400" placeholder="Repita el nuevo password">
+                    <div class="mt-8 flex justify-center items-center">
+                        <button disabled id="editar-admin-btn" type="submit" class="py-2 px-14 rounded mx-2 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl hover:scale-110 duration-300 disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="border-b border-gray-400 mb-8"></div>
+
+            <!--boton nuevo admin-->
+            <div class="text-azul text-lg pl-3 hover:text-blue-950 ease-in-out delay-150 duration-300">
+                <a href="#" id="crear-admin">
+                    <i class='bx bx-plus'></i>
+                    <span>Agregar Admin</span>
+                </a>
+            </div>
+            <!--boton nuevo empleado-->
+            <div class="text-azul text-lg pl-3 hover:text-blue-950 ease-in-out delay-150 duration-300">
+                <a href="#" id="nuevo-empleado">
+                    <i class='bx bx-plus'></i>
+                    <span>Agregar Nuevo Empleado</span>
+                </a>
+            </div>
+        </section>
+
+        <!--Modal Nuevo Admin-->
+        <dialog data-modal-admin class="top-[10%] left-[10%] lg:left-[30%] h-[88%] lg:h-[85%] w-[80%] lg:w-[40%] bg-white rounded-lg px-8 py-2 md:w-[50%] md:left-[30%]">
+            <div class="py-5">
+                <div class="relative top-4">
+                    <svg data-close-modal xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute top-0 right-0 cursor-pointer">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </div>
+                <h2 class="pb-10 pt-5 text-center text-azul fuente-A text-xl">Por favor llene todos los campos</h2>
+                <form method="dialog" id="nuevo-admin-form" class="flex flex-col gap-5">
+                    <input type="text" id="nuevo-nombre-admin" name="alias" placeholder="Coloque su alias" class="shadow border py-3 w-full rounded-md focus:outline-blue-400">
+                    <input type="email" id="crear-email-admin" name="email" placeholder="Coloque su email" class="shadow border py-3 w-full rounded-md focus:outline-blue-400">
+                    <input type="password" id="admin-password" name="nuevo-password" class="shadow border py-3 w-full rounded-md focus:outline-blue-400" placeholder="Coloque su password">
+                    <input type="password" id="admin-password2" name="match-password" class="shadow border py-3 w-full rounded-md focus:outline-blue-400" placeholder="Repita el password">
+                    <div class="mt-8 flex justify-center items-center">
+                        <button disabled id="nuevo-admin-btn" type="submit" class="py-2 px-14 rounded mx-2 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl hover:scale-110 duration-300 disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Crear Admin</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+
+        <div class="g-recaptcha"
+            data-sitekey="6Ldm2BQpAAAAAJIUHhlzYNXw9VIFcLT_6jQi-dZC"
+            data-callback="onSubmit"
+            data-size="invisible">
+        </div>
+
+    </main>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../components/dashboard.js"></script>
+    <script src="opciones.js"></script>
+    <script src="../components/notificaciones.js"></script>
+</body>
+</html>

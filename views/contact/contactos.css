@@ -1,0 +1,53 @@
+/*----------PAGINA DE CONTACTANOS--------------*/
+
+
+.sushi-banner{
+    background-image: url('/imagenes/banner3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 384px;
+    animation: grow 20s ease-in forwards;
+}
+
+@keyframes grow {
+    0% {
+       transform: scale(1);
+    }
+    50% {
+       transform: scale(1.5);
+   
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+
+.overlay2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.356);
+}
+
+/*-------------------------SCROLLING ANIMATIONS--------------------------*/
+
+
+p, .info-Contact, .sep-Contact{ 
+    animation: aparece linear both;
+    animation-timeline: view();
+    animation-range: entry 50% cover 50%;
+}
+
+@keyframes aparece{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}

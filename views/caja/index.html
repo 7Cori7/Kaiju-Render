@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://www.paypal.com/sdk/js?client-id=AcrF8W_kI_9CG8dhIyKBziVUnpFHX_r0yOgd74ZJvHoJHf11bSho_hMpJCXlr15kAhhSbVafoEuToz7D&currency=USD"></script>
+    <title>Kaiju - Confirmar Pedido</title>
+</head>
+<body class="crema">
+    <div class="loader">
+        <div class="ball"></div>
+    </div>
+    <header>
+        <!--Barra de navegacion-->
+        <nav id="navBar" class="azul h-16 flex items-center justify-center"></nav>
+    </header>
+
+    <!--Modal Forma de pago-->
+    <dialog data-modal class="fixed top-[15%] left-[10%] lg:left-[25%] h-[40%] md:h-[60%] w-[80%] lg:w-[45%] bg-white rounded-lg px-8 py-2">
+
+        <div class="relative">
+            <svg data-close-modal xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute top-5 right-0 cursor-pointer">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </div>
+        
+        <div class="flex flex-col justify-center items-center m-5">
+
+            <h1 class="pt-7 pb-5 text-azul text-center">¿Está seguro de que desea pagar en efectivo?</h1>
+            <p>Recuerde que el <b>monto debe ser exacto</b> para evitar cualquier inconveniente</p>
+
+            <form class="flex flex-col justify-center gap-5" method="dialog">
+
+                <div class="flex justify-center items-center">
+
+                    <div class="flex flex-col gap-5 pt-10">
+
+                        <button type="submit" id="efectivo" class="py-3 px-14 rounded-3xl mx-2 text-white text-sm transition ease-in-out delay-150 hover:text-gray-900 shadow-xl duration-300 uppercase disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Aceptar</button>
+
+                    </div>
+                    
+                </div>
+
+            </form>
+
+        </div>
+
+    </dialog>
+    <main>
+        <section class="m-10 flex flex-col lg:flex-row gap-5">
+
+            <!--TABLA DE PEDIDO-->
+            <div class="flex flex-col mt-10 w-full">
+
+                <h2 class="fuente-A uppercase text-3xl pb-3 border-b border-black mb-8">Su Factura:</h2>
+
+                <div class="py-2 overflow-x-auto">
+                    <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                        <table class="min-w-full">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                            Producto
+                                    </th>
+                                    <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                            Precio unitario
+                                    </th>
+                                    <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                            Cantidad
+                                    </th>
+                                    <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                            Total
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="listado-pedido" class="bg-white"></tbody>
+                        </table>
+                    </div>
+
+                    <div id="datos-Pedido" class="mt-10 text-lg">
+                        
+                    </div>
+
+                    <div class="mt-10 text-azul uppercase font-semibold md:text-2xl">
+                        <div class="border-y border-gray-400 pr-0 py-4 md:pr-10 w-full flex justify-end gap-0 md:gap-10">
+                            <h3>Total a pagar:</h3>
+                            <h3 class="total precioT"></h3>
+                        </div>
+                          
+                    </div>
+                </div>
+            </div>
+
+            <!--TOTAL-->
+            <div class="mt-10 lg:w-[30%]">
+                <div class="hidden lg:flex justify-between">
+                    <h2 class="text-azul">TOTAL:</h2>
+                    <h2 class="font-bold total"></h2>
+                </div>
+                <div class="pt-5">
+                    <h3>Elija una forma de pago:</h3>
+                </div>
+                <!--Botones de pago:-->
+                <div class="flex justify-center items-center flex-col pt-10 gap-8">
+
+                    <button id="forma-pago" class="py-2 px-14 rounded mx-2 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl hover:scale-110 duration-300" style="background-color: #3FA8F4;">PAGAR EN EFECTIVO</button>
+
+                    <div id="paypal-button-container"></div>
+                    <p id="result-message" class="text-azul text-lg text-center"></p>
+                
+                </div> 
+                <div class="text-azul flex justify-center items-center hover:text-blue-950 transition ease-in-out delay-150 duration-300">
+                    <a href="/carrito-usuario">Prefiero volver al carrito</a>
+                </div>
+                 
+            </div>
+            
+        </section>
+       
+
+    </main>
+    <footer id="foot" class="h-full w-full md:pt-64"></footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="caja.js"></script>
+    <script src="../components/navBar.js"></script>
+    <script src="../components/footer.js"></script>
+    <script src="../components/loader.js"></script>
+    <script src="../components/notificaciones.js"></script>
+
+</body>
+
+</html>

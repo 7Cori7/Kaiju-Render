@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Kaiju - Home Page</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function onSubmit(token) {
+          console.log('bieeen');
+          crearReservaHome();
+        };
+    </script>
+</head>
+<body class="crema">
+
+<header>
+<div class="loader">
+    <div class="ball"></div>
+</div>
+<!--Barra de navegacion-->
+<nav id="navBar" class="azul h-16 flex items-center justify-center"></nav>
+
+<!--Boton para ir al top-->
+<div id="to-top" class="cursor-pointer h-10 w-10 azul text-white py-3 px-8 rounded-lg flex justify-center items-center fixed right-8 md:right-10 z-40 bottom-5 md:bottom-10 material-symbols-outlined hover:bg-blue-300 hover:text-gray-900 hover:scale-110 duration-300">
+    <button>expand_less</button>   
+</div>
+
+<!--Banner Movil-->
+<div class="h-full relative lg:hidden">
+
+  <section class="showcase absolute right-0 w-full h-screen p-16 flex items-center justify-center">
+
+    <video src="/imagenes/sushi_-_36458 (720p).mp4" muted loop autoplay class="z-10"></video>
+
+    <div class="overlay z-10"></div>
+
+    <div class="relative z-40 md:hidden logo-home">
+        <div class="py-10 px-8 flex justify-center">
+            <img src="/imagenes/Logo1.png" alt="logo kaiju sushi-bar" class="w-72 max-w-2xl">
+        </div>
+        <div class="flex flex-col justify-items-center">
+            <button class="horario-btn azul py-2 px-3 rounded mx-10 my-5 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl duration-300">HORARIOS</button>
+            <button class="reservar-btn azul py-2 px-3 rounded mx-10 mb-10 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl duration-300">RESERVAR</button>
+        </div>
+    </div>
+  </section> 
+  
+</div>
+
+<!--banner PC-->
+<div class="h-full w-screen relative lg:z-10 hidden lg:flex md:flex">
+    <section class="showcase lg:flex md:flex absolute right-0 w-full h-screen md:p-20 lg:p-20 items-center justify-center">
+        <video src="/imagenes/sushi_-_36458 (720p).mp4" muted loop autoplay></video>
+        <div class="overlay"></div>
+        <div class="contenido relative z-20">
+            <div class="mx-auto flex justify-center items-center">
+                <img class="w-80" src="/imagenes/Logo1.png" alt="logo kaiju sushi-bar">
+            </div>
+            <div class="flex justify-center py-6">
+                <button class="horario-btn azul py-2 px-14 rounded mx-2 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl hover:scale-110 duration-300">HORARIOS</button>
+                <button class="reservar-btn azul py-2 px-14 rounded mx-2 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl hover:scale-110 duration-300" >RESERVAR</button>
+            </div>
+        </div>
+    </section>
+    
+</div>
+<!---------------------Fin de Banner-------------------------->
+</header>
+
+<!--Horarios side-bar-->
+    <aside id="horarios" class="crema h-screen w-full lg:w-[50%] absolute top-0 right-0 lg:left-0 flex-col justify-center items-center z-50 hover:overflow-y-auto">
+        <div class="absolute top-0 right-0 md:left-0 p-10 cerrar-sb">
+            <img class="w-5 cursor-pointer" src="/imagenes/cerrar.png" alt="boton cerrar">
+        </div>
+        <div class="top-0 pt-[80%] lg:pt-[70%]">
+            <img class="w-32" src="/imagenes/Logo2.png" alt="logo kaiju sushi-bar">
+        </div>
+        <div class="text-center mt-28">
+            <h1 class="fuente-A uppercase text-5xl text-azul">lunes-viernes</h1>
+            <h2 class="text-lg mt-2">10 am - 10 pm</h2>
+        </div>
+        <div class="text-center mt-20">
+            <h1 class="fuente-A uppercase text-5xl text-azul">sábados</h1>
+            <h2 class="text-lg mt-2">10 am - 12 am</h2>
+        </div>
+        <div class="text-center mt-20">
+            <h1 class="fuente-A uppercase text-5xl text-azul">domingos</h1>
+            <h2 class="text-lg mt-2">10 am - 8 pm</h2>
+        </div>
+        <div class="text-center mt-28 pb-[10%]">
+            <h2>+58-000-0000-00</h2>
+            <h2>sushi-bar@kaiju.com</h2>
+        </div>
+    </aside>
+
+<!--Reservaciones side-bar-->
+<div id="reservar" class="crema h-screen w-full lg:w-[50%] absolute top-0 lg:right-0 z-50 hover:overflow-y-auto">
+
+    <div class="h-[250%] w-full flex flex-col justify-center items-center">
+
+        <div class="absolute top-0 right-0 p-10 cerrar-reservas">
+            <img class="w-5 cursor-pointer" src="/imagenes/cerrar.png" alt="boton cerrar">
+        </div>
+    
+        <div class="flex justify-center items-center">
+            <img class="w-28" src="/imagenes/Logo2.png" alt="logo kaiju sushi-bar">
+        </div>
+        <div class="flex flex-col justify-center items-center mt-[5%] lg:mt-[2%]">
+            <h1 class="fuente-A text-azul text-5xl uppercase">reservar on-line</h1>
+        </div>
+    
+        <!--Formulario-->
+        <div class="bg-gray-300 rounded-lg h-[40%] m-[5%] shadow-2xl lg:h-[35%] lg:w-[85%] md:h-full md:w-[80%] pb-20 mb-32">
+            <form id="formulario" class="flex flex-col justify-center items-center lg:py-5 md:py-1 relative">
+    
+                <div class="lg:flex lg:gap-4 w-[92%] lg:w-[90%] md:w-[85%] ml-8 mr-2 lg:ml-0 md:ml-0">
+                    <!--nombre-->
+                    <input type="text" id="nombre-input" name="nombre" placeholder="Nombre y Apellido" class="py-3 mt-[8%] w-[92%] md:w-full rounded-md focus:outline-blue-400">
+                    <!--telefono-->
+                    <input type="tel" id="telefono-input" name="telefono" placeholder="Número de Teléfono" class="py-3 mt-[8%] w-[92%] md:w-full rounded-md focus:outline-blue-400">
+                </div>
+                
+                <div class="lg:flex lg:gap-4 lg:w-[90%] w-[85%]">
+                    <!--email-->
+                    <input type="email" id="email-input" name="email" placeholder="Correo Electrónico" class="py-3 mt-[8%] w-full rounded-md focus:outline-blue-400">
+                    <!--cantidad de personas-->
+                    <input type="number" id="cantidad-input" name="cantidad" placeholder="Cantidad de personas" class="py-3 mt-[8%] w-full rounded-md focus:outline-blue-400" min="1" max="8">
+                </div>
+                
+                <div class="lg:flex lg:gap-4 lg:w-[90%] w-[85%] relative">
+                    <!--fecha-->
+                    <input type="date" id="fecha-input" name="fecha" class="py-3 mt-[8%] w-full rounded-md focus:outline-blue-400">
+                    <!--hora-->
+                    <select name="hora" id="hora-input" class="py-3 px-3 mt-[8%] w-full rounded-md appearance-none focus:outline-blue-400 text-gray-500">
+                        <option>--Seleccione la Hora--</option>
+                        <option value="10">10:00am</option>
+                        <option value="11">11:00am</option>
+                        <option value="12">12:00pm</option>
+                        <option value="13">1:00pm</option>
+                        <option value="14">2:00pm</option>
+                        <option value="15">3:00pm</option>
+                        <option value="16">4:00pm</option>
+                        <option value="17">5:00pm</option>
+                        <option value="18">6:00pm</option>
+                        <option value="19">7:00pm</option>
+                        <option value="20">8:00pm</option>
+                        <option value="21">9:00pm</option>
+                    </select>
+                    <p class="mensaje text-red-700 text-sm absolute -bottom-10 right-0"></p>
+                </div>
+
+                <div class="g-recaptcha"
+                    data-badge="inline" style="position: absolute; bottom: -100%;"
+                    data-sitekey="6Ldm2BQpAAAAAJIUHhlzYNXw9VIFcLT_6jQi-dZC"
+                    data-callback="onSubmit"
+                    data-size="invisible">
+                </div>
+
+                
+                <!--boton-->
+                <div class="pt-20">
+                    <button disabled id="crear-reserva-btn" type="submit" class="py-2 px-14 rounded mx-2 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl hover:scale-110 duration-300 disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">RESERVAR</button>
+                </div>
+            </form>
+        </div>
+    
+        <div class="text-center mt-5 md:mt-0">
+            <h2>+58-000-0000-00</h2>
+            <h2>sushi-bar@kaiju.com</h2>
+        </div>
+    </div>
+    
+</div>
+
+<div class="hidden back h-[200%] w-full bg-black opacity-90 absolute top-0 left-0 z-40 transition-opacity ease-in-out"></div>    
+    <main>
+
+        <div class="hidden lg:flex h-screen w-screen negro"></div>
+
+        <!--SECCION DE MENUS-->
+        <section class="flex relative flex-col sec-menus">
+            <div class="contenedor negro mt-[10%] lg:mt-0">
+                <div class="espacio"></div>
+                <div>
+                    <div class="my-20 pt-64 pb-10 relative">
+                        <img src="/imagenes/sushi-movil.png" alt="icono de sushi-rolls" class="lg:hidden md:hidden">
+
+                        <!--icono sushi pc-->
+                        <div class="flex flex-row overflow-x-clip">
+                            <img src="/imagenes/semi-C-izquierda.png" alt="medio circulo azul" class="hidden lg:flex md:flex md:w-[30%] lg:w-[25%] circulo-l overflow-x-clip">
+                        </div>
+                        <div class="flex flex-row justify-end md:pr-16 absolute md:top-[60%] right-0 lg:pr-36 sushi z-20">
+                            <img src="/imagenes/sushi-icon.png" alt="icono de sushi rolls" class="hidden lg:flex md:flex md:w-[70%] lg:w-[80%]">
+                        </div>
+                        <div class="flex flex-row justify-end z-10 md:mt-5 overflow-x-clip">
+                            <img src="/imagenes/waves-blue.png" alt="grafico de ondas azules" class="hidden lg:flex md:flex md:w-[50%] lg:w-[40%] onda1 overflow-x-clip">
+                        </div>
+                        
+                        <div class="text-white flex flex-col justify-center items-center md:justify-start md:items-start z-20 absolute top-[65%] md:left-0 md:w-[60%] md:text-left md:top-[45%] md:mx-20 lg:ml-36">
+                            <div class="flex justify-center items-center mb-5">
+                                <h2 class="fuente-B text-4xl md:text-6xl">MENU</h2>
+                                <h2 class="fuente-A text-4xl md:text-6xl">-SUSHI</h2>
+                            </div>
+                            <P class="fuente-A text-lg text-justify mx-8 mb-8 uppercase md:ml-0 md:mr-20 lg:text-2xl lg:w-[60%]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea iste ipsa necessitatibus veniam, consectetur sapiente? Optio ad distinctio provident amet?</P>
+                            <button id="sushi-btn" class="bg-white py-2 px-14 rounded mx-2 cursor-pointer text-black fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 shadow-xl hover:scale-110 duration-300">LEER MÁS</button>
+                        </div>
+                    </div>
+
+                    <div class="hidden lg:flex h-screen w-screen negro"></div>
+
+
+                    <div class="my-20 pt-20 pb-10 relative">
+                        <img src="/imagenes/bar-movil.png" alt="icono de botellas" class="lg:hidden md:hidden">
+
+                        <!--icono bar pc-->
+                        <div class="flex flex-row justify-end md:mt-20 overflow-x-clip">
+                            <img src="/imagenes/semi-C-derecha.png" alt="medio circulo azul" class="hidden lg:flex md:flex md:w-[30%] lg:w-[25%] circulo-r overflow-x-clip">
+                        </div>
+                        <div class="flex flex-row justify-start md:pl-28 absolute md:top-[55%] left-0 lg:top-[60%] lg:pl-36 bar z-20">
+                            <img src="/imagenes/bar-icon.png" alt="icono de botellas" class="hidden lg:flex md:flex md:w-[80%] lg:w-[90%] z-50">
+                        </div>
+                        <div class="flex flex-row justify-start z-10 overflow-x-clip">
+                            <img src="/imagenes/waves-blue2.png" alt="grafico de ondas azules" class="hidden lg:flex md:flex md:w-[50%] lg:w-[40%] onda2 overflow-x-clip">
+                        </div>
+
+                        <div class="text-white flex flex-col justify-center items-center md:justify-end md:items-end z-20 absolute top-1/2 md:right-0 md:w-[60%] md:text-right md:top-80 md:mx-20 lg:top-96 lg:mr-36">
+                            <div class="flex justify-center items-center mb-5">
+                                <h2 class="fuente-B text-4xl md:text-6xl">MENU</h2>
+                                <h2 class="fuente-A text-4xl md:text-6xl">-BAR</h2>
+                            </div>
+                            <P class="fuente-A text-lg text-justify mx-8 mb-8 uppercase md:mr-0 md:ml-20 lg:text-2xl lg:w-[60%]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea iste ipsa necessitatibus veniam, consectetur sapiente? Optio ad distinctio provident amet?</P>
+                            <button id="bar-btn" class="bg-white py-2 px-14 rounded mx-2 cursor-pointer text-black fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 shadow-xl hover:scale-110 duration-300">LEER MÁS</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden lg:flex h-80 negro"></div>
+
+            </div>
+            <div class="borde-negro mb-14 md:-mt-72">
+            </div>
+        </section>
+
+        <div class="h-52"></div>
+
+        <!--Seccion de "sobre nosotros"-->
+        <section class="flex relative flex-col lg:mt-40 sec-nosotros overflow-x-clip">
+            <div class="mt-14 mb-16">
+
+                <div class="flex mb-10 gap-5 mx-5 md:mx-10">
+                    <h2 class="fuente-B text-3xl md:text-5xl">SOBRE</h2>
+                    <h2 class="fuente-A text-2xl md:text-4xl">NOSOTROS</h2>
+                </div>
+
+                <div class="lg:flex lg:flex-row lg:justify-between">
+    
+                    <P class="fuente-A md:text-2xl text-justify ml-5 mr-8 md:mx-8 mb-14 lg:w-[50%]">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error qui alias voluptate corrupti mollitia, commodi nemo eligendi deleniti labore maiores assumenda reiciendis incidunt, perspiciatis nam harum repudiandae officia ducimus aspernatur similique sequi sint illum consectetur ipsam optio. <br><br> Voluptas reiciendis dolore libero ut deleniti natus nesciunt facere cumque. Consequatur molestiae commodi perferendis eaque sint sunt inventore voluptatem sequi. Repellat, earum sit.</P>
+    
+                    <img src="/imagenes/sobreNosotros.jpg" alt="imagen de sushi surtidos y una tetera japonesa" class="lg:w-[40%] overflow-x-clip">
+                </div>
+
+                <div class="h-96"></div>
+
+                <div class="my-40 separador flex justify-center items-center"></div>
+
+                <div class="h-52"></div>
+
+            </div>
+        </section>
+
+        <!--Seccion de Carrusel-->
+        <div class="container-carrusel overflow-x-clip">
+            <div class="carousel">
+                <div class="slider">
+                    <section>
+                        <div class="flex flex-col items-center gap-5 lg:mx-20">
+                            <img src="/imagenes/estrellas.png" alt="estrellas azules" class="w-[30%] md:w-auto">
+                            <h1 class="fuente-B text-xl md:text-5xl">EXCELENTE!</h1>
+                            <P class="fuente-A md:text-2xl text-center mx-20 md:mx-8 mb-14">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia qui nesciunt praesentium saepe voluptas voluptatibus dignissimos iste eum vitae labore.</P>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="flex flex-col items-center gap-5 lg:mx-20">
+                            <img src="/imagenes/estrellas.png" alt="estrellas azules" class="w-[30%] md:w-auto">
+                            <h1 class="fuente-B text-xl md:text-5xl">GENIAL!</h1>
+                            <P class="fuente-A md:text-2xl text-center mx-20 md:mx-8 mb-14">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia qui nesciunt praesentium saepe voluptas voluptatibus dignissimos iste eum vitae labore.</P>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="flex flex-col items-center gap-5 lg:mx-20">
+                            <img src="/imagenes/estrellas.png" alt="estrellas azules" class="w-[30%] md:w-auto">
+                            <h1 class="fuente-B text-xl md:text-5xl">RECOMENDADO</h1>
+                            <P class="fuente-A md:text-2xl text-center mx-20 md:mx-8 mb-14">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia qui nesciunt praesentium saepe voluptas voluptatibus dignissimos iste eum vitae labore.</P>
+                        </div>
+                    </section>
+                </div>
+                <div class="controls mx-5 md:mx-auto">
+                   
+                    <span class="arrow left material-symbols-outlined pl-10 md:pl-0">chevron_left</span>
+                    <span class="arrow right material-symbols-outlined pr-10 md:pr-0">chevron_right</span>
+                    <ul>
+                        <li class="selected"></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="h-96"></div>
+
+        <!--SECCION CONTACTANOS-->
+        <section class="flex relative flex-col mt-40 z-2 sec-contac">
+            <div class="borde-azul absolute -top-10 left-0"></div>
+            <div class="azul contenedor mt-28 z-10">
+                <div class="h-72"></div>
+                <div class="flex justify-end w-[60%] ml-[40%] mb-40 overflow-x-clip">
+                    <img src="/imagenes/waves-white.png" alt="ondas blancas" class="onda3 overflow-x-clip">
+                </div>
+                <div class="h-32"></div>
+                <div class="flex flex-col justify-center items-center gap-5 my-16 mx-5">
+                    <h1 class="fuente-B text-3xl md:text-5xl text-white">CONTÁCTANOS!</h1>
+                    <P class="fuente-A text-2xl text-center text-white mx-4 mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, iusto?</P>
+                    <button id="contactos-btn" class="bg-white py-2 px-14 rounded mx-2 cursor-pointer text-blue-400 fuente-A text-xl transition ease-in-out delay-150 shadow-xl hover:scale-110 duration-300 z-50">LEER MÁS</button>
+                </div>
+
+                <div class="espacio relative mb-10">
+                    <div class="flex flex-col justify-center items-center pt-72 gap-8 redes">
+                        <h2 class="fuente-A text-white text-2xl md:text-3xl uppercase">VISÍTANOS EN NUESTRAS REDES</h2>
+                        <div class="flex gap-4 z-50">
+                            <a href="#" class="cursor-pointer hover:scale-125 transition ease-in-out delay-150 duration-300">
+                                <img src="/imagenes/insta.png" alt="logo instagram" class="w-16 h-16 md:w-20 md:h-20">
+                            </a>
+                            <a href="#" class="cursor-pointer hover:scale-125 transition ease-in-out delay-150 duration-300">
+                                <img src="/imagenes/face.png" alt="logo facebook" class="w-16 h-16 md:w-20 md:h-20">
+                            </a>
+                            <a href="#" class="cursor-pointer hover:scale-125 transition ease-in-out delay-150 duration-300">
+                                <img src="/imagenes/twit.png" alt="logo twitter" class="w-16 h-16 md:w-20 md:h-20">
+                            </a>
+                        </div>
+                        
+                    </div>
+                    <div class="absolute left-0 -top-36 w-[90%] calamar -z-10">
+                        <img src="/imagenes/medio-squid.png" alt="dibujo de un calamar">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<footer id="foot" class="azul h-full w-full md:pt-64"></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!--cuando el axios no quiere servir-->
+<script src="../components/navBar.js"></script>
+<script src="../components/footer.js"></script>
+<script src="../components/loader.js"></script>
+<script src="aplicacion.js"></script>
+<script src="../components/notificaciones.js"></script>
+</body>
+</html>

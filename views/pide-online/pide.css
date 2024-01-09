@@ -1,0 +1,214 @@
+section{
+    animation: aparece 3s ease-in forwards;
+}
+
+@keyframes aparece{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.img1{
+    animation: mover-d 2s ease-in forwards;
+}
+
+@keyframes mover-d{
+    from{
+        transform: translateX(-100px);
+    }
+    to{
+        transform: translateX(0px);
+    }
+}
+
+
+.img2{
+    animation: mover-i 2s ease-in forwards;
+}
+
+@keyframes mover-i{
+    from{
+        transform: translateX(100px);
+    }
+    to{
+        transform: translateX(0px);
+    }
+}
+
+
+.pedir-carta{
+    animation: fade linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 20%;
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
+/*--------CARRITO--------*/
+
+ul {
+    list-style: circle inside;
+    padding-left: 0;
+    margin-top: 0;
+    margin: 1.5rem 0 1.5rem 3rem;
+    font-size: 90%; 
+}
+
+li {
+    margin-bottom: 1rem;
+}
+
+th,
+td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #E1E1E1;
+}
+th:first-child,
+td:first-child {
+  padding-left: 0; }
+th:last-child,
+td:last-child {
+padding-right: 0; }
+
+
+#vaciar-carrito:hover{
+    background-color: white;
+    color: #3FA8F4;
+}
+
+.submenu {
+    position: relative;
+}
+
+.submenu #carrito{
+    display: none;
+    transition: all ease 3s;
+}
+
+
+.submenu:hover #carrito{
+    
+    display: block;
+    position: absolute;
+    right: -120%;
+
+    top:100%;
+    z-index: 1;
+    background-color: #3FA8F4;
+    padding: 20px;
+    min-height: 400px;
+    min-width: 500px;
+
+    transition: all ease 3s;
+}
+
+@media (max-width:768px){
+    .submenu:hover #carrito{
+        min-width: 300px;
+    }
+}
+
+
+.borrar-producto {
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #3FA8F4;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+
+
+/*------DROPDOWN MENU CATEGORIAS--------*/
+
+.flechita.activo{
+    display: none;
+}
+
+.flechita2{
+    display: none;
+}
+
+.flechita2.activo{
+    display: flex;
+    transition: all ease 3s;
+}
+
+
+#categorias-menu{
+    display: none;
+}
+
+
+#categorias-menu.activo{
+    display: block;
+    position: absolute;
+    top: 8%;
+    left: 8%;
+    background-color: #3FA8F4;
+    min-height: 200px;
+    min-width: 200px;
+    padding-top: 3rem;
+    padding-left: 20px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    z-index: 2;
+    transition: all ease 3s;
+}
+
+
+@media (max-width:768px){
+    #categorias-menu.activo{
+        left: 15%;
+    }
+}
+
+@media (max-width:400px){
+    #categorias-menu.activo{
+        left: 20%;
+    }
+}
+
+@media (min-height: 800px){
+
+    #categorias-menu.activo{
+        top: 5%;
+    }
+
+}
+
+@media (max-width: 280px){
+
+    #categorias-menu.activo{
+        left: 5%;
+    }
+
+    .submenu:hover #carrito{
+        width: 150px;
+        right: -70%;
+    }
+}
+
+.horario-menu{
+    display: none;
+}
+
+.horario-menu.activo{
+    display: block;
+}
+
+

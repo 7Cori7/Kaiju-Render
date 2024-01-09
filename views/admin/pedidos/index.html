@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <link rel="stylesheet" href="/calamar/admin.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Kaiju - Administrar Clientes</title>
+</head>
+<body class="crema">
+    
+    <main class="relative">
+
+        <!--BOTON PERFIL-->
+        <div class="absolute top-0 right-0 p-8">
+            <div class="flex justify-center items-center border-2 border-black py-2 px-5 rounded-3xl cursor-pointer gap-1 hover:border-blue-400 hover:text-blue-400 ease-in-out delay-150 duration-300">
+                <i class='bx bxs-user'></i>
+                <a href="/opciones">Admin</a>
+            </div>
+        </div>
+        
+    
+        <!--MINI SIDEBAR-->
+        <aside class="sidebar fixed top-0 left-0 azul text-white min-h-screen w-14 py-2 px-3 z-50"></aside>
+
+        <!--CONTENIDO-->
+        <section class="seccion-contenido pb-10">
+            <div class="flex flex-col lg:flex-row lg:justify-center lg:items-center lg:gap-5 text-3xl lg:text-5xl uppercase">
+                <h1 class="fuente-B">ADMINISTRAR</h1>
+                <h1 class="fuente-A">PEDIDOS</h1>
+            </div>
+
+
+        <!-- Modal para ver los pedidos -->
+        <dialog data-modal-pedidos class="top-[10%] lg:top-[5%] left-[10%] lg:left-[27%] h-[70%] w-[80%] lg:w-[50%] bg-white rounded-lg px-8 py-2 z-50 md:w-[50%] md:left-[30%]">
+            <div>
+                
+                <form method="dialog" class="m-5">
+                    
+                    <div id="listado-pedidos" class="bg-white"></div>
+
+                    <div class="flex justify-center items-center pt-5 pb-0">
+                        <button type="submit" class="py-3 px-14 rounded-3xl mx-2 text-white text-sm transition ease-in-out delay-150 hover:text-gray-900 hover:bg-blue-300 shadow-xl hover:scale-110 duration-300 uppercase disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Cerrar</button>
+                    </div>
+
+                </form>
+            </div>
+        </dialog>
+
+        <!-- Modal para ver los destinos -->
+        <dialog data-modal-destinos class="top-[10%] lg:top-[5%] left-[10%] lg:left-[27%] h-[70%] w-[80%] lg:w-[50%] bg-white rounded-lg px-8 py-2 z-50 md:w-[50%] md:left-[30%]">
+            <div>
+                
+                <form method="dialog" class="m-5">
+                    
+                    <div id="contenido-destinos" class="bg-white"></div>
+
+                    <div class="flex justify-center items-center pt-5 pb-0">
+                        <button type="submit" class="py-3 px-14 rounded-3xl mx-2 text-white text-sm transition ease-in-out delay-150 hover:text-gray-900 hover:bg-blue-300 shadow-xl hover:scale-110 duration-300 uppercase disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Cerrar</button>
+                    </div>
+
+                </form>
+            </div>
+        </dialog>
+
+            <!--TABLA PEDIDOS DELIVERY-->
+            <div class="flex flex-col mt-10">
+
+                <h2 class="fuente-A uppercase text-3xl pb-3 border-b border-black mb-8">Pedidos Delivery</h2>
+
+                <div class="py-2 overflow-x-auto">
+                  <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                    <table class="min-w-full">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                        Cliente
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                        Pedido
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                    Total
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                    Pago
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                        Estado
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                        Destino
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                        Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="listado-delivery" class="bg-white"></tbody>
+                    </table>
+
+                    <div id="vacio" class="min-w-full shadow-2xl overflow-hidden sm:rounded-lg border-b border-gray-200 bg-gray-100">
+
+                        <div class="m-10 flex justify-center align-center text-azul text-2xl">
+                            <h3>Por los momentos no hay pedidos delivery</h3>
+                        </div>
+
+                    </div>
+
+                  </div>
+                </div>
+            </div>
+
+
+              <!--TABLA PEDIDOS PICK-UP-->
+            <div class="flex flex-col mt-10">
+
+                <h2 class="fuente-A uppercase text-3xl pb-3 border-b border-black mb-8">Pedidos Pick-Up</h2>
+
+                <div class="py-2 overflow-x-auto">
+                  <div class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200">
+                    <table class="min-w-full">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                        Cliente
+                                </th>
+                                <th class="open-Pedidos px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                        Pedido
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                    Total
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                    Pago
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                        Estado
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                        Destino
+                                </th>
+                                <th class="px-6 py-3 border-b border-gray-200  text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                        Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="listado-pickup" class="bg-white"></tbody>
+                    </table>
+                    <div id="vacio2" class="min-w-full shadow-2xl overflow-hidden sm:rounded-lg border-b border-gray-200 bg-gray-100">
+
+                        <div class="m-10 flex justify-center align-center text-azul text-2xl">
+                            <h3>Por los momentos no hay pedidos pick-up</h3>
+                        </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+        </section>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../components/dashboard.js"></script>
+    <script src="adPedidos.js"></script>
+    <script src="../components/notificaciones.js"></script>
+</body>
+</html>

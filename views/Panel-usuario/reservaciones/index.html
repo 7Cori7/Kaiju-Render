@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <link rel="stylesheet" href="/panel-usuario/user.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Kaiju - Reservaciones Usuario</title>
+</head>
+<body class="crema">
+
+    <main class="relative">
+
+        <!--BOTON PERFIL-->
+        <div id="boton-usuario" class="absolute top-0 right-0 p-8">
+            
+        </div>
+
+        <!--MINI SIDEBAR-->
+        <aside class="sidebar fixed top-0 left-0 azul text-white min-h-screen w-14 py-2 px-3 z-40"></aside>
+
+        <!--Modal para mostrar QR-->
+        <dialog data-modal-QR class="top-[10%] left-[10%] lg:left-[30%] h-[40%] lg:h-[70%] w-[80%] lg:w-[40%] bg-white rounded-lg px-8 py-2 z-50 md:w-[50%] md:left-[30%]">
+        
+            <div class="relative top-4">
+                <svg data-close-modal xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute top-0 right-0 cursor-pointer">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </div>
+
+            <div class="pt-10 m-[5%]">
+
+                <h2 class="fuente-A uppercase text-3xl text-azul">Código QR:</h2>
+                
+                <div id="show-QR" class="py-10 flex justify-center items-center"></div>
+
+            </div>
+        
+        </dialog>
+
+        <!--CONTENIDO-->
+        <section class="seccion-contenido pb-10">
+            <div class="flex flex-col lg:flex-row lg:justify-center lg:items-center lg:gap-5 text-2xl lg:text-5xl uppercase pb-8">
+                <h1 class="fuente-B">Reservas</h1>
+                <h1 class="fuente-A">Creadas</h1>
+            </div>
+
+            <h2 class="fuente-A uppercase text-xl md:text-3xl pb-3 border-b border-black mt-10 mb-8">Lista de Tus Reservaciones</h2>
+
+            <div id="lista-reservas"  class="flex flex-col lg:flex-row lg:flex-wrap gap-5 align-middle">
+
+                <div id="vacio" class="min-w-full shadow-2xl overflow-hidden sm:rounded-lg border-b border-gray-200 bg-gray-100">
+
+                    <div class="m-10 flex justify-center align-center text-azul text-3xl">
+                        <h3>Por los momentos no tiene reservaciones creadas</h3>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../components/dashUser.js"></script>
+    <script src="../components/botonUsuario.js"></script>
+    <script src="reservasUser.js"></script>
+    <script src="../components/notificaciones.js"></script>
+</body>
+</html>>

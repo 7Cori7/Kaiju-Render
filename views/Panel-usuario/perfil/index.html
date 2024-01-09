@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <link rel="stylesheet" href="/panel-usuario/user.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Kaiju - Perfil del Usuario</title>
+</head>
+<body class="crema">
+
+    <main class="relative">
+
+        <!--BOTON PERFIL-->
+        <div id="boton-usuario" class="absolute top-0 right-0 p-8">
+            
+        </div>
+
+        <!--MINI SIDEBAR-->
+        <aside class="sidebar fixed top-0 left-0 azul text-white min-h-screen w-14 py-2 px-3 z-40"></aside>
+
+        <!--CONTENIDO-->
+        <section class="seccion-contenido pb-10">
+
+            <div class="flex flex-col lg:flex-row lg:justify-center lg:items-center lg:gap-5 text-3xl lg:text-5xl uppercase pb-8">
+                <h1 class="fuente-B">PERFIL</h1>
+                <h1 class="fuente-A">DE USUARIO</h1>
+            </div>
+
+            <h2 id="saludo" class="uppercase text-xl py-3 border-b border-gray-400 mb-8">Bienvenid@!</h2>
+
+            <!--Datos del usuario-->
+            <div id="datos-user" class="pb-5 pt-3 text-base px-3"></div>
+
+            <div class="border-b border-gray-400 mb-8"></div>
+
+            <div class="flex justify-between">
+
+                <!--boton editar usuario-->
+                <div class="text-azul text-lg pl-3 hover:text-blue-950 ease-in-out delay-150 duration-300">
+                    <a href="#" id="editar-usuario">
+                        <i class='bx bxs-edit-alt'></i>
+                        <span>Editar Perfil</span>
+                    </a>
+                </div>
+
+                <!--boton eliminar usuario-->
+                <div class="text-red-700 text-lg pl-3 hover:text-red-950 ease-in-out delay-150 duration-300">
+                    <a href="#" id="borrar-usuario">
+                        <i class='bx bxs-user-x'></i>
+                        <span>Borrar tu cuenta</span>
+                    </a>
+                </div>
+
+            </div>
+            
+
+            <!--Editar Perfil-->
+            <div id="editando-user" class="hidden py-5 lg:px-3 transition-all duration-500 ease-in-out delay-150">
+                <form id="user-edit-form" class="flex flex-col gap-5">
+                    <input type="text" id="nombre-user" name="alias" placeholder="Edite su nombre" class="py-3 w-full rounded-md focus:outline-blue-400">
+                    <input type="email" id="email-user" name="email" placeholder="Coloque su nuevo email" class="py-3 w-full rounded-md focus:outline-blue-400">
+                    <input type="tel" id="tel-user" name="telefono" placeholder="Coloque su teléfono" class="py-3 w-full rounded-md focus:outline-blue-400">
+                    <input type="password" id="nuevo-password" name="nuevo-password" class="py-3 w-full rounded-md focus:outline-blue-400" placeholder="Coloque el nuevo password">
+                    <input type="password" id="match-password" name="match-password" class="py-3 w-full rounded-md focus:outline-blue-400" placeholder="Repita el nuevo password">
+                    <div class="mt-8 flex justify-center items-center">
+                        <button disabled id="editar-user-btn" type="submit" class="py-2 px-14 rounded mx-2 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl hover:scale-110 duration-300 disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../components/dashUser.js"></script>
+    <script src="perfil.js"></script>
+    <script src="../components/botonUsuario.js"></script>
+    <script src="../components/notificaciones.js"></script>
+</body>
+</html>

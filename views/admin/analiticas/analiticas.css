@@ -1,0 +1,29 @@
+.filtros{
+    padding: 5px 10px;
+}
+
+.filtros:hover{
+    
+    color: #3FA8F4;
+
+}
+
+.filtro-activo{
+    pointer-events: none;
+    background-color: #3FA8F4;
+    color: white;
+    border-radius: 10%;
+    box-shadow: 0 0 .5rem rgb(0 0 0 / .2);
+}
+
+.filtro-activo:hover{
+    color: white;
+}
+
+@media (max-width: 768px){
+
+    .filtro-activo{
+        border-radius: 0;
+    }
+
+}

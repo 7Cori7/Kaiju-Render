@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <link rel="stylesheet" href="login.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Kaiju - Login</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function onSubmit(token) {
+          console.log('bieeen');
+          main();
+        };
+    </script>
+</head>
+<body class="crema">
+    <header>
+        <div class="loader">
+            <div class="ball"></div>
+        </div>
+        <!--Barra de navegacion-->
+        <nav id="navBar" class="azul h-16 flex items-center justify-center"></nav>
+    </header>
+
+    <main>
+        <section class="relative lg:pt-20 md:pt-16 lg:pl-10">
+            <!--Formulario-->
+            <div class="bg-gray-300 rounded-lg h-full m-[10%] lg:m-[5%] md:m-[5%] pt-5 pb-10 shadow-2xl lg:h-[100%] lg:w-[40%] md:h-[100%] md:w-[60%]">
+            <form id="formulario" class="flex flex-col justify-center items-center lg:py-5 md:py-1">
+    
+                <h1 class="text-xl mt-[4%] lg:mt-[2%] mx-5 font-bold text-azul text-center">Por favor llene todos los campos para poder ingresar</h1>
+    
+                <!--email-->
+                <input type="email"
+                id="email-input"
+                name="email"
+                placeholder="Coloque su e-mail"
+                autocomplete="off"
+                class="py-3 mt-[8%] w-[90%] rounded-md focus:outline-blue-400">
+    
+                <!--Password-->
+                <input type="password"
+                id="password-input"
+                name="cantidad"
+                placeholder="Coloque su contraseña"
+                autocomplete="off"
+                class="py-3 mt-[8%] w-[90%] rounded-md focus:outline-blue-400" min="1" max="8">
+
+                <div class="g-recaptcha hidden"
+                    data-sitekey="6Ldm2BQpAAAAAJIUHhlzYNXw9VIFcLT_6jQi-dZC"
+                    data-callback="onSubmit"
+                    data-size="invisible">
+                </div>
+
+                <!--boton-->
+                <div class="mt-8">
+                    <button type="submit" data-Boton class="py-2 px-14 rounded mx-2 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl hover:scale-110 duration-300 disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">LOG-IN</button>
+                </div>
+                <div class="pt-7 text-center">
+                    <p>¿No estás registrado?</p>
+                    <a href="../signup/" class="text-lg cursor-pointer text-azul hover:text-cyan-400">crea una cuenta nueva</a>
+                </div>
+            
+            </form>
+            </div>
+            <div class="absolute top-0 lg:top-40 md:top-16 right-0 opacity-40 -z-10 md:flex lg:flex hidden">
+                <img src="/imagenes/medio-squid - copia.png" alt="dibujo de un calamar">
+            </div>
+            </section>
+
+
+    </main>
+
+
+    
+    <footer id="foot" class="h-full w-full md:pt-64"></footer>
+
+<script src="../components/navBar.js"></script>
+<script src="../components/footer.js"></script>
+<script src="../components/loader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="login.js"></script>
+<script src="../components/notificaciones.js"></script>
+</body>
+</html>

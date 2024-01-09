@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <link rel="stylesheet" href="/panel-usuario/user.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Kaiju - Carrito de Compras</title>
+</head>
+<body class="crema">
+
+    <main class="relative">
+
+        <!--BOTON PERFIL-->
+        <div id="boton-usuario" class="absolute top-0 right-0 p-8"></div>
+
+        <!--MINI SIDEBAR-->
+        <aside class="sidebar fixed top-0 left-0 azul text-white min-h-screen w-14 py-2 px-3 z-40"></aside>
+
+        <!-- Modal para tipo de pedido -->
+
+        <dialog data-modal class="fixed top-[15%] left-[10%] lg:left-[25%] h-[50%] w-[80%] lg:w-[40%] bg-white rounded-lg px-8 py-2">
+
+            <div class="relative">
+                <svg data-close-modal xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute top-5 right-0 cursor-pointer">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </div>
+            
+            <div class="flex flex-col justify-center items-center m-8">
+
+                <h1 class="pb-7 text-azul text-center">Elija el tipo de pedido:</h1>
+
+                <form id="form-pedido" class="flex flex-col justify-center gap-5" method="dialog">
+
+                    <div class="flex justify-center items-center">
+
+                        <div class="flex flex-col lg:flex-row gap-5 lg:gap-2 pt-10">
+
+                            <button type="submit" id="pedido-pickup" class="py-3 px-14 rounded-3xl mx-2 text-white text-sm transition ease-in-out delay-150 hover:text-gray-900 shadow-xl duration-300 uppercase disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Pick-Up</button>
+
+                            <button type="submit" id="pedido-delivery" class="py-3 px-14 rounded-3xl mx-2 text-white text-sm transition ease-in-out delay-150 hover:text-gray-900 shadow-xl duration-300 uppercase disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Delivery</button>
+                        </div>
+                        
+                    </div>
+
+                </form>
+
+            </div>
+
+        </dialog>
+
+        <!-- Modal para pedido pick-up -->
+
+        <dialog data-modal-pickup class="fixed top-[15%] left-[10%] lg:left-[25%] h-[70%] w-[80%] lg:w-[50%] bg-white rounded-lg px-8 py-2">
+
+            <div class="relative">
+                <svg data-close-modal xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute top-5 right-0 cursor-pointer">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </div>
+            
+            <div class="flex flex-col justify-center items-center m-8">
+
+                <p class="pb-7 text-azul text-center">Por favor llene todos los campos para continuar:</p>
+
+                <form id="form-pickup" class="flex flex-col justify-center gap-5" method="dialog">
+
+                    <select name="fecha" id="fecha-pickup" class="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-blue-300 focus:shadow-outline cursor-pointer">
+                        <option>--Fecha--</option>
+                        <option value="hoy">Hoy</option>
+                        <option value="tomorrow">Mañana</option>
+                    </select>
+
+                    <select name="hora" id="hora-pickup" class="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-blue-300 focus:shadow-outline cursor-pointer disabled:cursor-not-allowed">
+                        <option>--Hora--</option>
+                        <option value="asap" id="asap">ASAP(en 15 min apróx)</option>
+                        <option value="10">10:00am</option>
+                        <option value="11">11:00am</option>
+                        <option value="12">12:00pm</option>
+                        <option value="13">1:00pm</option>
+                        <option value="14">2:00pm</option>
+                        <option value="15">3:00pm</option>
+                        <option value="16">4:00pm</option>
+                        <option value="17">5:00pm</option>
+                        <option value="18">6:00pm</option>
+                        <option value="19">7:00pm</option>
+                        <option value="20">8:00pm</option>
+                        <option value="21">9:00pm</option>
+                        <option value="22">10:00pm</option>
+                        <option value="23">11:00pm</option>
+
+                    </select>
+
+                    <select name="local" id="local" class="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-blue-300 focus:shadow-outline cursor-pointer disabled:cursor-not-allowed">
+                        <option>--Caracas Distrito Capital--</option>
+                        <option value="Parque Cristal">Parque Cristal</option>
+                        <option value="Sabil Chacao">Sambil Chacao</option>
+                    </select>
+
+                    <div class="pt-5 flex justify-center items-center">
+                        <button type="submit" id="confirmar-pickup" class="py-3 px-14 rounded-3xl mx-2 text-white text-sm transition ease-in-out delay-150 hover:text-gray-900 hover:bg-blue-300 shadow-xl hover:scale-110 duration-300 uppercase disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Realizar Pedido</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </dialog>
+
+        <!-- Modal para pedido delivery -->
+
+        <dialog data-modal-delivery class="fixed top-[15%] left-[10%] lg:left-[25%] h-[80%] w-[80%] lg:h-[80%] lg:w-[50%] bg-white rounded-lg px-8 py-2 z-50">
+
+            <div class="relative">
+                <svg data-close-modal xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute top-5 right-0 cursor-pointer">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </div>
+
+            <div class="mt-12 mb-5 md:mx-12 flex flex-col justify-center items-center">
+                <p class="text-azul text-center pb-5">Por favor indique su número de teléfono:</p>
+                <input type="tel" name="tel" id="tel-delivery-input" class="shadow appearance-none border rounded-lg w-full lg:w-[80%] py-2 px-5 text-gray-700 leading-tight focus:outline-blue-300 focus:shadow-outline" placeholder="Número de teléfono">
+            </div>
+
+            <div class="flex flex-col justify-center items-center lg:m-8 my-5 md:mx-8">
+
+                <div class="pb-7">
+                    <p class="text-azul text-center">Por favor indique su ubicación para continuar:</p>
+                    <p class="text-sm"><span class="text-red-600">*</span>Debe aceptar a mostrar su ubicación<br><span class="text-red-600">*</span>Trabajamos únicamente en el Distrito Capital</p>
+                </div>
+
+                <form id="form-delivery" class="flex flex-col justify-center gap-5" method="dialog">
+
+
+
+                    <div class="lg:flex lg:flex-row flex flex-col gap-5">
+                        <div>
+                            <label for="ubicacion">Utilizar ubicación actual</label>
+                            <input type="radio" name="ubicacion" value="actual" class="cursor-pointer">
+                        </div>
+                        <div>
+                            <label for="ubicacion">Escribir dirección</label>
+                            <input type="radio" name="ubicacion" value="escribir" class="cursor-pointer">
+                        </div>
+                    </div>
+                    <!--Mapa-->
+                    <div id="map" class="hidden justify-center items-center"></div>
+                    <!--Textarea-->
+                    <div class="lg:pt-5 pt-2">
+                        <textarea name="direccion" id="escribir" cols="30" rows="5" class="hidden justify-center items-center shadow appearance-none border rounded-lg w-full py-3 px-5 text-gray-700 leading-tight focus:outline-blue-300 focus:shadow-outline" placeholder="Ej. Avenida Francisco de Miranda, Caracas 1060, Miranda"></textarea>
+                    </div>
+                    
+                    <div class="pt-1 flex justify-center items-center">
+                        <button type="submit" id="confirmar-delivery" class="agregar-carrito py-3 px-14 rounded-3xl mx-2 text-white text-sm transition ease-in-out delay-150 hover:text-gray-900 hover:bg-blue-300 shadow-xl hover:scale-110 duration-300 uppercase disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Realizar Pedido</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </dialog>
+
+        <!--CONTENIDO-->
+        <section class="seccion-contenido pb-10">
+
+            <div class="flex flex-col lg:flex-row lg:justify-center lg:items-center lg:gap-5 text-3xl lg:text-5xl uppercase pb-8">
+                <h1 class="fuente-B">CARRITO</h1>
+                <h1 class="fuente-A">DE COMPRAS</h1>
+            </div>
+
+            <div class="relative">
+                <a href="#" data-vaciar class="absolute hidden md:block top-12 right-0 text-red-600 hover:text-red-950 ease-in-out delay-150 duration-300"><i class='bx bxs-trash-alt'></i> Vaciar Carrito</a>
+
+                <a href="#" data-vaciar class="absolute md:hidden top-12 right-0 text-red-600 hover:text-red-950 ease-in-out delay-150 duration-300"><i class='bx bxs-trash-alt'></i></a>
+            </div>
+
+            
+
+            <h2 class="fuente-A uppercase text-xl md:text-3xl pb-3 border-b border-black mt-10 mb-8">Lista de Artículos</h2>
+
+            <div id="lista-carrito"  class="flex flex-col gap-5 align-middle">
+
+                <div id="vacio" class="min-w-full shadow-2xl overflow-hidden sm:rounded-lg border-b border-gray-200 bg-gray-100">
+
+                    <div class="m-10 flex justify-center align-center text-azul text-3xl">
+                        <h3>Por los momentos el carrito está vacío</h3>
+                    </div>
+
+                    <div class="m-10 flex justify-center align-center text-azul ">
+                        <a href="#" onclick="pedirOnline()" class="border-blue-400 border-2 px-7 py-3 rounded-3xl hover:border-blue-950 hover:text-blue-950 transition-all ease-in-out delay-150 duration-300">Realizar un pedido</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flex justify-center items-center py-10">
+                <button id="comprar-btn" class="hidden w-full lg:w-[50%] uppercase py-5 px-10 rounded-3xl azul text-white fuente-A text-center transition ease-in-out delay-150 duration-300 hover:bg-blue-300 hover:text-gray-900 hover:scale-110 shadow-xl">Realizar Compra</button>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../components/dashUser.js"></script>
+    <script src="../components/botonUsuario.js"></script>
+    <script src="userCarrito.js"></script>
+    <script src="../components/notificaciones.js"></script>
+</body>
+</html>>

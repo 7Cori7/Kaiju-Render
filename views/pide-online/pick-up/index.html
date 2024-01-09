@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <link rel="stylesheet" href="/pide-online/pide.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Kaiju - PickUp</title>
+</head>
+<body class="crema">
+    <header>
+        <div class="loader">
+            <div class="ball"></div>
+        </div>
+        <!--Barra de navegacion-->
+        <nav id="navBar" class="azul h-16 flex items-center justify-center"></nav>
+    </header>
+
+    <main>
+
+        <!--Boton para ir al top-->
+        <div id="to-top" class="cursor-pointer h-10 w-10 azul text-white py-3 px-8 rounded-lg flex justify-center items-center fixed right-10 z-40 bottom-10 material-symbols-outlined hover:bg-blue-300 hover:text-gray-900 hover:scale-110 duration-300">
+            <button>expand_less</button>   
+        </div>
+
+        <div class="flex flex-col mx-[5%] py-28 lg:flex-row items-center lg:justify-between gap-16">
+
+            <div>
+                <div class="flex items-center gap-2 text-justify">
+                    <h2 class="fuente-B uppercase text-3xl">Kaiju</h2>
+                    <h2 class="fuente-A uppercase text-lg">Sushi-Bar</h2>
+                </div>
+                <p class="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <p class="text-sm">+58-000-0000-00</p>
+            </div>
+            
+
+
+            <div>
+                <!--BOTON LOGIN / USUARIO-->
+                <div id="log-btn">
+                    <div class="flex justify-center items-center border-2 border-black py-2 px-5 rounded-3xl cursor-pointer gap-1 hover:scale-110 hover:border-blue-400 hover:text-blue-400 ease-in-out delay-150 duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
+                        <a href="../login/">Login</a>
+                    </div>
+                </div>
+                
+
+                <div class="pt-3 pl-3 relative">
+
+                    <div id="horarios-btn" class="flex items-center cursor-pointer gap-1 hover:text-blue-400 text-lg">
+
+                        <a href="#">Horarios</a>
+    
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                        </svg>
+
+                    </div>
+
+                    <!--Menu horarios-->
+                    <div class="absolute h-80 w-64 lg:w-72 p-10 top-10 -right-10 lg:-right-8 crema horario-menu">
+                        <ul>
+                            <li class="lunes">Lunes <span class="estado">10am - 10pm</span></li>
+                            <li class="martes">Martes <span class="estado2">10am - 10pm</span></li>
+                            <li class="miercoles">Miércoles <span class="estado3">10am - 10pm</span></li>
+                            <li class="jueves">Jueves <span class="estado4">10am - 10pm</span></li>
+                            <li class="viernes">Viernes <span class="estado5">10am - 10pm</span></li>
+                            <li class="sabado">Sábado <span class="estado6">10am - 12am</span></li>
+                            <li class="domingo">Domingo <span class="estado7">10am - 8pm</span></li>
+                        </ul>
+                    </div>
+                    
+                </div> 
+            </div>
+
+        </div>
+        
+        <h1 class="fuente-A text-azul text-5xl text-center uppercase my-16 mx-[8%]">pedidos pick-up</h1>
+
+
+        <!-- Modal para agregar al carrito -->
+        
+        <dialog data-modal>
+            <div class="fixed top-[15%] lg:top-[10%] left-[10%] lg:left-[35%] h-[75%] lg:h-[80%] w-[80%] lg:w-96 bg-white rounded-lg shadow-2xl p-10">
+                <div class="relative">
+                    <svg data-close-modal xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute top-0 right-0 cursor-pointer">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </div>
+                <form method="dialog">
+                    <div class="pt-4 lg:pt-8 flex flex-col gap-3">
+                        <h1 id="tituloP" class="fuente-A text-azul text-2xl">NOMBRE DEL PRODUCTO</h1>
+                        <p id="detallesP" class="text-sm">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non, officiis!</p>
+                        <div class="flex justify-between">
+                            <p>Precio:</p>
+                            <p id="precioP">$10</p>
+                        </div>
+                        <label for="cantidad">Cantidad:</label>
+                        <input id="cantidadP" type="number" name="cantidad" min="1" max="10" value="1" class="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-blue-300 focus:shadow-outline">
+                        <div class="flex justify-between uppercase text-2xl font-bold">
+                            <h2>Total:</h2>
+                            <h2 id="totalP">$10</h2>
+                        </div>
+                    </div>
+                    <div class="flex justify-center items-center pt-8">
+                        <button type="submit" class="agregar-carrito hidden md:flex py-2 px-14 rounded-3xl mx-2 text-azul fuente-A text-lg transition ease-in-out delay-150 hover:text-gray-900 shadow-xl hover:scale-110 duration-300 uppercase" style="border: #3FA8F4 solid 2px;">agregar al carrito</button>
+
+                        <button type="submit" class="agregar-carrito md:hidden py-2 px-14 rounded-3xl mx-2 text-azul fuente-A text-lg transition ease-in-out delay-150 hover:text-gray-900 shadow-xl hover:scale-110 duration-300 uppercase" style="border: #3FA8F4 solid 2px;">agregar</button>
+                    </div>     
+                </form>
+            </div>
+        </dialog>
+
+
+        <!-- Modal para confirmar la compra -->
+
+        <dialog data-modal-pedido class="fixed top-[15%] left-[10%] lg:left-[25%] h-[70%] w-[80%] lg:w-[50%] bg-white rounded-lg px-8 py-2">
+
+            <div class="relative">
+                <svg data-close-modal2 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute top-5 right-0 cursor-pointer">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </div>
+            
+            <div class="flex flex-col justify-center items-center m-8">
+
+                <p class="pb-7 text-azul text-center">Por favor llene todos los campos para continuar:</p>
+
+                <form id="form-pickup" class="flex flex-col justify-center gap-5" method="dialog">
+
+                    <select name="fecha" id="fecha-pickup" class="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-blue-300 focus:shadow-outline cursor-pointer">
+                        <option>--Fecha--</option>
+                        <option value="hoy">Hoy</option>
+                        <option value="tomorrow">Mañana</option>
+                    </select>
+
+                    <select name="hora" id="hora-pickup" class="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-blue-300 focus:shadow-outline cursor-pointer disabled:cursor-not-allowed">
+                        <option>--Hora--</option>
+                        <option value="asap" id="asap">ASAP(en 15 min apróx)</option>
+                        <option value="10">10:00am</option>
+                        <option value="11">11:00am</option>
+                        <option value="12">12:00pm</option>
+                        <option value="13">1:00pm</option>
+                        <option value="14">2:00pm</option>
+                        <option value="15">3:00pm</option>
+                        <option value="16">4:00pm</option>
+                        <option value="17">5:00pm</option>
+                        <option value="18">6:00pm</option>
+                        <option value="19">7:00pm</option>
+                        <option value="20">8:00pm</option>
+                        <option value="21">9:00pm</option>
+                        <option value="22">10:00pm</option>
+                        <option value="23">11:00pm</option>
+
+                    </select>
+
+                    <select name="local" id="local" class="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-blue-300 focus:shadow-outline cursor-pointer disabled:cursor-not-allowed">
+                        <option>--Caracas Distrito Capital--</option>
+                        <option value="Parque Cristal">Parque Cristal</option>
+                        <option value="Sabil Chacao">Sambil Chacao</option>
+                    </select>
+
+                    <div class="pt-5 flex justify-center items-center">
+                        <button type="submit" id="confirmar-pickup" class="py-3 px-14 rounded-3xl mx-2 text-white text-sm transition ease-in-out delay-150 hover:text-gray-900 hover:bg-blue-300 shadow-xl hover:scale-110 duration-300 uppercase disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Realizar Pedido</button>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </dialog>
+
+
+        <!--LISTA DE PRODUCTOS-->
+
+        <div id="lista-productos" class="m-[5%] h-full w-[90%] p-14 flex flex-col gap-7">
+
+            <!--BEBIDAS-->
+            <h2 id="cat-bebidas" class="fuente-A uppercase text-3xl pb-3 border-b border-black mb-8">Bebidas</h2>
+
+            <div id="lista-bebidas" class="pedir-carta flex flex-col gap-5 lg:flex-row md:flex-row lg:flex-wrap md:flex-wrap">   
+                
+            </div>
+
+            <!--ROLES FRIOS-->
+            <h2 id="cat-roles" class="fuente-A uppercase text-3xl pb-3 border-b border-black mb-8 pt-20">Roles Fríos</h2>
+
+            <div id="lista-roles"  class="pedir-carta flex flex-col gap-5 lg:flex-row md:flex-row lg:flex-wrap md:flex-wrap">
+              
+            </div>
+
+
+            <!--ROLES FRITOS-->
+            <h2 id="cat-tempura" class="fuente-A uppercase text-3xl pb-3 border-b border-black mb-8 pt-20">Tempura Rolls</h2>
+
+            <div id="lista-tempura" class="pedir-carta flex flex-col gap-5 lg:flex-row md:flex-row lg:flex-wrap md:flex-wrap">
+
+            </div>
+
+
+            <!--NIGIRI SUSHI-->
+            <h2 id="cat-nigiri" class="fuente-A uppercase text-3xl pb-3 border-b border-black mb-8 pt-20">Nigiri Sushi</h2>
+
+            <div id="lista-nigiri"  class="pedir-carta flex flex-col gap-5 lg:flex-row md:flex-row lg:flex-wrap md:flex-wrap">
+
+            </div>
+
+            <!--TEMAKIS-->
+            <h2 id="cat-temakis" class="fuente-A uppercase text-3xl pb-3 border-b border-black mb-8 pt-20">Temaki Sushi</h2>
+
+            <div id="lista-temakis" class="pedir-carta flex flex-col gap-5 lg:flex-row md:flex-row lg:flex-wrap md:flex-wrap">
+
+            </div>
+
+
+            <!--ENTRADAS-->
+            <h2 id="cat-entradas" class="fuente-A uppercase text-3xl pb-3 border-b border-black mb-8 pt-20">Entradas</h2>
+
+            <div id="lista-entradas"  class="pedir-carta flex flex-col gap-5 lg:flex-row md:flex-row lg:flex-wrap md:flex-wrap">
+
+            </div>
+
+
+            <!--POSTRES-->
+            <h2 id="cat-postres" class="fuente-A uppercase text-3xl pb-3 border-b border-black mb-8 pt-20">Postres</h2>
+
+            <div id="lista-postres"  class="pedir-carta flex flex-col gap-5 lg:flex-row md:flex-row lg:flex-wrap md:flex-wrap">
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+    <footer id="foot" class="h-full w-full md:pt-64"></footer>
+
+
+    <script src="../components/footer.js"></script>
+    <script src="../components/loader.js"></script>
+    <script src="../components/navBar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../components/botonUsuario.js"></script>
+    <script src="/pide-online/pide.js"></script>
+    <script src="pickup.js"></script>
+    <script src="../components/notificaciones.js"></script>
+    <script src="../components/botones.js"></script>
+</body>
+</html>

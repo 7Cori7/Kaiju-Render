@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <title>Booking Scanner</title>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <style>
+
+        main {
+            margin-top: 10%;
+            margin-bottom: 10%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #reader {
+            width: 600px;
+        }
+        #result {
+            text-align: center;
+            font-size: 1.5rem;
+        }
+
+        @media (max-width: 768px){
+            body{
+                overflow-x: hidden;
+            }
+            main{
+                overflow-x: hidden;
+            }
+            #reader {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body class="crema">
+    
+    <main>
+
+        <img src="/imagenes/Logo2.png" alt="imagen del logo" style="width: 100px; padding-bottom: 5rem;">
+        
+        <div id="reader"></div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../components/notificaciones.js"></script>
+    <script src="bookScan.js"></script>
+</body>
+</html>

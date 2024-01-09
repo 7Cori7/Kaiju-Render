@@ -1,0 +1,14 @@
+main {
+    animation: aparece-form 1.5s ease-in forwards;
+}
+
+@keyframes aparece-form{
+    from{
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}

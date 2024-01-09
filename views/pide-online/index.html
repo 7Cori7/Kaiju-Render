@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/estilos/custom.css">
+    <link rel="stylesheet" href="pide.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Kaiju - Pide Online</title>
+</head>
+<body class="azul">
+    <div class="loader">
+        <div class="ball"></div>
+    </div>
+    <header>
+        <!--Barra de navegacion-->
+        <nav id="navBar" class="azul h-16 flex items-center justify-center"></nav>
+    </header>
+
+    <main class="relative">
+        <section class="pt-10">
+            <div class="text-center fuente-A text-white text-5xl uppercase pt-36 pb-10 mx-[10%]">
+                <h1>¡PIDE ON-LINE!</h1>
+            </div>
+            <p class="lg:mx-[18%] mx-[10%] text-white text-center uppercase text-lg">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam corporis voluptatum minima. Delectus, deleniti. Beatae temporibus sint accusantium animi nesciunt!</p>
+            <div class="mx-[10%] flex justify-center items-center py-20 z-20">
+                <div class="fuente-A text-white text-2xl uppercase flex lg:flex-row flex-col gap-10 lg:gap-7">
+                    <a href="/pick-up/" class="border-2 py-3 px-28 rounded-3xl hover:bg-white hover:text-blue-400 ease-in-out delay-150 duration-300">Pick-up</a>
+                    <a href="/delivery/" class="border-2 py-3 px-28 rounded-3xl hover:bg-white hover:text-blue-400 ease-in-out delay-150 duration-300">Delivery</a>
+                </div>
+            </div>
+            
+        </section>
+
+        <div class="absolute left-0 top-5 -z-10 img1">
+            <img src="/imagenes/medio-squid.png" alt="dibujo de un calamar">
+        </div>
+
+        <div class="hidden lg:flex md:flex absolute -right-[35%] -bottom-[50%] w-[60%] img2">
+            <img src="/imagenes/waves-white.png" alt="ondas blancas">
+        </div>
+
+    </main>
+    <footer id="foot" class="h-full w-full md:pt-64"></footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="../components/navBar.js"></script>
+<script src="../components/footer.js"></script>
+<script src="../components/loader.js"></script>
+</body>
+</html>
