@@ -259,7 +259,7 @@ pickupRouter.post('/scan', async (req, res) => {
 
         const {id, hoy} = req.body
 
-        const pedido = await Pickup.findOne({id});
+        const pedido = await Pickup.findOne({_id: id});
 
         if(!id){
 
@@ -275,7 +275,7 @@ pickupRouter.post('/scan', async (req, res) => {
 
         }else{
 
-            const actualizar = await Pickup.findOneAndUpdate({id: id},{estado: 'recibido'});
+            const actualizar = await Pickup.findOneAndUpdate({_id: id},{estado: 'recibido'});
 
             await actualizar.save();
 
