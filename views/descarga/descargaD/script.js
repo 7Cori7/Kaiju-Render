@@ -10,7 +10,9 @@ window.addEventListener('DOMContentLoaded', async () => {
 
     const userPedido = pedidosLista.filter(i => i.id === idPedido);
 
-    const {cliente, pedido, formaPago, total, id} = userPedido[0];
+    const {cliente, pedido, formaPago, total, id, createdAt} = userPedido[0];
+
+    const date = createdAt.split('T')[0];
 
     var body = [];
 
@@ -50,7 +52,8 @@ window.addEventListener('DOMContentLoaded', async () => {
                 {text: `Detalles del pedido:\n\n`, style: 'subheader', fontSize: 15, },
                 {text: `Cliente: ${cliente.nombre}`},
                 {text: `correo: ${cliente.correo}`},
-                {text: `Forma de pago: ${formaPago}\n\n\n\n`},
+                {text: `Forma de pago: ${formaPago}`},
+                {text: `Fecha de recibo: ${date}\n\n\n\n`},
                 {
                     layout: 'lightHorizontalLines',
                     table: 
@@ -62,6 +65,7 @@ window.addEventListener('DOMContentLoaded', async () => {
         
                     }
                 },
+                'Cuota por delivery: $2',
                 { text: `TOTAL: $${total}\n\n\n\n`, style: 'subheader', fontSize: 18, bold: true, margin: [2, 20] },
                 { image: 'logo', alignment: 'center', width: 80}
     
