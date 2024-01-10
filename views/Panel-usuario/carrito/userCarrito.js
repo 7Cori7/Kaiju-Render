@@ -153,19 +153,22 @@ listaCarrito.addEventListener('click', e => {
 
 
 //Vaciar el carrito:
-const vaciarCart = document.querySelector('[data-vaciar]');
+const vaciarCart = document.querySelectorAll('[data-vaciar]');
 
-vaciarCart.addEventListener('click', async e => {
-    e.preventDefault();
+vaciarCart.forEach(i => {
 
-    articulosCarrito = [];
+    i.addEventListener('click', async e => {
+        e.preventDefault();
+    
+        articulosCarrito = [];
+    
+        await axios.post('/api/pedidos/cart', articulosCarrito);
+    
+        carritoHTML();
+        location.reload();
+    });
 
-    await axios.post('/api/pedidos/cart', articulosCarrito);
-
-    carritoHTML();
-    location.reload();
 });
-
 
 
 
