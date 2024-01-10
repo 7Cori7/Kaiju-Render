@@ -752,13 +752,28 @@ input[type="file"]::file-selector-button {
 /*-------------------------SCROLLING ANIMATIONS--------------------------*/
 
 
-.sec-menus p, .separador, .container-carrusel, .sec-contac h1, .redes, .carta, .sec-nosotros h2{ 
+.sec-menus p, .separador, .container-carrusel, .sec-contac h1, .redes, .sec-nosotros h2{ 
     animation: aparece linear both;
     animation-timeline: view();
     animation-range: entry 50% cover 50%;
 }
 
 @keyframes aparece{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.carta{
+    animation: aparece2 linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 20%;;
+}
+
+@keyframes aparece2{
     from{
         opacity: 0;
     }
