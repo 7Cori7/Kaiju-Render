@@ -135,14 +135,14 @@ async function verHTML(id){
     const listaP = await axios.get('/api/pickups/lista');
     const listPickup = listaP.data.data;
     const userPickup = listPickup.some(i => i.id === id);
+
+    const listaV = await axios.get('/api/ventas/lista');
+    const listVenta = listaV.data.data;
+    const userVenta = listVenta.some(i => i.cliente === id);
         
     if(userDelivery){
 
-        console.log('es delivery')
-
         const delivery = listDelivery.filter(i => i.id === id);
-
-        console.log(delivery)
 
             const {pedido} = delivery[0];
 
@@ -177,11 +177,7 @@ async function verHTML(id){
 
     }else if(userPickup){
 
-        console.log('es pickup')
-
         const pickup = listPickup.filter(i => i.id === id);
-
-        console.log(pickup)
 
             const {pedido} = pickup[0];
 
@@ -212,6 +208,40 @@ async function verHTML(id){
                 listadoPedidos.appendChild(div);
                     
             });
+
+    }else if(userVenta){
+
+        const venta = listVenta.filter(i => i.cliente === id);
+
+        const {pedido} = venta[0];
+
+        pedido.forEach(i => {
+
+            const {producto, precioBase, cantidad, precio} = i;
+
+            const div = document.createElement('div');
+
+            div.innerHTML += `
+
+                <p class="text-gray-700 font-medium text-sm leading-5 pt-4">${producto}</p>
+            
+                
+                <p class="text-gray-700 font-medium text-sm leading-5">precio: $${precioBase}</p>
+
+                
+                <p class="text-gray-700 font-medium text-sm leading-5">cantidad: ${cantidad}</p>
+
+
+                <p class="text-gray-700 font-medium text-sm leading-5">total: $${precio}</p>
+
+
+                <div class="border-b-2 py-2"></div>
+
+            `;
+
+            listadoPedidos.appendChild(div);
+                
+        });
 
     }
         
