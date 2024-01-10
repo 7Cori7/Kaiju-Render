@@ -35,7 +35,7 @@ asuntoInput.addEventListener('change', e => {
     validar(asuntoInput, valasunto);
 })
 
-textoInput.addEventListener('input', e => {
+textoInput.addEventListener('mouseout', e => {
     valtexto = textoVal.test(e.target.value);
     validar(textoInput, valtexto);
 })
