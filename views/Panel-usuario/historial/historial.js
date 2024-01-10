@@ -130,6 +130,8 @@ async function verHTML(id){
 
     const pedido = historial.filter(i => i.id === id)
 
+    console.log(pedido)
+
     pedido.forEach(i => {
 
             const {producto, precioBase, cantidad, precio} = i;
