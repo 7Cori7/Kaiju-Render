@@ -89,7 +89,7 @@ p{
 
 @media (max-width: 500px){
     .loader{
-        padding-right: 2%;
+        padding-right: 0;
         padding-top: 15%;
     }
     .ball{
