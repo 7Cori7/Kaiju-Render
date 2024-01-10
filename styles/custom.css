@@ -89,7 +89,7 @@ p{
 
 @media (max-width: 500px){
     .loader{
-        padding-right: 0;
+        padding-left: 0;
         padding-top: 15%;
     }
     .ball{
@@ -101,7 +101,7 @@ p{
 
 @media (max-width: 850px){
     .loader{
-        padding-right: 2%;
+        padding-right: 0;
         padding-top: 15%;
     }
     .ball{
@@ -759,21 +759,6 @@ input[type="file"]::file-selector-button {
 }
 
 @keyframes aparece{
-    from{
-        opacity: 0;
-    }
-    to{
-        opacity: 1;
-    }
-}
-
-.carta{
-    animation: aparece2 linear both;
-    animation-timeline: view();
-    animation-range: entry 20% cover 20%;;
-}
-
-@keyframes aparece2{
     from{
         opacity: 0;
     }
