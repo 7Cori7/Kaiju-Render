@@ -128,94 +128,9 @@ async function verHTML(id){
 
     console.log(id)
 
-    const listaD = await axios.get('/api/deliveries/lista');
-    const listDelivery = listaD.data.data;
-    const userDelivery = listDelivery.some(i => i.id === id);
-        
-    const listaP = await axios.get('/api/pickups/lista');
-    const listPickup = listaP.data.data;
-    const userPickup = listPickup.some(i => i.id === id);
+    const pedido = historial.filter(i => i.id === id)
 
-    const listaV = await axios.get('/api/ventas/lista');
-    const listVenta = listaV.data.data;
-    const userVenta = listVenta.some(i => i.cliente === id);
-        
-    if(userDelivery){
-
-        const delivery = listDelivery.filter(i => i.id === id);
-
-            const {pedido} = delivery[0];
-
-            pedido.forEach(i => {
-
-                const {producto, precioBase, cantidad, precio} = i;
-
-                const div = document.createElement('div');
-
-                div.innerHTML += `
-
-                    <p class="text-gray-700 font-medium text-sm leading-5 pt-4">${producto}</p>
-                
-                    
-                    <p class="text-gray-700 font-medium text-sm leading-5">precio: $${precioBase}</p>
-
-                    
-                    <p class="text-gray-700 font-medium text-sm leading-5">cantidad: ${cantidad}</p>
-
-
-                    <p class="text-gray-700 font-medium text-sm leading-5">total: $${precio}</p>
-
-
-                    <div class="border-b-2 py-2"></div>
-
-                `;
-
-                listadoPedidos.appendChild(div);
-                    
-            });
-           
-
-    }else if(userPickup){
-
-        const pickup = listPickup.filter(i => i.id === id);
-
-            const {pedido} = pickup[0];
-
-            pedido.forEach(i => {
-
-                const {producto, precioBase, cantidad, precio} = i;
-
-                const div = document.createElement('div');
-
-                div.innerHTML += `
-
-                    <p class="text-gray-700 font-medium text-sm leading-5 pt-4">${producto}</p>
-                
-                    
-                    <p class="text-gray-700 font-medium text-sm leading-5">precio: $${precioBase}</p>
-
-                    
-                    <p class="text-gray-700 font-medium text-sm leading-5">cantidad: ${cantidad}</p>
-
-
-                    <p class="text-gray-700 font-medium text-sm leading-5">total: $${precio}</p>
-
-
-                    <div class="border-b-2 py-2"></div>
-
-                `;
-
-                listadoPedidos.appendChild(div);
-                    
-            });
-
-    }else if(userVenta){
-
-        const venta = listVenta.filter(i => i.cliente === id);
-
-        const {pedido} = venta[0];
-
-        pedido.forEach(i => {
+    pedido.forEach(i => {
 
             const {producto, precioBase, cantidad, precio} = i;
 
@@ -241,10 +156,8 @@ async function verHTML(id){
 
             listadoPedidos.appendChild(div);
                 
-        });
-
-    }
-        
+    });
+       
 }
 
 
