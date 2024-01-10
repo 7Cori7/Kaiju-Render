@@ -522,7 +522,7 @@ inputRadio.forEach(radio => {
                 modalDelivery.close();
                 formDelivery.reset();
             }else{
-                textArea.addEventListener('keydown', validacion);
+                textArea.addEventListener('change', validacion);
             }
 
         }
@@ -648,8 +648,8 @@ formDelivery.addEventListener('submit', async e => {
 //cerrar modal:
 closeModal2.addEventListener('click', () => {
 
-    formDelivery.reset();
     modalDelivery.close();
+    formDelivery.reset();
 
 });
 
