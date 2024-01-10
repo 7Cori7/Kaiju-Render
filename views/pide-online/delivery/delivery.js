@@ -522,7 +522,7 @@ inputRadio.forEach(radio => {
                 modalDelivery.close();
                 formDelivery.reset();
             }else{
-                textArea.addEventListener('input', validacion);
+                textArea.addEventListener('keydown', validacion);
             }
 
         }

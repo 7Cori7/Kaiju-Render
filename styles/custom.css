@@ -89,13 +89,13 @@ p{
 
 @media (max-width: 500px){
     .loader{
-        padding-left: 10%;
         padding-top: 15%;
     }
     .ball{
         display: flex;
         justify-content: center;
         align-items: center;
+        left: 45%;
     }
 }
 
