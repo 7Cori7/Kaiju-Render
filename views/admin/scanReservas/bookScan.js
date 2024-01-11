@@ -52,11 +52,6 @@ async function success(result){
         scanner.clear();
         document.getElementById('reader').remove();
 
-        setTimeout(()=>{
-
-            location.reload();
-
-        },2000);
 
     }catch(error){
 

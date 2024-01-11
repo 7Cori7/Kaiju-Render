@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         //Caso en que es el día y la hora y todavía no ha llegado:
                         row.classList.replace('bg-yellow-500','bg-red-400');
 
-                        //Si no llega en 5min se elimina la reservación automáticamente:
+                        //Si no llega en 15min se elimina la reservación automáticamente:
                         console.log(`se va a elminiar ${cliente}`)
 
                         setTimeout(async ()=>{
@@ -98,10 +98,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                             location.reload();
 
-                        },300000000);
+                        },900000000);
 
                         //En caso de abrir la página y ya pasó el tiempo:
-                        if(minutos > 10 || hora < time){
+                        if(hora === time && minutos > 15 || hora < time){
 
                             const eliminar = {
                                 id: id,
