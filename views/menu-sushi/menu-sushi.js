@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             <div class="text-white azul h-full w-full rounded-lg p-10 relative">
                 <h2 class="uppercase">${nombre}</h2>
-                <P class="font-extralight text-lg">${ingredientes}</P>
+                <P class="font-extralight lg:text-lg text-sm">${ingredientes}</P>
                 <P>$ ${precio}</P>
                 <img src="/imagenes/icono-1.png" alt="icono de rol frio" class="absolute right-0 z-10">
             </div>
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             <div class="text-white azul h-full w-full rounded-lg p-10 relative">
                 <h2 class="uppercase">${nombre}</h2>
-                <P class="font-extralight text-lg">${ingredientes}</P>
+                <P class="font-extralight lg:text-lg text-sm">${ingredientes}</P>
                 <P>$ ${precio}</P>
                 <img src="/imagenes/icono-2.png" alt="icono de rol frito" class="absolute right-0 z-10">
             </div>
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             <div class="text-white azul h-full w-full rounded-lg p-10 relative">
                 <h2 class="uppercase">${nombre}</h2>
-                <P class="font-extralight text-lg">${ingredientes}</P>
+                <P class="font-extralight lg:text-lg text-sm>${ingredientes}</P>
                 <P>$ ${precio}</P>
                 <img src="/imagenes/icono-3.png" alt="icono de nigiri" class="absolute right-0 z-10">
             </div>
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             <div class="text-white azul h-full w-full rounded-lg p-10 relative">
                 <h2 class="uppercase">${nombre}</h2>
-                <P class="font-extralight text-lg">${ingredientes}</P>
+                <P class="font-extralight lg:text-lg text-sm">${ingredientes}</P>
                 <P>$ ${precio}</P>
                 <img src="/imagenes/icono-4.png" alt="icono de temaki" class="absolute right-0 z-10">
             </div>
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             <div class="text-white azul h-full w-full rounded-lg p-10 relative">
                 <h2 class="uppercase">${nombre}</h2>
-                <P class="font-extralight text-lg">${ingredientes}</P>
+                <P class="font-extralight lg:text-lg text-sm">${ingredientes}</P>
                 <P>$ ${precio}</P>
                 <img src="/imagenes/icono-5.png" alt="icono de sopa" class="absolute right-0 z-10">
             </div>
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             <div class="text-white azul h-full w-full rounded-lg p-10 relative">
                 <h2 class="uppercase">${nombre}</h2>
-                <P class="font-extralight text-lg">${ingredientes}</P>
+                <P class="font-extralight lg:text-lg text-sm">${ingredientes}</P>
                 <P>$ ${precio}</P>
                 <img src="/imagenes/icono-6.png" alt="icono de flor" class="absolute right-0 z-10">
             </div>

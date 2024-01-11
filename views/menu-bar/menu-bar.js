@@ -19,9 +19,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             tarjetaCerveza.innerHTML += `
             <div class="text-white azul h-full w-full rounded-lg p-10 relative">
                 <h2 class="uppercase">${nombre}</h2>
-                <P class="font-extralight text-lg">${ingredientes}</P>
+                <P class="font-extralight lg:text-lg text-sm">${ingredientes}</P>
                 <P>$ ${precio}</P>
-                <img src="/imagenes/beer-icon.png" alt="icono de cerveza" class="absolute top-24 right-0 z-10">
+                <img src="/imagenes/beer-icon.png" alt="icono de cerveza" class="absolute top-24 right-0 z-10 w-20 lg:w-auto">
             </div>
             `;
             categCerveza.appendChild(tarjetaCerveza);
@@ -40,9 +40,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             tarjetaCocteles.innerHTML +=`
             <div class="text-white azul h-full w-full rounded-lg p-10 relative">
                 <h2 class="uppercase">${nombre}</h2>
-                <P class="font-extralight text-lg">${ingredientes}</P>
+                <P class="font-extralight lg:text-lg text-sm">${ingredientes}</P>
                 <P>$ ${precio}</P>
-                <img src="/imagenes/cocktail-icon.png" alt="icono de coctel" class="absolute -bottom-5 right-0 z-10">
+                <img src="/imagenes/cocktail-icon.png" alt="icono de coctel" class="absolute -bottom-5 right-0 z-10 w-20 lg:w-auto">
             </div>
             `;
 
@@ -62,9 +62,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             tarjetaVinos.innerHTML +=`
             <div class="text-white azul h-full w-full rounded-lg p-10 relative">
                 <h2 class="uppercase">${nombre}</h2>
-                <P class="font-extralight text-lg">${ingredientes}</P>
+                <P class="font-extralight lg:text-lg text-sm">${ingredientes}</P>
                 <P>$ ${precio}</P>
-                <img src="/imagenes/wine-icon.png" alt="icono de copa de vino" class="absolute -bottom-5 right-0 z-10">
+                <img src="/imagenes/wine-icon.png" alt="icono de copa de vino" class="absolute -bottom-5 right-0 z-10 w-12 lg:w-auto">
             </div>
             `;
             
