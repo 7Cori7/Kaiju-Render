@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 <h2 class="uppercase">${nombre}</h2>
                 <P class="font-extralight lg:text-lg text-sm">${ingredientes}</P>
                 <P>$ ${precio}</P>
-                <img src="/imagenes/beer-icon.png" alt="icono de cerveza" class="absolute top-24 right-0 z-10 w-20 lg:w-auto">
+                <img src="/imagenes/beer-icon.png" alt="icono de cerveza" class="absolute -bottom-5 -right-5 z-10 w-20 lg:w-auto">
             </div>
             `;
             categCerveza.appendChild(tarjetaCerveza);
