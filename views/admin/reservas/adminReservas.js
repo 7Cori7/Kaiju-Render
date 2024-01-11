@@ -349,6 +349,6 @@ closeReserva.addEventListener('click', e => {
 
 
 //Si se deja la ventana abierta, la página se actualiza cada 5min:
-window.setTimeout(function(){
+setInterval(function(){
     window.location.reload();
 },300000000);
