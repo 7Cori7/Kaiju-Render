@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             
             <div class="text-white azul h-full w-full rounded-lg p-10 relative">
                 <h2 class="uppercase">${nombre}</h2>
-                <P class="font-extralight text-lg>${ingredientes}</P>
+                <P class="font-extralight lg:text-lg text-sm">${ingredientes}</P>
                 <P>$ ${precio}</P>
                 <img src="/imagenes/icono-3.png" alt="icono de nigiri" class="absolute right-0 z-10">
             </div>
