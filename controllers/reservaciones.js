@@ -299,7 +299,21 @@ reservacionRouter.post('/scan', async (req, res) => {
 
   try{
 
-      const {id, hoy, hora, minutos} = req.body
+      const {id} = req.body
+
+      const date = new Date();
+      const hora = date.getHours();
+      const minutos = date.getMinutes();
+      var dd = date.getDate();
+      var mm = date.getMonth()+1; //como los mesese son de 0 a 11, se le suma 1
+      var yyyy = date.getFullYear();
+      if(dd<10){
+        dd='0'+dd
+      } 
+      if(mm<10){
+        mm='0'+mm
+      } 
+      const hoy = yyyy+'-'+mm+'-'+dd;
 
       const reserva = await Reservacion.findOne({_id: id});
 

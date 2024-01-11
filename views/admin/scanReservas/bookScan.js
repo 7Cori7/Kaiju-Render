@@ -1,18 +1,3 @@
-const date = new Date();
-const hora = date.getHours();
-const minutos = date.getMinutes();
-var dd = date.getDate();
-var mm = date.getMonth()+1; //como los mesese son de 0 a 11, se le suma 1
-var yyyy = date.getFullYear();
-if(dd<10){
-  dd='0'+dd
-} 
-if(mm<10){
-  mm='0'+mm
-} 
-const hoy = yyyy+'-'+mm+'-'+dd;
-console.log(date, hoy, hora, minutos)
-
 const scanner = new Html5QrcodeScanner('reader', {
     
     qrbox: {
@@ -39,9 +24,6 @@ async function success(result){
         const idObj = {
 
             id: result,
-            hoy: hoy,
-            hora: hora,
-            minutos: minutos
     
         };
     
