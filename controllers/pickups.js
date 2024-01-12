@@ -255,7 +255,7 @@ pickupRouter.post('/scan', async (req, res) => {
 
     try{
 
-        const {id, hoy} = req.body
+        const {id, hoy, hora} = req.body
 
         const pedido = await Pickup.findOne({_id: id});
 
@@ -270,6 +270,10 @@ pickupRouter.post('/scan', async (req, res) => {
         }else if(pedido.fecha !== hoy){
 
             return res.status(400).json({error: 'Su pedido no es para hoy'});
+
+        }else if(pedido.fecha === hoy && pedido.hora > hora){
+
+            return res.status(400).json({error: 'Su pedido todavía no está listo'});
 
         }else{
 

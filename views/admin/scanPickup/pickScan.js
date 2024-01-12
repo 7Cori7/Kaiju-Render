@@ -1,4 +1,5 @@
 const date = new Date();
+const hora = date.getHours();
 var dd = date.getDate();
 var mm = date.getMonth()+1; //como los mesese son de 0 a 11, se le suma 1
 var yyyy = date.getFullYear();
@@ -9,7 +10,7 @@ if(mm<10){
   mm='0'+mm
 } 
 const hoy = yyyy+'-'+mm+'-'+dd;
-console.log(date, hoy)
+console.log(date, hoy, hora)
 
 const scanner = new Html5QrcodeScanner('reader', {
     
@@ -38,6 +39,7 @@ async function success(result){
 
             id: result,
             hoy: hoy,
+            hora: hora
     
         };
     
