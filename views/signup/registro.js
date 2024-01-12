@@ -105,6 +105,12 @@ async function crearUsuario(){
         console.log(error);
         createNotificacion(true,error.response.data.error);
 
+        setTimeout(()=>{
+
+            location.reload();
+
+        }, 2000);
+
     }
 
 };

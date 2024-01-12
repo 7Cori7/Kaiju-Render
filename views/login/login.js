@@ -84,6 +84,11 @@ async function main(){
         //notificacion:
         createNotificacion(true,error.response.data.error);
 
+        setTimeout(()=>{
+
+            location.reload();
+
+        }, 2000);
     };
 
 };
