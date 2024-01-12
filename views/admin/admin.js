@@ -133,7 +133,7 @@ function filtrarMenu(select){
 
     const filtrado = productos.filter(i => i.categoria === select);
 
-    if(select === 'Cerveza' || select === 'Cocktail' || select === 'Vino'){
+    if(select === 'Cerveza' || select === 'Coctel' || select === 'Vino'){
 
         mostrarFiltroBar(filtrado);
 
