@@ -57,7 +57,7 @@ deliveryRouter.post('/', async (req, res) => {
                     Total de la compra: $${total}
                     Forma de pago: ${formaPago}
 
-                    Recuerda que debes presentarte en la fecha y hora indicada para recoger tu pedido, no olvides llevar la factura y tu código QR para poder recibir tu pedido. 
+                    Recuerda que debes tener la factura y tu código QR para poder recibir tu pedido. 
 
                     Abre este link para descargar tu código y factura:
 
@@ -76,9 +76,7 @@ deliveryRouter.post('/', async (req, res) => {
                     Forma de pago: ${formaPago}
                     <br>
                     <br>
-                    <b>Recuerda que debes presentarte en la fecha y hora indicada para recoger tu pedido.</b>
-                    <br>
-                    No olvides llevar la factura y tu código QR para poder recibir tu pedido.
+                    <b>Recuerda que debes tener la factura y tu código QR para poder recibir tu pedido.
                     <br>
                     <br>
                     <b>Abre este link para descargar tu código y factura:</b>
