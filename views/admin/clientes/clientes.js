@@ -3,6 +3,7 @@ const listaClientes = document.querySelector('#listado-clientes');
 const listaNoverified = document.querySelector('#listado-no-verified');
 
 let userArr = [];
+let hoy = new Date().toISOString().split('T')[0];
 
 //*LISTA DE USUARIOS
 document.addEventListener('DOMContentLoaded', async () => {
@@ -131,7 +132,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             listaNoverified.appendChild(row);
 
-            if(fecha > hoy){
+            if(fecha < hoy){
 
                 eliminarUsuario(id);
 
@@ -676,7 +677,7 @@ const correoInput = document.querySelector('#correo');
 const asuntoInput = document.querySelector('#asunto');
 const cuerpoInput = document.querySelector('#cuerpo-mensaje');
 
-let hoy = new Date().toISOString().split('T')[0];
+
 
 //*ACCIONES:
 //Verificados
