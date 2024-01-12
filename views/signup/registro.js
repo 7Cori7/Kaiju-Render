@@ -97,7 +97,12 @@ async function crearUsuario(){
 
         createNotificacion(false,response.data.message);
 
-        btnRegistro.disabled = true;
+        setTimeout(()=>{
+
+            btnRegistro.disabled = true;
+            document.getElementById('mensaje').innerHTML='Hemos enviado un correo de comprobación a su e-mail';
+
+        }, 2000);
 
 
     } catch (error) {
