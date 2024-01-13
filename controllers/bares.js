@@ -35,7 +35,7 @@ barRouter.get('/categ/cerveza', async (req, res) => {
 barRouter.get('/categ/coctel', async (req, res) => {
     try{
 
-        const listaCocteles = await Bar.find({categoria: 'Cocktail'});
+        const listaCocteles = await Bar.find({categoria: 'Coctel'});
 
         return res.status(200).json({ ok: true, data: listaCocteles });
 
