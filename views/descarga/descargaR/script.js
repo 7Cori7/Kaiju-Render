@@ -47,6 +47,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     
             }
     
-        pdfMake.createPdf(docDefinition).open({}, window);
+        pdfMake.createPdf(docDefinition).download('reservacion.pdf');
 
 });
