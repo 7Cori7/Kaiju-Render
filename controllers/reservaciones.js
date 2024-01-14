@@ -140,7 +140,7 @@ reservacionRouter.post('/', async (request,response) => {
                   ¿Ya eres cliente miembro?
                   <br>
                   <br>
-                  Si todavía no lo eres, <a href="http://localhost:4000/signup" target="_blank">Regístrate</a> en nuestra plataforma para obtener aún más beneficios como consumidor
+                  Si todavía no lo eres, <a href="https://kaiju-sushi-bar.onrender.com/signup/" target="_blank">Regístrate</a> en nuestra plataforma para obtener aún más beneficios como consumidor
                   </p>
                 `, 
               });
