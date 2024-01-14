@@ -72,7 +72,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             ],
     
             images: {
-                QR: `http://api.qrserver.com/v1/create-qr-code/?data=${id}&size=100x100`,
+                QR: `https://api.qrserver.com/v1/create-qr-code/?data=${id}&size=100x100`,
                 logo: 'https://kaiju-sushi-bar.onrender.com/imagenes/Logo2.png'
             },
     
