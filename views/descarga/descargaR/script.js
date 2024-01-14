@@ -47,6 +47,6 @@ window.addEventListener('DOMContentLoaded', async () => {
     
             }
     
-        pdfMake.createPdf(docDefinition).open();
+        pdfMake.createPdf(docDefinition).open({}, window);
 
 });
