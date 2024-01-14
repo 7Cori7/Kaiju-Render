@@ -2,7 +2,7 @@
 const listadoDelivery = document.querySelector('#listado-delivery');
 const vacio = document.querySelector('#vacio');
 
-document.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('load', async () => {
 
     try{
 
@@ -238,7 +238,7 @@ async function destinoDelHTML(id){
 const listadoPickup = document.querySelector('#listado-pickup');
 const vacio2 = document.querySelector('#vacio2');
 
-document.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('load', async () => {
 
     try{
 
