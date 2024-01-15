@@ -137,6 +137,8 @@ function facturaDeliveryHTML(datos){
 
         modal2.showModal();
 
+        pagarPagoMovil(datos, precioTotal);
+
     });
 
 
@@ -358,9 +360,10 @@ async function registrarPedido(datos, total, pago, bs){
                 const newPedido ={
                     cliente: user.id,
                     pedido: pedido,
-                    telefono: telefono,
+                    fecha: fecha,
+                    hora: hora,
                     destino: destino,
-                    total: precioTotal,
+                    total: total,
                     formaPago: pago,
                     estado: 'En curso',
                     referencia: refInput.value,
