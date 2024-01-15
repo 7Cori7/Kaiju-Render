@@ -1,4 +1,4 @@
-const dolar = require('consulta-dolar-venezuela');
+const dolar = require("consulta-dolar-venezuela");
 const formaPagoBtn = document.querySelector('#forma-pago');
 const pagoMovilBtn = document.querySelector('#pago-movil');
 const modal = document.querySelector('[data-modal]');
