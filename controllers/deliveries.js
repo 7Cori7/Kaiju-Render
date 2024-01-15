@@ -10,7 +10,7 @@ deliveryRouter.post('/', async (req, res) => {
 
     try{
 
-        const {pedido, cliente, telefono, destino, total, formaPago, estado, referencia} = req.body;
+        const {pedido, cliente, telefono, destino, total, formaPago, estado, referencia, bolivares} = req.body;
 
         if(!pedido || !cliente || !telefono || !destino || !total || !formaPago || !estado){
 

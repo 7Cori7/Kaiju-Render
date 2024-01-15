@@ -19,10 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const pedido = await axios.get('/api/pedidos/get-orden');
     const orden = pedido.data.data;
 
-    let tasaDolar = await dolar.getMonitor("EnParaleloVzla", "price", false);
-
-    console.log(tasaDolar)
-
     if(orden.items.tipoPedido === 'Delivery'){
 
         articulosCarrito = [...orden.items.pedido];
@@ -216,7 +212,9 @@ function pagarPagoMovil(datos, total){
 
 const formaPago = 'Pago movil';
 
-document.getElementById('monto-pago-movil').innerHTML =`Monto a cancelar: ${total}`;
+const bs = total * 36.0;
+
+document.getElementById('monto-pago-movil').innerHTML =`Monto a cancelar: Bs.${bs}`;
 
 const refInput = document.getElementById('numero-ref');
 
@@ -228,7 +226,7 @@ refInput.addEventListener('change', () => {
 
     enviarPagoMovil.addEventListener('submit', () => {
 
-        registrarPedido(datos, total, formaPago, referencia);
+        registrarPedido(datos, total, formaPago, referencia, bs);
 
     });
 
@@ -238,7 +236,7 @@ refInput.addEventListener('change', () => {
 
 
 //registrar pagos (efectivo & pago movil):
-async function registrarPedido(datos, total, pago, ref){
+async function registrarPedido(datos, total, pago, ref, bs){
 
     //Obtener usuario:
     const usuario = await axios.get('/api/users/galleta');
@@ -249,7 +247,6 @@ async function registrarPedido(datos, total, pago, ref){
         if(delivery){
 
             //*DELIVERY:
-
             //obtener los datos del pedido:
             const precioTotal = total+2;
             const {telefono, destino,} = datos;
@@ -264,30 +261,6 @@ async function registrarPedido(datos, total, pago, ref){
 
             );
 
-            //objeto del pedido:
-            const newPedido ={
-                cliente: user.id,
-                pedido: pedido,
-                telefono: telefono,
-                destino: destino,
-                total: precioTotal,
-                formaPago: pago,
-                estado: 'En curso'
-            }
-
-            console.log(newPedido)
-
-            const response = await axios.post('/api/deliveries/', newPedido);
-
-            createNotificacion(false,response.data.message);
-
-            setTimeout(()=>{
-
-                window.location.href = '/confirmar-compra';
-    
-            },1500);
-
-
             if(pago === 'Pago movil'){
 
                 const newPedido ={
@@ -298,7 +271,8 @@ async function registrarPedido(datos, total, pago, ref){
                     total: precioTotal,
                     formaPago: pago,
                     estado: 'En curso',
-                    referencia: ref
+                    referencia: ref,
+                    bolivares: bs
                 };
 
                 const response = await axios.post('/api/deliveries/', newPedido);
@@ -311,9 +285,32 @@ async function registrarPedido(datos, total, pago, ref){
         
                 },1500);
 
+            }else{
+
+                
+                const newPedido ={
+                    cliente: user.id,
+                    pedido: pedido,
+                    telefono: telefono,
+                    destino: destino,
+                    total: precioTotal,
+                    formaPago: pago,
+                    estado: 'En curso'
+                }
+
+                console.log(newPedido)
+
+                const response = await axios.post('/api/deliveries/', newPedido);
+
+                createNotificacion(false,response.data.message);
+
+                setTimeout(()=>{
+
+                    window.location.href = '/confirmar-compra';
+        
+                },1500);
+
             }
-
-
 
         }else{
 
@@ -332,31 +329,6 @@ async function registrarPedido(datos, total, pago, ref){
 
 
             );
-    
-            //objeto del pedido:
-            const newPedido = {
-                cliente: user.id,
-                pedido: pedido,
-                fecha: fecha,
-                hora: hora,
-                destino: destino,
-                total: total,
-                formaPago: pago,
-                estado: 'En curso'
-            }
-    
-            console.log(newPedido)
-    
-            const response = await axios.post('/api/pickups/', newPedido);
-
-            createNotificacion(false,response.data.message);
-
-            setTimeout(()=>{
-
-                window.location.href = '/confirmar-compra';
-    
-            },1500);
-
 
             if(pago === 'Pago movil'){
 
@@ -368,7 +340,8 @@ async function registrarPedido(datos, total, pago, ref){
                     total: precioTotal,
                     formaPago: pago,
                     estado: 'En curso',
-                    referencia: ref
+                    referencia: ref,
+                    bolivares: bs
                 };
 
                 const response = await axios.post('/api/pickups/', newPedido);
@@ -381,8 +354,33 @@ async function registrarPedido(datos, total, pago, ref){
         
                 },1500);
 
+            }else{
+
+                const newPedido = {
+                    cliente: user.id,
+                    pedido: pedido,
+                    fecha: fecha,
+                    hora: hora,
+                    destino: destino,
+                    total: total,
+                    formaPago: pago,
+                    estado: 'En curso'
+                }
+        
+                console.log(newPedido)
+        
+                const response = await axios.post('/api/pickups/', newPedido);
+
+                createNotificacion(false,response.data.message);
+
+                setTimeout(()=>{
+
+                    window.location.href = '/confirmar-compra';
+        
+                },1500);
+
             }
-    
+
         }
 
     }catch(error){

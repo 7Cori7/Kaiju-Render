@@ -12,7 +12,7 @@ pickupRouter.post('/', async (req, res) => {
 
     try{
 
-        const {pedido, cliente, fecha, hora, destino, total, formaPago, estado, referencia} = req.body;
+        const {pedido, cliente, fecha, hora, destino, total, formaPago, estado, referencia, bolivares} = req.body;
 
         if(!pedido || !cliente || !fecha || !hora || !destino || !total || !formaPago || !estado){
 
