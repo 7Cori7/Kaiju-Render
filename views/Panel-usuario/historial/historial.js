@@ -3,7 +3,7 @@ const listaHistorial = document.querySelector('#lista-historial');
 const vacio = document.querySelector('#vacio');
 let historial = [];
 
-document.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('load', async () => {
 
     try{
 
