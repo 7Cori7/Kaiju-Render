@@ -18,6 +18,10 @@ pickupRouter.post('/', async (req, res) => {
 
             return res.status(400).json({error:'Error! Faltan datos'});
 
+        }else if(formaPago === 'Pago movil' && !referencia){
+
+            return res.status(400).json({error:'Error!'});
+
         }else if(total === 0 || total < 0){
 
             return res.status(400).json({error:'Error!'});
@@ -45,6 +49,51 @@ pickupRouter.post('/', async (req, res) => {
             //Borrar la cookie del pedido y del carrito:
             res.cookie('pedido', '', {maxAge: 1});
             res.cookie('carrito', '', {maxAge: 1});
+
+            if(formaPago === 'Pago movil'){
+
+                //*se envía un correo:
+                async function main() {
+                    
+                    const info = await transporter.sendMail({
+                    from: `Kaiju Sushi-Bar ${process.env.EMAIL}`, 
+                    to: `${process.env.EMAIL}`, 
+                    subject: "Pago realizado por pago movil", 
+                    text: `El usuario ${usuario.name} realizó un pago por Pago movil.
+
+                        Total de la compra: $${total}
+                        Total en bolívares: Bs.${bolivares}
+                        Forma de pago: ${formaPago}
+                        Tipo de pedido: Pick-up
+                        N° de referenica: ${referencia}
+                        
+                    `,
+                    html: `<p><b>El usuario ${usuario.name} realizó un pago por Pago movil.</b>
+                        <br>
+                        <br>
+                        <br>
+                        Total de la compra: $${total}
+                        <br>
+                        Total en bolívares: Bs.${bolivares}
+                        <br>
+                        Forma de pago: ${formaPago}
+                        <br>
+                        Tipo de pedido: Pick-up
+                        <br>
+                        N° de referenica: ${referencia}
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        </p>
+                    `, 
+                    });
+
+                    console.log("Se envió el correo de forma exitosa!", info.messageId);
+                };
+                main().catch(console.error);
+                
+            }
 
 
             //*se envía un correo al cliente:
