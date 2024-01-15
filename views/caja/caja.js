@@ -210,6 +210,8 @@ const formaPago = 'Pago movil';
 
 console.log(formaPago, total);
 
+document.getElementById('monto-pago-movil').innerHTML =`Monto a cancelar: $${total}`;
+
 };
 
 
