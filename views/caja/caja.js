@@ -1,6 +1,8 @@
 const formaPagoBtn = document.querySelector('#forma-pago');
+const pagoMovilBtn = document.querySelector('#pago-movil');
 const modal = document.querySelector('[data-modal]');
-const closeModal = document.querySelector('[data-close-modal]').addEventListener('click', () => {modal.close();});
+const modal2 = document.querySelector('[data-modal-2]');
+const closeModal = document.querySelectorAll('[data-close-modal]');
 const efectivoBtn = document.querySelector('#efectivo');
 let articulosCarrito = [];
 let delivery = false;
@@ -109,7 +111,8 @@ function facturaDeliveryHTML(datos){
         i.innerHTML = `$${precioTotal + 2}`;
     });
     
-    formaPagoBtn.addEventListener('click', e => {
+    //botones para pagar:
+    formaPagoBtn.addEventListener('click', () => {
 
         modal.showModal();
 
@@ -121,6 +124,14 @@ function facturaDeliveryHTML(datos){
         });
 
     });
+
+    //opcion de pago movil:
+    pagoMovilBtn.addEventListener('click', () => {
+
+        modal2.showModal();
+
+    });
+
 
 };
 
@@ -181,9 +192,28 @@ function facturaPickUpHTML(datos){
         });
 
     });
+
+    //opcion de pago movil:
+    pagoMovilBtn.addEventListener('click', () => {
+
+        modal2.showModal();
+
+        pagarPagoMovil(datos, precioTotal);
+
+    });
 };
 
-//Cuando el pago es en efectivo:
+//Cuando el pago es por pago movil:
+function pagarPagoMovil(datos, total){
+
+const formaPago = 'Pago movil';
+
+console.log(formaPago, total);
+
+};
+
+
+//registrar pagos (efectivo & pago movil):
 async function registrarPedido(datos, total, pago){
 
     //Obtener usuario:
@@ -287,6 +317,7 @@ async function registrarPedido(datos, total, pago){
     }
 
 };
+
 
 
 //Cuando el pago es por paypal:
@@ -423,3 +454,9 @@ setTimeout(()=> {
     }
 
 },1000);
+
+
+//Cerrar modals:
+closeModal.forEach(i=> {
+    i.addEventListener('click', () => {modal.close(); modal2.close();});
+});
