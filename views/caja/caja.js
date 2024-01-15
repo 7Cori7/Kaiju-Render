@@ -1,12 +1,16 @@
+const dolar = require("consulta-dolar-venezuela");
 const formaPagoBtn = document.querySelector('#forma-pago');
 const pagoMovilBtn = document.querySelector('#pago-movil');
 const modal = document.querySelector('[data-modal]');
 const modal2 = document.querySelector('[data-modal-2]');
 const closeModal = document.querySelectorAll('[data-close-modal]');
 const efectivoBtn = document.querySelector('#efectivo');
+const enviarPagoMovil = document.querySelector('#enviar-pago-movil');
 let articulosCarrito = [];
 let delivery = false;
 let pickup = false;
+
+enviarPagoMovil.disabled = true;
 
 
 //*OBTENER DATOS:
@@ -14,6 +18,10 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     const pedido = await axios.get('/api/pedidos/get-orden');
     const orden = pedido.data.data;
+
+    let tasaDolar = await dolar.getMonitor("EnParaleloVzla", "price", false);
+
+    console.log(tasaDolar)
 
     if(orden.items.tipoPedido === 'Delivery'){
 
@@ -208,15 +216,29 @@ function pagarPagoMovil(datos, total){
 
 const formaPago = 'Pago movil';
 
-console.log(formaPago, total);
+document.getElementById('monto-pago-movil').innerHTML =`Monto a cancelar: ${total}`;
 
-document.getElementById('monto-pago-movil').innerHTML =`Monto a cancelar: $${total}`;
+const refInput = document.getElementById('numero-ref');
+
+refInput.addEventListener('change', () => {
+
+    const referencia = refInput.value
+
+    enviarPagoMovil.disabled = false;
+
+    enviarPagoMovil.addEventListener('submit', () => {
+
+        registrarPedido(datos, total, formaPago, referencia);
+
+    });
+
+});
 
 };
 
 
 //registrar pagos (efectivo & pago movil):
-async function registrarPedido(datos, total, pago){
+async function registrarPedido(datos, total, pago, ref){
 
     //Obtener usuario:
     const usuario = await axios.get('/api/users/galleta');
@@ -266,6 +288,32 @@ async function registrarPedido(datos, total, pago){
             },1500);
 
 
+            if(pago === 'Pago movil'){
+
+                const newPedido ={
+                    cliente: user.id,
+                    pedido: pedido,
+                    telefono: telefono,
+                    destino: destino,
+                    total: precioTotal,
+                    formaPago: pago,
+                    estado: 'En curso',
+                    referencia: ref
+                };
+
+                const response = await axios.post('/api/deliveries/', newPedido);
+
+                createNotificacion(false,response.data.message);
+
+                setTimeout(()=>{
+
+                    window.location.href = '/confirmar-compra';
+        
+                },1500);
+
+            }
+
+
 
         }else{
 
@@ -308,6 +356,32 @@ async function registrarPedido(datos, total, pago){
                 window.location.href = '/confirmar-compra';
     
             },1500);
+
+
+            if(pago === 'Pago movil'){
+
+                const newPedido ={
+                    cliente: user.id,
+                    pedido: pedido,
+                    telefono: telefono,
+                    destino: destino,
+                    total: precioTotal,
+                    formaPago: pago,
+                    estado: 'En curso',
+                    referencia: ref
+                };
+
+                const response = await axios.post('/api/pickups/', newPedido);
+
+                createNotificacion(false,response.data.message);
+
+                setTimeout(()=>{
+
+                    window.location.href = '/confirmar-compra';
+        
+                },1500);
+
+            }
     
         }
 
