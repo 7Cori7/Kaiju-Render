@@ -211,7 +211,7 @@ function facturaPickUpHTML(datos){
 };
 
 //Cuando el pago es por pago movil:
-refInput.addEventListener('change', e => {
+refInput.addEventListener('input', e => {
 
     valref = refVal.test(e.target.value);
     validar(refInput, valref);
@@ -245,7 +245,7 @@ function pagarPagoMovil(datos, total){
 
     document.getElementById('monto-pago-movil').innerHTML =`Monto a cancelar: Bs.${bs}`;
 
-    enviarPagoMovil.addEventListener('submit', e => {
+    enviarPagoMovil.addEventListener('click', e => {
 
         e.preventDefault();
 
