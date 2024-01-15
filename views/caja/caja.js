@@ -5,9 +5,13 @@ const modal2 = document.querySelector('[data-modal-2]');
 const closeModal = document.querySelectorAll('[data-close-modal]');
 const efectivoBtn = document.querySelector('#efectivo');
 const enviarPagoMovil = document.querySelector('#enviar-pago-movil');
+const refInput = document.getElementById('numero-ref');
 let articulosCarrito = [];
 let delivery = false;
 let pickup = false;
+let valref = false;
+
+const refVal = /^\d{9,9}$/g
 
 enviarPagoMovil.disabled = true;
 
@@ -207,35 +211,55 @@ function facturaPickUpHTML(datos){
 };
 
 //Cuando el pago es por pago movil:
+refInput.addEventListener('change', e => {
+
+    valref = refVal.test(e.target.value);
+    validar(refInput, valref);
+    
+});
+
+const validar = (input, value) => {
+
+    enviarPagoMovil.disabled = valref ? false : true;
+
+    if(value){
+        input.classList.remove('border-red-700', 'border-2');
+        input.classList.add('border-green-700', 'border-2');
+    }else if(input.value === ''){
+        input.classList.remove('border-green-700', 'border-2');
+        input.classList.remove('border-red-700', 'border-2');
+    }else{
+        input.classList.remove('border-green-700', 'border-2');
+        input.classList.add('border-red-700', 'border-2');
+    }
+
+}
+
 function pagarPagoMovil(datos, total){
 
-const formaPago = 'Pago movil';
+    console.log(datos)
 
-const bs = total * 36.0;
+    const formaPago = 'Pago movil';
 
-document.getElementById('monto-pago-movil').innerHTML =`Monto a cancelar: Bs.${bs}`;
+    const bs = total * 36.0;
 
-const refInput = document.getElementById('numero-ref');
+    document.getElementById('monto-pago-movil').innerHTML =`Monto a cancelar: Bs.${bs}`;
 
-refInput.addEventListener('change', () => {
+    enviarPagoMovil.addEventListener('submit', e => {
 
-    const referencia = refInput.value
+        e.preventDefault();
 
-    enviarPagoMovil.disabled = false;
+        console.log('enviando pago movil')
 
-    enviarPagoMovil.addEventListener('submit', () => {
-
-        registrarPedido(datos, total, formaPago, referencia, bs);
+        registrarPedido(datos, total, formaPago, bs);
 
     });
-
-});
 
 };
 
 
 //registrar pagos (efectivo & pago movil):
-async function registrarPedido(datos, total, pago, ref, bs){
+async function registrarPedido(datos, total, pago, bs){
 
     //Obtener usuario:
     const usuario = await axios.get('/api/users/galleta');
@@ -270,7 +294,7 @@ async function registrarPedido(datos, total, pago, ref, bs){
                     total: precioTotal,
                     formaPago: pago,
                     estado: 'En curso',
-                    referencia: ref,
+                    referencia: refInput.value,
                     bolivares: bs
                 };
 
@@ -339,7 +363,7 @@ async function registrarPedido(datos, total, pago, ref, bs){
                     total: precioTotal,
                     formaPago: pago,
                     estado: 'En curso',
-                    referencia: ref,
+                    referencia: refInput.value,
                     bolivares: bs
                 };
 
