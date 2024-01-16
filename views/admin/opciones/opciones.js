@@ -55,39 +55,6 @@ editarAdminBtn.addEventListener('click', async e => {
 
     guardarEdit.disabled = true;
 
-    guardarEdit.addEventListener('submit', async e => {
-
-        e.preventDefault();
-    
-        try{
-
-            const adminActualizado = {
-
-                id: admin[0].id,
-                name: aliasInput.value,
-                email: emailInput.value,
-                password: nuevoPass.value,
-            
-            };
-
-            const response = await axios.post('/api/users/edit-ikka', adminActualizado);
-    
-            createNotificacion(false,response.data.message);
-
-            setTimeout(()=>{
-
-                location.reload();
-    
-            }, 1000);
-    
-        }catch(error){
-    
-            console.log(error)
-            createNotificacion(true,error.response.data.error);
-            
-        }
-    
-    });
 });
 
 const nameVal = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+( [A-Z]{1}[a-zA-ZZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+)?$/g;
@@ -155,6 +122,43 @@ const validarPass = (input, value) => {
     };
 
 };
+
+guardarEdit.addEventListener('submit', async e => {
+
+    e.preventDefault();
+
+    try{
+
+        const administrador = await axios.get('/api/users/ikka-list');
+        const admin = administrador.data.data;
+
+        const adminActualizado = {
+
+            id: admin[0].id,
+            name: aliasInput.value,
+            email: emailInput.value,
+            password: nuevoPass.value,
+        
+        };
+
+        const response = await axios.post('/api/users/edit-ikka', adminActualizado);
+
+        createNotificacion(false,response.data.message);
+
+        /*setTimeout(()=>{
+
+            location.reload();
+
+        }, 1000);*/
+
+    }catch(error){
+
+        console.log(error)
+        createNotificacion(true,error.response.data.error);
+        
+    }
+
+});
 
 guardarEdit.disabled = true;
 
