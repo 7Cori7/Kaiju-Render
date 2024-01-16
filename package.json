@@ -24,6 +24,7 @@
     "chokidar": "^3.5.3",
     "commander": "^4.1.1",
     "concat-map": "^0.0.1",
+    "consulta-dolar-venezuela": "^1.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "cssesc": "^3.0.0",
