@@ -24,7 +24,7 @@ nameInput.addEventListener('change', e => {
     setTimeout(()=>{
         valname = nameVal.test(e.target.value);
         validar(nameInput, valname)
-    },2000); 
+    },1500); 
 
 });
 
