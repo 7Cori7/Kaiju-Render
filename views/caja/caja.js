@@ -11,7 +11,7 @@ let delivery = false;
 let pickup = false;
 let valref = false;
 
-const refVal = /^\d{9,9}$/g
+const refVal = /^\d{9,20}$/g
 
 enviarPagoMovil.disabled = true;
 

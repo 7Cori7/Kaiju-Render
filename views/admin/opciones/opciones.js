@@ -36,7 +36,7 @@ editarAdminBtn.addEventListener('click', async e => {
 
     const administrador = await axios.get('/api/users/ikka-list');
     const admin = administrador.data.data;
-
+    console.log(admin)
     //Inputs:
     aliasInput.value = admin.name;
     emailInput.value = admin.email;
