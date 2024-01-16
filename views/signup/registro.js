@@ -9,7 +9,7 @@ const btnRegistro = document.querySelector('#registro-btn');
 
 //* VALIDAMOS LOS CAMPOS CON REGEX:
 
-const nameVal = /^[A-Z]{1}[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+( [A-Z]{1}[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+)?$/g;
+const nameVal = /^[A-Z]{1}[a-zA-Z\s\S]+( [A-Z]{1}[a-zA-Z\s\S]+)?$/g;
 const emailVal = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
 
 const passwordVal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!#$%&'*.+/=?^_`{|}~-]).{8,16}$/gm
@@ -21,10 +21,8 @@ let valmatch = false;
 
 nameInput.addEventListener('change', e => {
 
-    setTimeout(()=>{
-        valname = nameVal.test(e.target.value);
-        validar(nameInput, valname)
-    },1500); 
+    valname = nameVal.test(e.target.value);
+    validar(nameInput, valname);
 
 });
 
