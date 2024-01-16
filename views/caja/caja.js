@@ -248,7 +248,7 @@ async function pagarPagoMovil(datos, total){
     
     document.getElementById('tasa-dia').innerHTML = `*Tasa del día (BCV): Bs.${tasa.bcv.price}`;
 
-    const bs = total * tasa;
+    const bs = total * tasa.bcv.price;
 
     document.getElementById('monto-pago-movil').innerHTML =`Monto a cancelar: Bs.${bs}`;
 
