@@ -38,8 +38,8 @@ editarAdminBtn.addEventListener('click', async e => {
     const admin = administrador.data.data;
     console.log(admin)
     //Inputs:
-    aliasInput.value = admin.name;
-    emailInput.value = admin.email;
+    aliasInput.value = admin[0].name;
+    emailInput.value = admin[0].email;
 
     aliasInput.classList.remove('border-green-700', 'border-2');
     aliasInput.classList.remove('border-red-700', 'border-2');
@@ -63,7 +63,7 @@ editarAdminBtn.addEventListener('click', async e => {
 
             const adminActualizado = {
 
-                id: admin.id,
+                id: admin[0].id,
                 name: aliasInput.value,
                 email: emailInput.value,
                 password: nuevoPass.value,
