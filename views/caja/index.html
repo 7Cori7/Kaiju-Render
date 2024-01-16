@@ -51,7 +51,7 @@
     </dialog>
 
     <!--Modal de pago movil-->
-    <dialog data-modal-2 class="fixed top-[15%] left-[10%] lg:left-[25%] h-[40%] md:h-[60%] w-[80%] lg:w-[45%] bg-white rounded-lg px-8 py-2">
+    <dialog data-modal-2 class="fixed top-[15%] left-[10%] lg:left-[25%] h-[60%] w-[80%] lg:w-[45%] bg-white rounded-lg px-8 py-2">
 
         <div class="relative">
             <svg data-close-modal xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 absolute top-5 right-0 cursor-pointer">
@@ -61,7 +61,7 @@
         
         <div class="flex flex-col m-5">
 
-            <h2 class="pt-7 pb-5 text-azul text-center uppercase">Datos de Pago Movil:</h2>
+            <h2 class="pt-8 pb-5 text-azul text-center uppercase">Datos de Pago Movil:</h2>
 
             <div class="flex flex-col gap-5 justify-start">
                 <div class="flex justify-between">
@@ -78,8 +78,10 @@
                 </div>
             </div>
             <br>
-
+            <p id="tasa-dia" class="text-sm"></p>
             <h3 id="monto-pago-movil" class="font-bold text-center text-xl">Monto:</h3>
+            <br>
+            <p>Primero haga el pago movil según los datos asignados, luego escriba el número de referencia y dele click al botón enviar</p>
 
             <form class="flex flex-col justify-center gap-5" method="dialog">
 

@@ -16,6 +16,7 @@ const contactosRouter = require('./controllers/contactos');
 const pedidosRouter = require('./controllers/pedidos');
 const ordersRouter = require('./controllers/orders');
 const ventasRouter = require('./controllers/ventas');
+const dolarApiRouter = require('./controllers/dolarAPI');
 
 
 const { requireAuth, adminAuth, pedidoAuth } = require('./middleware/authMiddleware');
@@ -108,5 +109,6 @@ app.use('/api/contactos', contactosRouter);
 app.use('/api/pedidos', pedidosRouter);
 app.use('/api/orders', ordersRouter);
 app.use('/api/ventas', ventasRouter);  
+app.use('/api/tasa', dolarApiRouter);
 
 module.exports = app;

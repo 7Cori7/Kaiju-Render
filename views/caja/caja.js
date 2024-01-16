@@ -237,13 +237,18 @@ const validar = (input, value) => {
 
 }
 
-function pagarPagoMovil(datos, total){
+async function pagarPagoMovil(datos, total){
 
     console.log(datos)
 
     const formaPago = 'Pago movil';
 
-    const bs = total * 36.0;
+    const dolarMonitor = await axios.get('/api/tasa/monitor-dolar');
+    const tasa = dolarMonitor.data.data;
+
+    document.getElementById('tasa-dia').innerHTML = `Tasa del día: Bs.${tasa}`;
+
+    const bs = total * tasa;
 
     document.getElementById('monto-pago-movil').innerHTML =`Monto a cancelar: Bs.${bs}`;
 
