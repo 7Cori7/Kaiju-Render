@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             destino: orden.items.destino,
             tipo: orden.items.tipoPedido
         }
-        console.log(datosPedido)
 
         facturaDeliveryHTML(datosPedido);
 
@@ -45,7 +44,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             destino: orden.items.destino,
             tipo: orden.items.tipoPedido
         }
-        console.log(datosPedido)
         
         facturaPickUpHTML(datosPedido);
     }
@@ -256,8 +254,6 @@ async function pagarPagoMovil(datos, total){
 
         e.preventDefault();
 
-        console.log('enviando pago movil')
-
         registrarPedido(datos, total, formaPago, bs);
 
     });
@@ -328,8 +324,6 @@ async function registrarPedido(datos, total, pago, bs){
                     estado: 'En curso'
                 }
 
-                console.log(newPedido)
-
                 const response = await axios.post('/api/deliveries/', newPedido);
 
                 createNotificacion(false,response.data.message);
@@ -397,8 +391,6 @@ async function registrarPedido(datos, total, pago, bs){
                     formaPago: pago,
                     estado: 'En curso'
                 }
-        
-                console.log(newPedido)
         
                 const response = await axios.post('/api/pickups/', newPedido);
 
