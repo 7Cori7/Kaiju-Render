@@ -61,5 +61,5 @@ PROCESO DE HACER RESERVACIONES:
 
 correo: admin@kaiju.com
 
-pass: Kaiju2024.
+pass: kaiJu2024.
 
