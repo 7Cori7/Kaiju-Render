@@ -299,6 +299,66 @@ userRouter.get('/ikka', (req, res, next) => {
 
 });
 
+//*OBTENER ADMIN:
+userRouter.get('/ikka-list', async (req, res) => {
+
+  try{
+
+    const listaAd = await User.find({cliente: false});
+
+    return res.status(200).json({ok: true, data: listaAd});
+
+  }catch(error){
+
+    return res.status(400).json({error:'Hubo un error'});
+
+  }
+
+});
+
+//*EDITAR ADMIN:
+userRouter.post('/edit-ikka', async (req, res) => {
+
+  try{
+
+    const { name, email, password, id} = req.body;
+
+    if(!name && !email && !password){
+
+      return res.status(400).json({error:'Todos los campos no pueden estar vacios'});
+
+    }else{
+
+      const actualizarAdmin = await User.findOneAndUpdate({_id: id}, {name: name, email: email});
+
+      await actualizarAdmin.save();
+
+      if(password){
+
+        actualizarAdmin.setPassword(password);
+
+        await actualizarAdmin.save();
+
+      }
+
+      //Cookie para el admin:
+      const token = crearToken(actualizarAdmin.id);
+      res.cookie( 'squid', token, { httpOnly: true, maxAge: maxAge * 1000 });
+
+      //NOTIFICACION:
+      return res.status(200).json({message:'Se ha actualizado el admin correctamente'});
+
+    }
+
+  }catch(error){
+
+    return res.status(400).json({error:'Hubo un error'});
+
+  }
+
+});
+
+
 //*OBTENER LISTA DE USUARIOS:
 userRouter.get('/lista-users', async (req,res) => {
 
@@ -315,7 +375,6 @@ userRouter.get('/lista-users', async (req,res) => {
   }
 
 });
-
 
 //*EDITAR USUARIO:
 userRouter.post('/edit-user', async (req, res) => {
@@ -353,7 +412,6 @@ userRouter.post('/edit-user', async (req, res) => {
 
     }catch(error){
 
-      console.log(error)
       return res.status(400).json({error:'Hubo un error'});
 
     }

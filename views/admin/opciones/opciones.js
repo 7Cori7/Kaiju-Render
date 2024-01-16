@@ -22,17 +22,24 @@ document.addEventListener('DOMContentLoaded', async () => {
 const editarAdminBtn = document.querySelector('#editar-admin');
 const editando = document.querySelector('#editando-admin');
 const formularioEdit = document.querySelector('#admin-edit-form');
-const aliasInput = document.querySelector('#nombre-admin');
-const emailInput = document.querySelector('#email-admin');
-const nuevoPass = document.querySelector('#nuevo-password');
-const nuevoMatch = document.querySelector('#match-password');
+//Inputs:
+const aliasInput = document.querySelector('#edit-nombre-admin');
+const emailInput = document.querySelector('#edit-email-admin');
+const nuevoPass = document.querySelector('#edit-nuevo-password');
+const nuevoMatch = document.querySelector('#edit-match-password');
 const guardarEdit = document.querySelector('#editar-admin-btn');
 
-editarAdminBtn.addEventListener('click', () => {
+editarAdminBtn.addEventListener('click', async e => {
 
+    e.preventDefault();
     editando.classList.toggle('hidden');
 
-    formularioEdit.reset();
+    const administrador = await axios.get('/api/users/ikka-list');
+    const admin = administrador.data.data;
+
+    //Inputs:
+    aliasInput.value = admin.name;
+    emailInput.value = admin.email;
 
     aliasInput.classList.remove('border-green-700', 'border-2');
     aliasInput.classList.remove('border-red-700', 'border-2');
@@ -47,7 +54,41 @@ editarAdminBtn.addEventListener('click', () => {
     nuevoMatch.classList.remove('border-red-700', 'border-2');
 
     guardarEdit.disabled = true;
-})
+
+    guardarEdit.addEventListener('submit', async e => {
+
+        e.preventDefault();
+    
+        try{
+
+            const adminActualizado = {
+
+                id: admin.id,
+                name: aliasInput.value,
+                email: emailInput.value,
+                password: nuevoPass.value,
+            
+            };
+
+            const response = await axios.post('/api/users/edit-ikka', adminActualizado);
+    
+            createNotificacion(false,response.data.message);
+
+            setTimeout(()=>{
+
+                location.reload();
+    
+            }, 1000);
+    
+        }catch(error){
+    
+            console.log(error)
+            createNotificacion(true,error.response.data.error);
+            
+        }
+    
+    });
+});
 
 const nameVal = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+( [A-Z]{1}[a-zA-ZZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+)?$/g;
 const emailVal = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
@@ -113,21 +154,7 @@ const validarPass = (input, value) => {
         input.classList.add('border-red-700', 'border-2');
     };
 
-}
-
-guardarEdit.addEventListener('click', e => {
-
-    e.preventDefault();
-
-    formularioEdit.reset();
-    aliasInput.classList.remove('border-green-700', 'border-2');
-    emailInput.classList.remove('border-green-700', 'border-2');
-    nuevoPass.classList.remove('border-green-700', 'border-2');
-    nuevoMatch.classList.remove('border-green-700', 'border-2');
-
-    editando.classList.toggle('hidden');
-
-})
+};
 
 guardarEdit.disabled = true;
 
