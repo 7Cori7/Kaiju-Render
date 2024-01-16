@@ -9,7 +9,7 @@ const btnRegistro = document.querySelector('#registro-btn');
 
 //* VALIDAMOS LOS CAMPOS CON REGEX:
 
-const nameVal = /^[A-Z]{1}[a-zA-ZZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+( [A-Z]{1}[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+)?$/g;
+const nameVal = /^[A-Z]{1}[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+( [A-Z]{1}[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+)?$/g;
 const emailVal = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
 
 const passwordVal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!#$%&'*.+/=?^_`{|}~-]).{8,16}$/gm
@@ -19,30 +19,31 @@ let valemail = false;
 let valpass = false;
 let valmatch = false;
 
-nameInput.addEventListener('change', e => { 
-    valname = nameVal.test(e.target.value);
-    ////console.log(valname);
-    validar(nameInput, valname)
+nameInput.addEventListener('change', e => {
 
-})
+    setTimeout(()=>{
+        valname = nameVal.test(e.target.value);
+        validar(nameInput, valname)
+    },2000); 
+
+});
 
 emailInput.addEventListener('change', e => {
     valemail = emailVal.test(e.target.value);
     validar(emailInput, valemail);
-})
+});
 
 passwordInput.addEventListener('input', e => {
     valpass = passwordVal.test(e.target.value);
     validar(passwordInput, valpass);
-   ////console.log(valpass);
     validar(matchInput, valmatch)
-})
+});
 
 matchInput.addEventListener('input', e => {
     valmatch = e.target.value === passwordInput.value;
     validar(matchInput, valmatch);
     validar(passwordInput, valpass)
-})
+});
 
 
 
