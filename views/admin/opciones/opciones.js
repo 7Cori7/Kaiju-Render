@@ -148,11 +148,11 @@ async function actualizarAdmin(id){
 
         createNotificacion(false,response.data.message);
 
-        /*setTimeout(()=>{
+        setTimeout(()=>{
 
             location.reload();
 
-        }, 1000);*/
+        }, 1000);
 
     }catch(error){
 
