@@ -133,8 +133,6 @@ const validarPass = (input, value) => {
 
 async function actualizarAdmin(id){
 
-    e.preventDefault();
-
     try{
 
         const adminActualizado = {
