@@ -245,8 +245,8 @@ async function pagarPagoMovil(datos, total){
 
     const dolarMonitor = await axios.get('/api/tasa/monitor-dolar');
     const tasa = dolarMonitor.data.data;
-    console.log(tasa.bcv.price)
-    document.getElementById('tasa-dia').innerHTML = `Tasa del día: Bs.${tasa}`;
+    
+    document.getElementById('tasa-dia').innerHTML = `*Tasa del día (BCV): Bs.${tasa.bcv.price}`;
 
     const bs = total * tasa;
 
