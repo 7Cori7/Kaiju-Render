@@ -323,15 +323,12 @@ userRouter.post('/edit-ikka', async (req, res) => {
 
     const { name, email, password, id} = req.body;
 
-    console.log(req.body)
-
     if(!name && !email && !password){
 
       return res.status(400).json({error:'Todos los campos no pueden estar vacios'});
 
     }else{
 
-      console.log('actualizando')
       const actualizarAdmin = await User.findOneAndUpdate({_id: id}, {name: name, email: email});
 
       await actualizarAdmin.save();

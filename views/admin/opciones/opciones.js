@@ -36,7 +36,7 @@ editarAdminBtn.addEventListener('click', async e => {
 
     const administrador = await axios.get('/api/users/ikka-list');
     const admin = administrador.data.data;
-    console.log(admin)
+
     //Inputs:
     aliasInput.value = admin[0].name;
     emailInput.value = admin[0].email;
@@ -54,6 +54,14 @@ editarAdminBtn.addEventListener('click', async e => {
     nuevoMatch.classList.remove('border-red-700', 'border-2');
 
     guardarEdit.disabled = true;
+
+    guardarEdit.addEventListener('click', e => {
+
+        e.preventDefault();
+
+        actualizarAdmin(admin[0].id);
+
+    });
 
 });
 
@@ -123,18 +131,15 @@ const validarPass = (input, value) => {
 
 };
 
-guardarEdit.addEventListener('submit', async e => {
+async function actualizarAdmin(id){
 
     e.preventDefault();
 
     try{
 
-        const administrador = await axios.get('/api/users/ikka-list');
-        const admin = administrador.data.data;
-
         const adminActualizado = {
 
-            id: admin[0].id,
+            id: id,
             name: aliasInput.value,
             email: emailInput.value,
             password: nuevoPass.value,
@@ -158,7 +163,7 @@ guardarEdit.addEventListener('submit', async e => {
         
     }
 
-});
+};
 
 guardarEdit.disabled = true;
 
