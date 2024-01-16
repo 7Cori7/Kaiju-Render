@@ -4,6 +4,16 @@ Proyecto Kaiju Sushi-Bar.
 Este proyecto se trata de una aplicación web para un hipotético restaurante de sushi.
 La idea es crear una web que proporcione un medio automatizado y eficiente para la interacción cliente-producto.
 
+Herramientas utilizadas:
+
+- JavaScript
+- HTML
+- CSS
+- NodeJS
+- Tailwind CSS
+- Express JS
+- Mongo DB (con mongoose)
+
 
 La web posee las siguientes funciones:
 
@@ -55,6 +65,10 @@ PROCESO DE HACER RESERVACIONES:
 
 6. Si el cliente no se presenta a su reservación, esta se borrará automáticamente, o puede ser borrada manualmente por el admin.
 
+
+Sitio web en render:
+
+https://kaiju-sushi-bar.onrender.com/
 
 
 CREDENCIALES DEL ADMIN:
