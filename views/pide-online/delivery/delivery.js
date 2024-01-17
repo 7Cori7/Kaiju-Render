@@ -573,10 +573,14 @@ const validar = (input, value) => {
 
 
 //*CONFIRMAR EL PEDIDO:
-formDelivery.addEventListener('submit', async e => {
+formDelivery.addEventListener('submit', e => {
 
     e.preventDefault();
-    console.log('enviar pedido')
+    grecaptcha.execute();
+    
+});
+
+async function confirm(){
 
     try{
 
@@ -642,7 +646,7 @@ formDelivery.addEventListener('submit', async e => {
         createNotificacion(true,error.response.data.error);
     }
 
-});
+};
 
 
 //cerrar modal:

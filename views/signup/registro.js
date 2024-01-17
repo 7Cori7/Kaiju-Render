@@ -65,11 +65,11 @@ const validar = (input, value) => {
 
 
 btnRegistro.addEventListener('click', e => {
-    e.preventDefault();
 
+    e.preventDefault();
     grecaptcha.execute();
 
-})
+});
 
 
 async function crearUsuario(){

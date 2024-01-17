@@ -23,7 +23,6 @@ passwordInput.addEventListener('input', e => {
 const validar = (input, value) => {
 
     loginBtn.disabled = valemail && valpass ? false : true;
-    ////console.log(btnRegistro.disabled);
 
     if(value){
         input.classList.remove('border-red-700', 'border-2');
@@ -40,15 +39,14 @@ const validar = (input, value) => {
 
 
 
-formulario.addEventListener('submit', async e => {
-    e.preventDefault();
+formulario.addEventListener('submit', e => {
 
+    e.preventDefault();
     grecaptcha.execute();
     
 });
 
-
-async function main(e){
+async function main(){
 
     try {
 

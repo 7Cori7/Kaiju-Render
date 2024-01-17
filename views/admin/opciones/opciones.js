@@ -243,8 +243,8 @@ const validarNuevo = (input, value) => {
 };
 
 nuevoAdminBtn.addEventListener('click', e => {
+    
     e.preventDefault();
-
     grecaptcha.execute();
 
 });

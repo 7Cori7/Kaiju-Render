@@ -60,8 +60,8 @@ const validar = (input, value) => {
 
 //ENVIAR MENSAJE
 enviarBtn.addEventListener('click', e => {
+    
     e.preventDefault();
-
     grecaptcha.execute();
 
 });

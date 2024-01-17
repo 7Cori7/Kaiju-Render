@@ -200,9 +200,9 @@ const validar = (input, value) => {
 }
 
 
-reservaBtn.addEventListener('click', async e => {
-    e.preventDefault();
+reservaBtn.addEventListener('click', e => {
 
+    e.preventDefault();
     grecaptcha.execute();
 
 });
