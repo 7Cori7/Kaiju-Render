@@ -17,6 +17,7 @@ const pedidosRouter = require('./controllers/pedidos');
 const ordersRouter = require('./controllers/orders');
 const ventasRouter = require('./controllers/ventas');
 const dolarApiRouter = require('./controllers/dolarAPI');
+const captchaRouter = require('./controllers/captcha');
 
 
 const { requireAuth, adminAuth, pedidoAuth } = require('./middleware/authMiddleware');
@@ -110,5 +111,6 @@ app.use('/api/pedidos', pedidosRouter);
 app.use('/api/orders', ordersRouter);
 app.use('/api/ventas', ventasRouter);  
 app.use('/api/tasa', dolarApiRouter);
+app.use('/captcha', captchaRouter);
 
 module.exports = app;

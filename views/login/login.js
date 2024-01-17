@@ -52,13 +52,34 @@ async function main(){
 
     try {
 
+        const captchaRespose = grecaptcha.getResponse();
+
+        if(!captchaRespose.lenght > 0){
+            throw new Error('Captcha not completed');
+        }
+
         const usuarioLog = {
 
             email: emailInput.value,
             password: passwordInput.value
         }
 
-        ////console.log(usuarioLog)
+        const fd = new FormData(usuarioLog);
+        const params = new URLSearchParams(fd);
+
+        fetch('https://kaiju-sushi-bar.onrender.com/captcha/upload', {
+            method: 'POST',
+            body: params,
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(captchaSuccess){
+                console.log('validación exitosa')
+            }else{
+                console.error('validación fallida')
+            }
+        })
+        .catch(err => console.error(err));
 
         formulario.reset();
 
