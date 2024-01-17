@@ -48,38 +48,15 @@ formulario.addEventListener('submit', async e => {
 });
 
 
-async function main(token){
+async function main(e){
 
     try {
-
-        const captchaRespose = grecaptcha.getResponse();
-
-        if(!captchaRespose.lenght > 0){
-            throw new Error('Captcha not completed');
-        }
 
         const usuarioLog = {
 
             email: emailInput.value,
             password: passwordInput.value
         }
-
-        const fd = new FormData(token);
-        const params = new URLSearchParams(fd);
-
-        fetch('https://kaiju-sushi-bar.onrender.com/captcha/upload', {
-            method: 'POST',
-            body: params,
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(captchaSuccess){
-                console.log('validación exitosa')
-            }else{
-                console.error('validación fallida')
-            }
-        })
-        .catch(err => console.error(err));
 
         formulario.reset();
 
@@ -90,8 +67,6 @@ async function main(token){
         
         //*REQUEST:
         const response = await axios.post('/api/users/login', usuarioLog);
-
-        ////console.log(response)
 
         createNotificacion(false,response.data.message);
 
