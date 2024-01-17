@@ -234,13 +234,18 @@ const validarPass = (input, value) => {
 editUserForm.addEventListener('submit', async e => {
 
     e.preventDefault();
+    grecaptcha.execute();
+ 
+});
 
-    const persona = await axios.get('/api/users/galleta');
 
-    const person = persona.data.data;
-
+async function editPerfil(){
 
     try{
+
+        const persona = await axios.get('/api/users/galleta');
+
+        const person = persona.data.data;
 
         const userActualizado = {
 
@@ -271,6 +276,6 @@ editUserForm.addEventListener('submit', async e => {
 
     }
 
-});
+};
 
 confirmEdit.disabled = true;

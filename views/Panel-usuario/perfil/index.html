@@ -8,6 +8,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Kaiju - Perfil del Usuario</title>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script>
+
+        function onSubmit(token) {
+            
+            grecaptcha.getResponse();
+            editPerfil();
+
+        };
+
+    </script>
 </head>
 <body class="crema">
 
@@ -60,11 +71,23 @@
             <!--Editar Perfil-->
             <div id="editando-user" class="hidden py-5 lg:px-3 transition-all duration-500 ease-in-out delay-150">
                 <form id="user-edit-form" class="flex flex-col gap-5">
+
                     <input type="text" id="nombre-user" name="alias" placeholder="Edite su nombre" class="py-3 w-full rounded-md focus:outline-blue-400">
+
                     <input type="email" id="email-user" name="email" placeholder="Coloque su nuevo email" class="py-3 w-full rounded-md focus:outline-blue-400">
+
                     <input type="tel" id="tel-user" name="telefono" placeholder="Coloque su teléfono" class="py-3 w-full rounded-md focus:outline-blue-400">
+
                     <input type="password" id="nuevo-password" name="nuevo-password" class="py-3 w-full rounded-md focus:outline-blue-400" placeholder="Coloque el nuevo password">
+
                     <input type="password" id="match-password" name="match-password" class="py-3 w-full rounded-md focus:outline-blue-400" placeholder="Repita el nuevo password">
+
+                    <div class="g-recaptcha hidden"
+                        data-sitekey="6Ldm2BQpAAAAAJIUHhlzYNXw9VIFcLT_6jQi-dZC"
+                        data-callback="onSubmit"
+                        data-size="invisible">
+                    </div>
+                    
                     <div class="mt-8 flex justify-center items-center">
                         <button disabled id="editar-user-btn" type="submit" class="py-2 px-14 rounded mx-2 text-white fuente-A text-xl transition ease-in-out delay-150 hover:bg-blue-300 hover:text-gray-900 shadow-xl hover:scale-110 duration-300 disabled:opacity-50 disabled:cursor-not-allowed" style="background-color: #3FA8F4;">Guardar Cambios</button>
                     </div>

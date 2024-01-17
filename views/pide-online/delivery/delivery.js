@@ -437,8 +437,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const carrito = await axios.get('/api/pedidos/cart/list');
     const cart = carrito.data.data;
 
-    console.log(cart)
-
     if(!cart){
         
         articulosCarrito = [];
@@ -495,7 +493,7 @@ inputRadio.forEach(radio => {
     radio.addEventListener('change', e => {
         const seleccion = e.target.value;
         if(seleccion === 'actual'){
-            ////console.log('actual')
+
             mapa.classList.remove('hidden');
             mapa.classList.add('flex');
             textArea.classList.add('hidden');

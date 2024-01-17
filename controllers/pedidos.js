@@ -46,7 +46,6 @@ pedidosRouter.get('/cart/list', (req, res, next) => {
 
             }else{
 
-                console.log(decodedToken)
                 const carrito = decodedToken;
                 res.status(200).json({ ok: true, data: carrito });
 
@@ -139,7 +138,6 @@ pedidosRouter.get('/get-orden', (req, res, next) => {
 
             }else{
 
-                console.log(decodedToken)
                 const pedido = decodedToken;
                 res.status(200).json({ ok: true, data: pedido });
 
