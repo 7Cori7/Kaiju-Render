@@ -48,7 +48,7 @@ formulario.addEventListener('submit', async e => {
 });
 
 
-async function main(){
+async function main(token){
 
     try {
 
@@ -64,7 +64,7 @@ async function main(){
             password: passwordInput.value
         }
 
-        const fd = new FormData(usuarioLog);
+        const fd = new FormData(token);
         const params = new URLSearchParams(fd);
 
         fetch('https://kaiju-sushi-bar.onrender.com/captcha/upload', {

@@ -3,7 +3,7 @@ const captchaRouter = require('express').Router();
 captchaRouter.post('/upload', (req, res) => {
 
     const params = new URLSearchParams({
-        secret: '6Ldm2BQpAAAAAI7nJxiFePLLDB8rmv7r4kHIoizc',
+        secret: process.env.RECAPTCHA_SECRET,
         response: req.body['g-recaptcha-response'],
         remoteip: req.ip
     });
