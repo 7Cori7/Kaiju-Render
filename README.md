@@ -4,6 +4,16 @@ Proyecto Kaiju Sushi-Bar.
 Este proyecto se trata de una aplicación web para un hipotético restaurante de sushi.
 La idea es crear una web que proporcione un medio automatizado y eficiente para la interacción cliente-producto.
 
+Herramientas utilizadas:
+
+- JavaScript
+- HTML
+- CSS
+- NodeJS
+- Tailwind CSS
+- Express JS
+- Mongo DB (con mongoose)
+
 
 La web posee las siguientes funciones:
 
@@ -16,7 +26,7 @@ La web posee las siguientes funciones:
 
 - El usuario crea un perfil registrándose en la plataforma y puede llevar cuenta de todas las interacciones con el producto ofrecido.
 
-- Administrar las interacciones de los clientes y demás actividades de interés del restaurante.
+- Se pueden administrar los procesos de los pedidos y demás actividades de interés del restaurante desde el admin panel.
 
 
 
@@ -47,7 +57,7 @@ PROCESO DE HACER RESERVACIONES:
 
 2. Se validarán la fecha y hora para asignar una mesa al cliente.
 
-3.Son un total de 10 mesas disponibles y se asignan de forma random al cliente, pero dependiendo de la fecha y hora se compara con las demás reservaciones guardadas en la BD. Se asigna una mesa que no esté ocupada. En el caso de que las 10 mesas estén ocupadas para esa fecha y rango de horas, se arroja un mensaje de error al cliente.
+3. Son un total de 10 mesas disponibles y se asignan de forma random al cliente, pero dependiendo de la fecha y hora se compara con las demás reservaciones guardadas en la BD. Se asigna una mesa que no esté ocupada. En el caso de que las 10 mesas estén ocupadas para esa fecha y rango de horas, se arroja un mensaje de error al cliente.
 
 4. Si todo es correcto, se envía un correo al cliente con los datos de su reservación y el acceso a su código QR.
 
@@ -56,10 +66,14 @@ PROCESO DE HACER RESERVACIONES:
 6. Si el cliente no se presenta a su reservación, esta se borrará automáticamente, o puede ser borrada manualmente por el admin.
 
 
+Sitio web en render:
 
--CREDENCIALES DEL ADMIN:
+https://kaiju-sushi-bar.onrender.com/
+
+
+CREDENCIALES DEL ADMIN:
 
 correo: admin@kaiju.com
 
-pass: Kaiju2024.
+pass: kaiJu2024*
 
