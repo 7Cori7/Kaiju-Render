@@ -346,11 +346,3 @@ closeReserva.addEventListener('click', e => {
     e.preventDefault();
     modalReserva.close(); 
 });
-
-
-//Si se deja la ventana abierta, la página se actualiza cada 5min:
-setInterval(function(){
-
-    location.reload();
-    
-},300000000);
