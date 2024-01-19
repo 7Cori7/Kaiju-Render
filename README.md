@@ -30,13 +30,13 @@ La web posee las siguientes funciones:
 
 
 
-El proceso de interacción del cliente con los productos es automático ya que se lleva a cabo de forma on-line con mínima intervención de empleados, Los procesos de realizar pedidos y reservaciones se manejan a través de un código QR para validar y hacer la entrega del producto. Mientras que los pago son online a través de la plataforma paypal.
+El proceso de interacción del cliente con los productos es automático ya que se lleva a cabo de forma on-line con mínima intervención de empleados, Los procesos de realizar pedidos y reservaciones se manejan a través de un código QR para validar y hacer la entrega del producto. Mientras que los pago son online a través de la plataforma paypal y otros.
 
 
 
 PROCESO DE HACER PEDIDOS:
 
-1. El usuario debe logguearse en la página.
+1. El usuario debe loguearse en la página.
 
 2. Llenar el formulario para confirmar su compra. El acceso a este formulario es a través del carrito de compras.
 
@@ -44,7 +44,7 @@ PROCESO DE HACER PEDIDOS:
 
 4. Un correo es enviado al usuario donde puede acceder a su factura y al código QR de su compra.
 
-5. En el momento de retirar su pedido, se ecanea el código QR para así validar su compra en el panel del administrador.
+5. En el momento de retirar su pedido, se escanea el código QR para así validar su compra en el panel del administrador.
 
 6. Una vez que esta validación es correcta, se puede finalmente procesar el pedido como una venta.
 
@@ -57,7 +57,7 @@ PROCESO DE HACER RESERVACIONES:
 
 2. Se validarán la fecha y hora para asignar una mesa al cliente.
 
-3. Son un total de 10 mesas disponibles y se asignan de forma random al cliente, pero dependiendo de la fecha y hora se compara con las demás reservaciones guardadas en la BD. Se asigna una mesa que no esté ocupada. En el caso de que las 10 mesas estén ocupadas para esa fecha y rango de horas, se arroja un mensaje de error al cliente.
+3. Son un total de 10 mesas disponibles y se asignan de forma aleatoria al cliente, pero dependiendo de la fecha y hora se compara con las demás reservaciones guardadas en la BD. Se asigna una mesa que no esté ocupada. En el caso de que las 10 mesas estén ocupadas para esa fecha y rango de horas, se le notifica al cliente.
 
 4. Si todo es correcto, se envía un correo al cliente con los datos de su reservación y el acceso a su código QR.
 
