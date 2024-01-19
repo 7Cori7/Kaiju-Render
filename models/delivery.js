@@ -25,6 +25,8 @@ deliverySchema.set('toJSON',{
     }
 });
 
+deliverySchema.watch().on('change', data => console.log(data));
+
 
 const Delivery = mongoose.model('Delivery', deliverySchema);
 module.exports = Delivery;
