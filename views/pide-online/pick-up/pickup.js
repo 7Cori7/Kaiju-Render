@@ -6,6 +6,7 @@ const catNigiri = document.querySelector('#lista-nigiri');
 const catTemaki = document.querySelector('#lista-temakis');
 const catEntradas = document.querySelector('#lista-entradas');
 const catPostres = document.querySelector('#lista-postres');
+const mensaje = document.querySelector('#mensaje');
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -504,7 +505,11 @@ fecha.addEventListener('change', e => {
     
     }else if(dia === 'hoy' && !abierto){
         
-        console.log('Lo sentimos, estamos cerrados')
+        mensaje.innerHTML = 'lo sentimos estamos cerrados';
+        setTimeout(()=>{
+            mensaje.innerHTML = '';
+            formPickup.reset();
+        },2000);
 
     }
 
@@ -514,16 +519,24 @@ horaPickup.addEventListener('change', e => {
 
     const timePickup = e.target.value;
 
-    console.log(timePickup)
-
     if(fecha.value === 'hoy' && timePickup <= hora){
-        console.log('error')
-        formPickup.reset();
+
+        mensaje.innerHTML = 'Hora inválida';
+        setTimeout(()=>{
+            mensaje.innerHTML = '';
+            formDelivery.reset();
+        },2000);
+
     }else if(fecha.value === 'tomorrow' && timePickup === 'asap'){
-        console.log('error')
-        formPickup.reset();
+
+        mensaje.innerHTML = 'Hora inválida';
+        setTimeout(()=>{
+            mensaje.innerHTML = '';
+            formDelivery.reset();
+        },2000);
+
     }else{
-        console.log('bien')
+
         local.disabled = false;
     }
 
@@ -532,11 +545,8 @@ horaPickup.addEventListener('change', e => {
 
 local.addEventListener('change', e => {
 
-    const localPickup = e.target.value;
-
-    console.log(localPickup)
-    
     formBtn.disabled = false;
+
 });
 
 
@@ -600,8 +610,6 @@ formPickup.addEventListener('submit', async e => {
             destino: local.value
     
         };
-
-        console.log(newPedido)
 
         const response = await axios.post('/api/pedidos/set-pickup', newPedido);
 

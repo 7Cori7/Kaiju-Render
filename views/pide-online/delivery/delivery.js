@@ -6,6 +6,7 @@ const catNigiri = document.querySelector('#lista-nigiri');
 const catTemaki = document.querySelector('#lista-temakis');
 const catEntradas = document.querySelector('#lista-entradas');
 const catPostres = document.querySelector('#lista-postres');
+const mensaje = document.querySelector('#mensaje');
 
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -500,25 +501,35 @@ inputRadio.forEach(radio => {
             textArea.classList.remove('flex');
 
             if(!abierto){
-                console.log('lo sentimos estamos cerrados')
-                modalDelivery.close();
-                formDelivery.reset();
+
+                mensaje.innerHTML = 'lo sentimos estamos cerrados';
+                setTimeout(()=>{
+                    mensaje.innerHTML = '';
+                    formDelivery.reset();
+                    modalDelivery.close();
+                },2000);
+
             }else{
                 
                 geolocationAPI();
             }
 
         }else if(seleccion === 'escribir'){
-            ////console.log('escribir')
+
             textArea.classList.remove('hidden');
             textArea.classList.add('flex');
             mapa.classList.add('hidden');
             mapa.classList.remove('flex');
 
             if(!abierto){
-                console.log('lo sentimos estamos cerrados')
-                modalDelivery.close();
-                formDelivery.reset();
+
+                mensaje.innerHTML = 'lo sentimos estamos cerrados';
+                setTimeout(()=>{
+                    mensaje.innerHTML = '';
+                    formDelivery.reset();
+                    modalDelivery.close();
+                },2000);
+
             }else{
                 textArea.addEventListener('change', validacion);
             }

@@ -1,6 +1,8 @@
 const listaCarrito = document.querySelector('#lista-carrito');
 const vacio = document.querySelector('#vacio');
 const comprarBtn = document.querySelector('#comprar-btn');
+const mensaje = document.querySelector('#mensaje');
+const mensaje2 = document.querySelector('#mensaje-2');
 
 //*MANEJAR LOS HORARIOS DEL LOCAL:
 const hoy = new Date();
@@ -242,7 +244,11 @@ fecha.addEventListener('change', e => {
     
     }else if(dia === 'hoy' && !abierto){
         
-        console.log('Lo sentimos, estamos cerrados')
+        mensaje.innerHTML = 'lo sentimos estamos cerrados';
+        setTimeout(()=>{
+            mensaje.innerHTML = '';
+            formPickup.reset();
+        },2000);
 
     }
 
@@ -255,13 +261,22 @@ horaPickup.addEventListener('change', e => {
     console.log(timePickup)
 
     if(fecha.value === 'hoy' && timePickup <= hora){
-        console.log('error')
-        formPickup.reset();
+
+        mensaje.innerHTML = 'Hora inválida';
+        setTimeout(()=>{
+            mensaje.innerHTML = '';
+            formDelivery.reset();
+        },2000);
+
     }else if(fecha.value === 'tomorrow' && timePickup === 'asap'){
-        console.log('error')
-        formPickup.reset();
+
+        mensaje.innerHTML = 'Hora inválida';
+        setTimeout(()=>{
+            mensaje.innerHTML = '';
+            formDelivery.reset();
+        },2000);
+
     }else{
-        console.log('bien')
         local.disabled = false;
     }
 
@@ -405,32 +420,40 @@ inputRadio.forEach(radio => {
     radio.addEventListener('change', e => {
         const seleccion = e.target.value;
         if(seleccion === 'actual'){
-            ////console.log('actual')
+
             mapa.classList.remove('hidden');
             mapa.classList.add('flex');
             textArea.classList.add('hidden');
             textArea.classList.remove('flex');
 
             if(!abierto){
-                console.log('lo sentimos estamos cerrados')
-                modalDelivery.close();
-                formDelivery.reset();
+
+                mensaje2.innerHTML = 'lo sentimos estamos cerrados';
+                setTimeout(()=>{
+                    mensaje2.innerHTML = '';
+                    formDelivery.reset();
+                    modalDelivery.close();
+                },2000);
+
             }else{
                 
                 geolocationAPI();
             }
 
         }else if(seleccion === 'escribir'){
-            ////console.log('escribir')
+
             textArea.classList.remove('hidden');
             textArea.classList.add('flex');
             mapa.classList.add('hidden');
             mapa.classList.remove('flex');
 
             if(!abierto){
-                console.log('lo sentimos estamos cerrados')
-                modalDelivery.close();
-                formDelivery.reset();
+                mensaje2.innerHTML = 'lo sentimos estamos cerrados';
+                setTimeout(()=>{
+                    mensaje2.innerHTML = '';
+                    formDelivery.reset();
+                    modalDelivery.close();
+                },2000);
             }else{
                 textArea.addEventListener('change', validacion);
             }
