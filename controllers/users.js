@@ -247,7 +247,10 @@ userRouter.get('/galleta', (req, res, next) => {
 
             console.log(decodedToken)
             const user = await User.findById(decodedToken.id);
-            res.status(200).json({ ok: true, data: user });
+            if(user.verified){
+              res.status(200).json({ ok: true, data: user });
+            }
+            
 
         }
 
