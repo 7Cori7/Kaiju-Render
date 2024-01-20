@@ -76,20 +76,6 @@ userRouter.post('/', async (request, response) => {
 
         guardarUser().catch(console.error);
 
-        if(cliente === true){
-
-          //Cookie del usuario:
-          const token = crearToken(usuario.id);
-          response.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000 });
-
-        }else{
-
-          //Cookie del admin:
-          const token = crearToken(usuario.id);
-          response.cookie( 'squid', token, { httpOnly: true, maxAge: maxAge * 1000 });
-  
-        }
-
         //NOTIFICACION:
         return response.status(200).json({message:'Se ha enviado un correo para verificar su usuario'});
     }
