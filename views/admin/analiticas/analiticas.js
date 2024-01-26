@@ -73,7 +73,6 @@ function eventoFiltrado(filtro){
 //*TIEMPO:
 //definir hoy
 var hoy = new Date().toISOString().split("T")[0];
-console.log('Hoy:', hoy)
 
 //definir semana
 var semana = new Date();
@@ -88,7 +87,6 @@ if(Sm<10){
     Sm = '0'+Sm
 }
 semana = Sa+'-'+Sm+'-'+Sd;
-console.log('Hace 7 dias:', semana)
 
 //definir mes
 var mes = new Date();
@@ -103,11 +101,9 @@ if(Mm<10){
     Mm = '0'+Mm
 }
 mes = Ma+'-'+Mm+'-'+Md;
-console.log('Hace un mes: ', mes)
 
 //definir año
 var año = hoy.split('-')[0];
-console.log('año: ', año)
 
 
 //*Arreglos:
@@ -125,7 +121,7 @@ let ventasPastYear = [];
 let ventasThisYear= [];
 
 //*OBTENER LISTA DE LAS VENTAS:
-document.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('load', async () => {
 
     try{
 
@@ -260,6 +256,10 @@ function verTipoDePedido(lista){
 //Calcular los productos más vendidos:
 function productoMasVendido(lista){
 
+    if(lista.length <= 0){
+        imprimirMasVendido();
+    }
+
     //total:
     const pedidos = lista.map(i => i.pedido);
     const productos = pedidos.flat().map(i => ({producto: i.producto, cantidad: i.cantidad}));
@@ -298,14 +298,23 @@ function productoMasVendido(lista){
 
     }, {});
 
-    const a = JSON.stringify(masVendido);
-    const b = a.split(',');
-    const c = b[0].split('"');
+    let arregloMasVendido = [];
 
-    imprimirMasVendido(c[1]);
+    for (const key in masVendido) {
+        const objetos = {key:key, Value:masVendido[key]};
+        arregloMasVendido.push(objetos);
+    }
+
+    const a = arregloMasVendido.sort((a,b)=> b.Value - a.Value);
+
+    imprimirMasVendido(a[0].key);
    
 };
 function productoMasVendidoHoy(){
+
+    if(ventasHoy.length <= 0){
+        imprimirMasVendidoHoy();
+    }
 
     const pedidosHoy = ventasHoy.map(i => i.pedido);
     const productosHoy = pedidosHoy.flat().map(i => ({producto: i.producto, cantidad: i.cantidad}));
@@ -345,14 +354,24 @@ function productoMasVendidoHoy(){
 
     }, {});
 
-    const a = JSON.stringify(masVendido);
-    const b = a.split(',');
-    const c = b[0].split('"');
+    let arregloMasVendidoHoy = [];
 
-    imprimirMasVendidoHoy(c[1]);
+    for (const key in masVendido) {
+        const objetos = {key:key, Value:masVendido[key]};
+        arregloMasVendidoHoy.push(objetos);
+    }
+
+    const a = arregloMasVendidoHoy.sort((a,b)=> b.Value - a.Value);
+
+    imprimirMasVendidoHoy(a[0].key);
 
 };
 function productoMasVendidoSemana(){
+
+    if(ventasSemana.length <= 0){
+        imprimirMasVendidoSemana();
+    }
+
     const pedidosSemana = ventasSemana.map(i => i.pedido);
     const productosSemana = pedidosSemana.flat().map(i => ({producto: i.producto, cantidad: i.cantidad}));
     const pS = productosSemana.sort((a,b) => b.cantidad - a.cantidad);
@@ -391,13 +410,23 @@ function productoMasVendidoSemana(){
 
     }, {});
 
-    const a = JSON.stringify(masVendido);
-    const b = a.split(',');
-    const c = b[0].split('"');
+    let arregloMasVendidoSemana = [];
 
-    imprimirMasVendidoSemana(c[1]);
+    for (const key in masVendido) {
+        const objetos = {key:key, Value:masVendido[key]};
+        arregloMasVendidoSemana.push(objetos);
+    }
+
+    const a = arregloMasVendidoSemana.sort((a,b)=> b.Value - a.Value);
+
+    imprimirMasVendidoSemana(a[0].key);
 };
 function productoMasVendidoMes(){
+
+    if(ventasMes.length <= 0){
+        imprimirMasVendidoMes();
+    }
+
     const pedidosMes = ventasMes.map(i => i.pedido);
     const productosMes = pedidosMes.flat().map(i => ({producto: i.producto, cantidad: i.cantidad}));
     const pM = productosMes.sort((a,b) => b.cantidad - a.cantidad);
@@ -436,11 +465,16 @@ function productoMasVendidoMes(){
 
     }, {});
 
-    const a = JSON.stringify(masVendido);
-    const b = a.split(',');
-    const c = b[0].split('"');
+    let arregloMasVendidoMes = [];
 
-    imprimirMasVendidoMes(c[1]);
+    for (const key in masVendido) {
+        const objetos = {key:key, Value:masVendido[key]};
+        arregloMasVendidoMes.push(objetos);
+    }
+
+    const a = arregloMasVendidoMes.sort((a,b)=> b.Value - a.Value);
+
+    imprimirMasVendidoMes(a[0].key);
 };
 //------------------------------------------
 
@@ -724,41 +758,47 @@ function imprimirPedidosMes(lista){
 //Más vendido:
 function imprimirMasVendido(producto){
 
-    masVendido.querySelector('[data-mas-vendido-vacio]').innerHTML = `
+    if(!producto){
 
-        <div class="m-10 flex flex-col lg:flex-row gap-5 align-middle text-azul text-xl">
+        masVendido.querySelector('[data-mas-vendido-vacio]').innerHTML = `
+        
+            <div data-mas-vendido-vacio>
 
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-            </svg>
-            
-            <div>
-            <p>Producto estrella:</p>
-            <h3 class="text-black font-bold text-end">${producto}</h3>
+            <div class="m-10 flex flex-col lg:flex-row gap-5 align-middle text-azul text-xl">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                </svg>
+                
+                <h3>Por los momentos no hay producto más vendido</h3>
             </div>
-        </div>
 
-    `
+            </div>
+        
+        `
+    }else{
+
+        masVendido.querySelector('[data-mas-vendido-vacio]').innerHTML = `
+
+            <div class="m-10 flex flex-col lg:flex-row gap-5 align-middle text-azul text-xl">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                </svg>
+                
+                <div>
+                <p>Producto estrella:</p>
+                <h3 class="text-black font-bold text-end">${producto}</h3>
+                </div>
+            </div>
+
+        `
+
+    }
 
 };
 function imprimirMasVendidoHoy(producto){
 
-    masVendido.querySelector('[data-mas-vendido-vacio]').innerHTML = `
-
-        <div class="m-10 flex flex-col lg:flex-row gap-5 align-middle text-azul text-xl">
-
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-            </svg>
-            
-            <div>
-            <p>Producto estrella de hoy:</p>
-            <h3 class="text-black font-bold text-end">${producto}</h3>
-            </div>
-        </div>
-
-    `
-
     if(!producto){
 
         masVendido.querySelector('[data-mas-vendido-vacio]').innerHTML = `
@@ -778,27 +818,31 @@ function imprimirMasVendidoHoy(producto){
         
         `
 
+    }else{
+
+        masVendido.querySelector('[data-mas-vendido-vacio]').innerHTML = `
+
+            <div class="m-10 flex flex-col lg:flex-row gap-5 align-middle text-azul text-xl">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                </svg>
+                
+                <div>
+                <p>Producto estrella de hoy:</p>
+                <h3 class="text-black font-bold text-end">${producto}</h3>
+                </div>
+            </div>
+
+        `
+
     }
+
+    
 
 };
 function imprimirMasVendidoSemana(producto){
 
-    masVendido.querySelector('[data-mas-vendido-vacio]').innerHTML = `
-
-        <div class="m-10 flex flex-col lg:flex-row gap-5 align-middle text-azul text-xl">
-
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-            </svg>
-            
-            <div>
-            <p>Producto estrella de la semana:</p>
-            <h3 class="text-black font-bold text-end">${producto}</h3>
-            </div>
-        </div>
-
-    `
-
     if(!producto){
 
         masVendido.querySelector('[data-mas-vendido-vacio]').innerHTML = `
@@ -818,25 +862,27 @@ function imprimirMasVendidoSemana(producto){
         
         `
 
+    }else{
+
+        masVendido.querySelector('[data-mas-vendido-vacio]').innerHTML = `
+
+            <div class="m-10 flex flex-col lg:flex-row gap-5 align-middle text-azul text-xl">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                </svg>
+                
+                <div>
+                <p>Producto estrella de la semana:</p>
+                <h3 class="text-black font-bold text-end">${producto}</h3>
+                </div>
+            </div>
+
+        `
     }
 
 };
 function imprimirMasVendidoMes(producto){
-    masVendido.querySelector('[data-mas-vendido-vacio]').innerHTML = `
-
-        <div class="m-10 flex flex-col lg:flex-row gap-5 align-middle text-azul text-xl">
-
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
-            </svg>
-            
-            <div>
-            <p>Producto estrella del mes:</p>
-            <h3 class="text-black font-bold text-end">${producto}</h3>
-            </div>
-        </div>
-
-    `
 
     if(!producto){
 
@@ -857,6 +903,23 @@ function imprimirMasVendidoMes(producto){
         
         `
 
+    }else{
+
+        masVendido.querySelector('[data-mas-vendido-vacio]').innerHTML = `
+
+            <div class="m-10 flex flex-col lg:flex-row gap-5 align-middle text-azul text-xl">
+
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-20 h-20">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                </svg>
+                
+                <div>
+                <p>Producto estrella del mes:</p>
+                <h3 class="text-black font-bold text-end">${producto}</h3>
+                </div>
+            </div>
+
+        `
     }
 };
 //----------------------------------------------

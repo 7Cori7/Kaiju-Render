@@ -1,4 +1,5 @@
 const listadoReservas = document.querySelector('#admin-listado-reservas');
+const vacio = document.querySelector('#vacio');
 
 const date = new Date();
 const time = date.getHours();
@@ -19,14 +20,18 @@ console.log(date, hoy, time, minutos)
                         
 
 //*IMPRIMIR LISTA DE RESERVACIONES:
-document.addEventListener('DOMContentLoaded', async () => {
+window.addEventListener('load', async () => {
 
     try {
 
         const lista = await axios.get('/api/reservaciones/lista');
         const list = lista.data.data;
 
-        console.log(list)
+        if(list.length <= 0){
+            vacio.classList.remove('hidden');
+        }else{
+            vacio.classList.add('hidden');
+        }
 
         list.forEach( i => {
 
