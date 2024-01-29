@@ -255,21 +255,21 @@ async function mostrarProducto(producto){
     modal.querySelector('#totalP').innerHTML = producto.querySelector('p').textContent;
 
     //sumar el total del precio según la cantidad de producto:
-    const precio = parseInt(precioP.split('$')[1]);
+    const precio = parseFloat(precioP.split('$')[1]);
     const cantidadP = modal.querySelector('input')
     
     cantidadP.addEventListener('change', () =>{
 
-        let total = parseInt(cantidadP.value * precio);
+        let total = parseFloat(cantidadP.value * precio);
 
-        modal.querySelector('#totalP').innerHTML = '$'+ total;
+        modal.querySelector('#totalP').innerHTML = '$'+ total.toFixed(1);
 
     });
 
     //*GUARDAR EN EL CARRITO:
     formModal.addEventListener('submit', async () => {
 
-        const precioT = parseInt(modal.querySelector('#totalP').textContent.split('$')[1]);
+        const precioT = parseFloat(modal.querySelector('#totalP').textContent.split('$')[1]);
 
         //Guardar en un objeto el pedido:
         const infoProducto = {
