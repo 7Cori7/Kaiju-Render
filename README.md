@@ -12,7 +12,9 @@ Herramientas utilizadas:
 - NodeJS
 - Tailwind CSS
 - Express JS
-- Mongo DB (con mongoose)
+- Axios
+- Mongo DB (a través de mongoose)
+- Otras librerias npm (cookie-parser, jwt, nodemailer, etc)
 
 
 La web posee las siguientes funciones:
@@ -20,25 +22,25 @@ La web posee las siguientes funciones:
 
 - Plataforma para mostrar el menú disponible de forma digital.
 
-- Hacer pedidos delivery o pick-up de forma on-line.
+- Hacer pedidos delivery o pick-up en línea desde la web.
 
-- Hacer reservaciones on-line.
+- Hacer reservaciones en línea desde la web.
 
-- El usuario crea un perfil registrándose en la plataforma y puede llevar cuenta de todas las interacciones con el producto ofrecido.
+- El usuario crea un perfil registrándose en la plataforma y puede llevar cuenta de todas sus interacciones con el producto y servicio ofrecido.
 
-- Se pueden administrar los procesos de los pedidos y demás actividades de interés del restaurante desde el admin panel.
+- Se pueden administrar los procesos de los pedidos y demás actividades importantes del restaurante/negocio desde el admin panel.
 
 
 
-El proceso de interacción del cliente con los productos es automático ya que se lleva a cabo de forma on-line con mínima intervención de empleados, Los procesos de realizar pedidos y reservaciones se manejan a través de un código QR para validar y hacer la entrega del producto. Mientras que los pago son online a través de la plataforma paypal y otros.
+El proceso de interacción del cliente con los productos es automático ya que se lleva a cabo de forma en línea sin intervención de empleados. Los procesos de validar y hacer la entrega del producto se manejan a través de códigos QR, mientras que los pago se realizan en línea a través de la plataforma Paypal u otros.
 
 
 
 PROCESO DE HACER PEDIDOS:
 
-1. El usuario debe loguearse en la página.
+1. El usuario debe loguearse en la página y seleccionar los productos a comprar.
 
-2. Llenar el formulario para confirmar su compra. El acceso a este formulario es a través del carrito de compras.
+2. Llenar el formulario para confirmar su compra (El acceso a este formulario es a través del carrito de compras).
 
 3. Si todas las validaciones son correctas, se le redirecciona a la pantalla de "caja" donde puede elegir un método de pago y realizar su compra.
 
@@ -46,7 +48,7 @@ PROCESO DE HACER PEDIDOS:
 
 5. En el momento de retirar su pedido, se escanea el código QR para así validar su compra en el panel del administrador.
 
-6. Una vez que esta validación es correcta, se puede finalmente procesar el pedido como una venta.
+6. Una vez que esta validación es correcta, se puede finalmente procesar el pedido como una venta exitosa.
 
 
 
@@ -61,7 +63,7 @@ PROCESO DE HACER RESERVACIONES:
 
 4. Si todo es correcto, se envía un correo al cliente con los datos de su reservación y el acceso a su código QR.
 
-5. Al escanear el código QR se valida el id de la reservación junto con la fecha y hora. Si todo es correcto, se actualiza el estado.
+5. Al escanear el código QR se valida el id de la reservación junto con la fecha y hora. Si todo es correcto, se actualiza el estado de la reservación.
 
 6. Si el cliente no se presenta a su reservación, esta se borrará automáticamente, o puede ser borrada manualmente por el admin.
 
