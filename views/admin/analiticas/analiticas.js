@@ -492,7 +492,7 @@ function imprimirGananciaTotal(total){
         </svg>
         <div>
         <p>Ganacias totales:</p>
-        <h3 class="text-black text-3xl font-bold text-end">$${total}</h3>
+        <h3 class="text-black text-3xl font-bold text-end">$${total.toFixed(1)}</h3>
         </div>
     </div>
 
@@ -511,7 +511,7 @@ function imprimirGananciasHoy(total){
         </svg>
         <div>
         <p>Ganacias de hoy:</p>
-        <h3 class="text-black text-3xl font-bold text-end">$${total}</h3>
+        <h3 class="text-black text-3xl font-bold text-end">$${total.toFixed(1)}</h3>
         </div>
     </div>
 
@@ -550,7 +550,7 @@ function imprimirGananciaSemana(total){
         </svg>
         <div>
         <p>Ganacias de los últimos 7 días:</p>
-        <h3 class="text-black text-3xl font-bold text-end">$${total}</h3>
+        <h3 class="text-black text-3xl font-bold text-end">$${total.toFixed(1)}</h3>
         </div>
     </div>
 
@@ -588,7 +588,7 @@ function imprimirGananciaMes(total){
         </svg>
         <div>
         <p>Ganacias de los últimos 30 días:</p>
-        <h3 class="text-black text-3xl font-bold text-end">$${total}</h3>
+        <h3 class="text-black text-3xl font-bold text-end">$${total.toFixed(1)}</h3>
         </div>
     </div>
 
