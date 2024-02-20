@@ -73,9 +73,3 @@ Sitio web en render:
 https://kaiju-sushi-bar.onrender.com/
 
 
-CREDENCIALES DEL ADMIN:
-
-correo: admin@kaiju.com
-
-pass: kaiJu2024*
-
