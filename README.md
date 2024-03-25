@@ -1,8 +1,8 @@
-# Kaiju-Render
+# Kaiju Sushi-Bar 🦑
 Proyecto Kaiju Sushi-Bar.
 
 Este proyecto se trata de una aplicación web para un hipotético restaurante de sushi.
-La idea es crear una web que proporcione un medio automatizado y eficiente para la interacción cliente-producto.
+La idea es desarrollar una web que proporcione un medio automatizado y eficiente para la interacción cliente-producto.
 
 Herramientas utilizadas:
 
@@ -15,6 +15,7 @@ Herramientas utilizadas:
 - Axios
 - Mongo DB (a través de mongoose)
 - Otras librerias npm (cookie-parser, jwt, nodemailer, etc)
+- Conexión a APIs para generar QRs, geolocalización, PDFs, etc.
 
 
 La web posee las siguientes funciones:
@@ -72,4 +73,4 @@ Sitio web en render:
 
 https://kaiju-sushi-bar.onrender.com/
 
-
+Que te diviertas! 🦑
