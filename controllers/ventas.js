@@ -33,7 +33,7 @@ ventasRouter.post('/', async (req, res) => {
 
 });
 
-//*Botener la lista de ventas:
+//*Obtener la lista de ventas:
 ventasRouter.get('/lista', async (req, res) => {
 
     try{
