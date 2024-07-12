@@ -211,12 +211,27 @@ function facturaPickUpHTML(datos){
 };
 
 //Cuando el pago es por pago movil:
+const updateInput = debounce(value => {
+
+    valref = refVal.test(value);
+    validar(refInput, valref);
+});
 refInput.addEventListener('input', e => {
 
-    valref = refVal.test(e.target.value);
-    validar(refInput, valref);
-    
+    updateInput(e.target.value);
 });
+
+function debounce(callback, delay=500){
+
+    let timeout;
+    return (...args) => {
+        
+        clearTimeout(timeout);
+        timeout = setTimeout(()=>{
+            callback(...args);
+        }, delay);
+    }
+}
 
 const validar = (input, value) => {
 

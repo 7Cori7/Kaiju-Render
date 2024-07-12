@@ -476,17 +476,34 @@ let valTel = false;
 let valGeoLat = false;
 let valGeoLon = false;
 
+// Manejar inputs:
+const updateTelInput = debounce(tel => {
+    valTel = telVal.test(tel);
+    validar(telDelivery, valTel);
+});
+
 //EVENTOS:
 comprarBtn.addEventListener('click', () => {
-    
-    modalDelivery.showModal();
-    formDelivery.reset();
+
+    if(!abierto){
+
+        mensaje.innerHTML = 'lo sentimos estamos cerrados';
+        setTimeout(()=>{
+            mensaje.innerHTML = '';
+            formDelivery.reset();
+            modalDelivery.close();
+        },2000);
+
+    }else{
+        
+        modalDelivery.showModal();
+        formDelivery.reset();
+    }
 
 });
 
 telDelivery.addEventListener('change', e => {
-    valTel = telVal.test(e.target.value);
-    validar(telDelivery, valTel);
+    updateTelInput(e.target.value);
 })
 
 inputRadio.forEach(radio => {
@@ -500,19 +517,21 @@ inputRadio.forEach(radio => {
             textArea.classList.add('hidden');
             textArea.classList.remove('flex');
 
-            if(!abierto){
+            // if(!abierto){
 
-                mensaje.innerHTML = 'lo sentimos estamos cerrados';
-                setTimeout(()=>{
-                    mensaje.innerHTML = '';
-                    formDelivery.reset();
-                    modalDelivery.close();
-                },2000);
+            //     mensaje.innerHTML = 'lo sentimos estamos cerrados';
+            //     setTimeout(()=>{
+            //         mensaje.innerHTML = '';
+            //         formDelivery.reset();
+            //         modalDelivery.close();
+            //     },2000);
 
-            }else{
+            // }else{
                 
-                geolocationAPI();
-            }
+            //     geolocationAPI();
+            // }
+
+            geolocationAPI();
 
         }else if(seleccion === 'escribir'){
 
@@ -521,18 +540,20 @@ inputRadio.forEach(radio => {
             mapa.classList.add('hidden');
             mapa.classList.remove('flex');
 
-            if(!abierto){
+            // if(!abierto){
 
-                mensaje.innerHTML = 'lo sentimos estamos cerrados';
-                setTimeout(()=>{
-                    mensaje.innerHTML = '';
-                    formDelivery.reset();
-                    modalDelivery.close();
-                },2000);
+            //     mensaje.innerHTML = 'lo sentimos estamos cerrados';
+            //     setTimeout(()=>{
+            //         mensaje.innerHTML = '';
+            //         formDelivery.reset();
+            //         modalDelivery.close();
+            //     },2000);
 
-            }else{
-                textArea.addEventListener('change', validacion);
-            }
+            // }else{
+            //     textArea.addEventListener('change', validacion);
+            // }
+
+            textArea.addEventListener('change', validacion);
 
         }
     });
@@ -557,12 +578,25 @@ function geolocationAPI(){
 
 };
 
-
-//FUNCIONES:
-function validacion(e){
-    valtexto = textoVal.test(e.target.value);
+const updateTextArea = debounce(text => {
+    valtexto = textoVal.test(text);
     validar(textArea, valtexto);
+});
+
+function validacion(e){
+    updateTextArea(e.target.value);
 };
+
+function debounce(cb, delay = 500){
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(()=>{
+            cb(...args);
+        }, delay);
+    }
+}
+
 
 const validar = (input, value) => {
 
