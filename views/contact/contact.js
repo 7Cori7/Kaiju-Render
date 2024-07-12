@@ -41,19 +41,19 @@ const updateTextoInput = debounce(text => {
 })
 
 //EVENTOS
-nameInput.addEventListener('change', e => { 
+nameInput.addEventListener('input', e => { 
     updateNameInput(e.target.value);
 })
 
-emailInput.addEventListener('change', e => {
+emailInput.addEventListener('input', e => {
     updateEmailInput(e.target.value);
 })
 
-asuntoInput.addEventListener('change', e => {
+asuntoInput.addEventListener('input', e => {
     updateAsuntoInput(e.target.value);
 })
 
-textoInput.addEventListener('change', e => {
+textoInput.addEventListener('input', e => {
     updateTextoInput(e.target.value);
 })
 
