@@ -11,14 +11,36 @@ const passwordVal = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!#$%&'*.
 let valemail = false;
 let valpass = false;
 
-emailInput.addEventListener('input', e => {
-    valemail = emailVal.test(e.target.value);
+// Manejando los inputs:
+const updateEmailInput = debounce(text => {
+    valemail = emailVal.test(text);
     validar(emailInput, valemail);
-})
-passwordInput.addEventListener('input', e => {
-    valpass = passwordVal.test(e.target.value);
+});
+
+const updatePasswordInput = debounce(text => {
+    valpass = passwordVal.test(text);
     validar(passwordInput, valpass);
-})
+});
+
+emailInput.addEventListener('input', e => {
+
+    updateEmailInput(e.target.value);
+});
+passwordInput.addEventListener('input', e => {
+   
+    updatePasswordInput(e.target.value);
+});
+
+// Debounce:
+function debounce(callBack, delay = 1000){
+
+    return (...args) => {
+
+        setTimeout(()=>{
+            callBack(...args);
+        }, delay);
+    }
+}
 
 const validar = (input, value) => {
 

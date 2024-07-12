@@ -195,27 +195,54 @@ let valdate = false;
 let valhour = false;
 let valpersona = false;
 
+// Manejar los inputs:
+const updateNameInput = debounce(name => {
+    valname = nameVal.test(name);
+    validar(nameInput, valname)
+});
+
+const updateTelInput = debounce(tel => {
+    valtel = telVal.test(tel);
+    validar(telInput, valtel);
+});
+
+const updateEmailInput = debounce(email => {
+    valemail = emailVal.test(email);
+    validar(emailInput, valemail);
+});
+
+const updateFechaInput = debounce(fecha => {
+    valdate = fecha;
+    validar(fechaInput, valdate);
+    horaInput.disabled = false;
+});
+
 //*EVENTOS:
 nameInput.addEventListener('change', e => { 
-    valname = nameVal.test(e.target.value);
-    validar(nameInput, valname)
+    updateNameInput(e.target.value);
 })
 
 telInput.addEventListener('change', e => {
-    valtel = telVal.test(e.target.value);
-    validar(telInput, valtel);
+    updateTelInput(e.target.value);
 })
 
 emailInput.addEventListener('change', e => {
-    valemail = emailVal.test(e.target.value);
-    validar(emailInput, valemail);
+    updateEmailInput(e.target.value);
 })
 
 fechaInput.addEventListener('change', e => {
-    valdate = e.target.value;
-    validar(fechaInput, valdate);
-    horaInput.disabled = false;
+    updateFechaInput(e.target.value);
 })
+
+
+function debounce(callBack, delay = 1000){
+
+    return (...args) => {
+        setTimeout(()=>{
+            callBack(...args);
+        },delay);
+    }
+}
 
 
 horaInput.addEventListener('change', async e => {

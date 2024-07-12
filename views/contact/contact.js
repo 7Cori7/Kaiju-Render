@@ -19,26 +19,53 @@ let valemail = false;
 let valasunto = false;
 let valtexto = false;
 
+// Manejar los inputs:
+const updateNameInput = debounce(name =>{
+    valname = nameVal.test(name);
+    validar(nameInput, valname)
+});
+
+const updateEmailInput = debounce(email =>{
+    valemail = emailVal.test(email);
+    validar(emailInput, valemail);
+});
+
+const updateAsuntoInput = debounce(asunto => {
+    valasunto = asuntoVal.test(asunto);
+    validar(asuntoInput, valasunto);
+});
+
+const updateTextoInput = debounce(text => {
+    valtexto = textoVal.test(text);
+    validar(textoInput, valtexto);
+})
+
 //EVENTOS
 nameInput.addEventListener('change', e => { 
-    valname = nameVal.test(e.target.value);
-    validar(nameInput, valname)
+    updateNameInput(e.target.value);
 })
 
 emailInput.addEventListener('change', e => {
-    valemail = emailVal.test(e.target.value);
-    validar(emailInput, valemail);
+    updateEmailInput(e.target.value);
 })
 
 asuntoInput.addEventListener('change', e => {
-    valasunto = asuntoVal.test(e.target.value);
-    validar(asuntoInput, valasunto);
+    updateAsuntoInput(e.target.value);
 })
 
 textoInput.addEventListener('change', e => {
-    valtexto = textoVal.test(e.target.value);
-    validar(textoInput, valtexto);
+    updateTextoInput(e.target.value);
 })
+
+// Debounce:
+function debounce(callBack, delay = 1000){
+
+    return (...args) => {
+        setTimeout(() => {
+            callBack(...args);
+        }, delay);
+    }
+}
 
 //FUNCIONES
 const validar = (input, value) => {

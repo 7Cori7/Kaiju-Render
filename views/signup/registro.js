@@ -19,29 +19,59 @@ let valemail = false;
 let valpass = false;
 let valmatch = false;
 
-nameInput.addEventListener('change', e => {
-
-    valname = nameVal.test(e.target.value);
+// Manejando los inputs:
+const updateNameInput = debounce(text => {
+    valname = nameVal.test(text);
     validar(nameInput, valname);
-
 });
 
-emailInput.addEventListener('change', e => {
-    valemail = emailVal.test(e.target.value);
+const updateEmailInput = debounce(text => {
+    valemail = emailVal.test(text);
     validar(emailInput, valemail);
 });
 
-passwordInput.addEventListener('input', e => {
-    valpass = passwordVal.test(e.target.value);
+const updatePasswordInput = debounce(text => {
+    valpass = passwordVal.test(text);
     validar(passwordInput, valpass);
     validar(matchInput, valmatch)
 });
 
-matchInput.addEventListener('input', e => {
-    valmatch = e.target.value === passwordInput.value;
+const updateMatchPass = debounce(text => {
+    valmatch = text === passwordInput.value;
     validar(matchInput, valmatch);
     validar(passwordInput, valpass)
 });
+
+nameInput.addEventListener('input', e => {
+
+    updateNameInput(e.target.value);
+});
+
+emailInput.addEventListener('input', e => {
+
+    updateEmailInput(e.target.value);
+});
+
+passwordInput.addEventListener('input', e => {
+
+    updatePasswordInput(e.target.value);
+});
+
+matchInput.addEventListener('input', e => {
+
+    updateMatchPass(e.target.value);
+});
+
+
+function debounce(callBack, delay = 1000){
+
+    return (...args) => {
+
+        setTimeout(()=>{    
+            callBack(...args);
+        }, delay);
+    }
+}
 
 
 
