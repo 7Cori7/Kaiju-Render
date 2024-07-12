@@ -27,7 +27,8 @@ userRouter.post('/', async (request, response) => {
 
     }else{
 
-
+        const website_url = process.env.KAIJU_URL;
+        
         //*FUNCION PARA MANDAR CORREOS:
         async function mandarCorreo() {
 
@@ -46,7 +47,7 @@ userRouter.post('/', async (request, response) => {
                 <br>
                 Por favor dale click al siguiente enlace para poder verificar tu cuenta:
                 <br>
-                <a href="https://kaiju-sushi-bar.onrender.com/api/users/confirm/${email}" target="_blank">Autenticar tu cuenta</a>
+                <a href="${website_url}/api/users/confirm/${email}" target="_blank">Autenticar tu cuenta</a>
                 </p>
               `, 
             });

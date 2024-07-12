@@ -67,6 +67,7 @@ reservacionRouter.post('/', async (request,response) => {
 
 
           //*se envía un correo al cliente:
+          const website_url = process.env.KAIJU_URL;
           async function main() {
               
               const info = await transporter.sendMail({
@@ -129,7 +130,7 @@ reservacionRouter.post('/', async (request,response) => {
                   <br>
                   <b>Abre este link para ver tu código:</b>
                   <br>
-                  <a href="https://kaiju-sushi-bar.onrender.com/api/reservaciones/data/${code}" target="_blank">Mira tu código QR aquí</a>
+                  <a href="${website_url}/api/reservaciones/data/${code}" target="_blank">Mira tu código QR aquí</a>
                   <br>
                   <br>
                   <b>NO OLVIDES QUE TU CODIGO QR ES LO QUE VALIDARÁ TU RESERVACIÓN ASÍ QUE POR FAVOR NO LO PIERDAS NI BORRES ESTE CORREO. DE LO CONTRARIO NO NOS HAREMOS RESPONSABLES.</b>

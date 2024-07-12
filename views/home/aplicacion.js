@@ -237,8 +237,11 @@ fechaInput.addEventListener('change', e => {
 
 function debounce(callBack, delay = 1000){
 
+    let timeout;
+
     return (...args) => {
-        setTimeout(()=>{
+        clearTimeout(timeout);
+        timeout = setTimeout(()=>{
             callBack(...args);
         },delay);
     }

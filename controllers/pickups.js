@@ -97,6 +97,7 @@ pickupRouter.post('/', async (req, res) => {
 
 
             //*se envía un correo al cliente:
+            const website_url = process.env.KAIJU_URL;
             async function main() {
                 
                 const info = await transporter.sendMail({
@@ -145,7 +146,7 @@ pickupRouter.post('/', async (req, res) => {
                     <br>
                     <b>Abre este link para descargar tu código y factura:</b>
                     <br>
-                    <a href="https://kaiju-sushi-bar.onrender.com/api/pickups/data/${code}" target="_blank">Mira tu código QR aquí</a>
+                    <a href="${website_url}/api/pickups/data/${code}" target="_blank">Mira tu código QR aquí</a>
                     <br>
                     <br>
                     <b>NO OLVIDES QUE TU CODIGO QR ES LO QUE VALIDARÁ TU PEDIDO ASÍ QUE POR FAVOR NO LO PIERDAS NI BORRES ESTE CORREO. DE LO CONTRARIO NO NOS HAREMOS RESPONSABLES.</b>

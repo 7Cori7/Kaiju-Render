@@ -65,9 +65,11 @@ matchInput.addEventListener('input', e => {
 
 function debounce(callBack, delay = 1000){
 
-    return (...args) => {
+    let timeout;
 
-        setTimeout(()=>{    
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(()=>{    
             callBack(...args);
         }, delay);
     }

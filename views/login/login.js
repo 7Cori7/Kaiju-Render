@@ -34,9 +34,11 @@ passwordInput.addEventListener('input', e => {
 // Debounce:
 function debounce(callBack, delay = 1000){
 
-    return (...args) => {
+    let timeout;
 
-        setTimeout(()=>{
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(()=>{
             callBack(...args);
         }, delay);
     }
