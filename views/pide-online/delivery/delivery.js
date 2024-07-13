@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             tarjetaBebidas.innerHTML += `
             
-            <img src="../menu-img/${imagen}" alt="foto de Coca-Cola">
+            <img src="../menu-img/${imagen}" alt="imagen del producto">
             <h3>${nombre}</h3>
             <p>$${precio}</p>
 
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             tarjetaRoles.innerHTML +=`
             
-            <img src="../menu-img/${imagen}" alt="foto de Coca-Cola">
+            <img src="../menu-img/${imagen}" alt="imagen del producto">
             <h3>${nombre}</h3>
             <p>$${precio}</p>
 
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             tarjetaTempura.innerHTML += `
             
-            <img src="../menu-img/${imagen}" alt="foto de Coca-Cola">
+            <img src="../menu-img/${imagen}" alt="imagen del producto">
             <h3>${nombre}</h3>
             <p>$${precio}</p>
 
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             tarjNigiri.innerHTML += `
             
-            <img src="../menu-img/${imagen}" alt="foto de Coca-Cola">
+            <img src="../menu-img/${imagen}" alt="imagen del producto">
             <h3>${nombre}</h3>
             <p>$${precio}</p>
             
@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             tarjTemaki.innerHTML += `
             
-            <img src="../menu-img/${imagen}" alt="foto de Coca-Cola">
+            <img src="../menu-img/${imagen}" alt="imagen del producto">
             <h3>${nombre}</h3>
             <p>$${precio}</p>
             
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             tarjEntradas.innerHTML += `
             
-            <img src="../menu-img/${imagen}" alt="foto de Coca-Cola">
+            <img src="../menu-img/${imagen}" alt="imagen del producto">
             <h3>${nombre}</h3>
             <p>$${precio}</p>
 
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             tarjPostres.innerHTML += `
             
-            <img src="../menu-img/${imagen}" alt="foto de Coca-Cola">
+            <img src="../menu-img/${imagen}" alt="imagen del producto">
             <h3>${nombre}</h3>
             <p>$${precio}</p>
             
