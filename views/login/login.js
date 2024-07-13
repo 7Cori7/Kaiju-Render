@@ -70,6 +70,13 @@ formulario.addEventListener('submit', e => {
     
 });
 
+passwordInput.addEventListener('keydown', e => {
+    if(e.keyCode === 13 || e.key === 'Enter' || e.code === 'Enter'){
+        e.preventDefault();
+        grecaptcha.execute();
+    }
+});
+
 async function main(){
 
     try {
