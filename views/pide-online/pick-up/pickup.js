@@ -9,13 +9,18 @@ const catPostres = document.querySelector('#lista-postres');
 const mensaje = document.querySelector('#mensaje');
 
 
+//* OBTENER PRODUCTOS DE LA API
 document.addEventListener('DOMContentLoaded', async () => {
 
     try{
 
+        const request = await axios.get('/api/menus/lista')
+        const products = request.data.data;
+
         //Categoria Bebidas:
-        const productosBebidas = await axios.get('/api/menus/categ/bebidas');
-        const bebidas = productosBebidas.data.data;
+        ////const productosBebidas = await axios.get('/api/menus/categ/bebidas');
+        ////const bebidas = productosBebidas.data.data;
+        const bebidas = products.filter(i => i.categoria === 'Bebidas');
 
         bebidas.forEach( i => {
 
@@ -41,9 +46,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
 
         //Categoria Roles Frios:
-        const productosRoles = await axios.get('/api/menus/categ/frios');
+        //// const productosRoles = await axios.get('/api/menus/categ/frios');
+        //// const roles = productosRoles.data.data;
 
-        const roles = productosRoles.data.data;
+        const roles = products.filter(i => i.categoria === 'Roles-Frios');
 
         roles.forEach( i => {
             const {nombre, precio, imagen, id} = i;
@@ -69,8 +75,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
         //Categoria Roles Tempurizados:
-        const productosTempura = await axios.get('/api/menus/categ/fritos');
-        const tempura = productosTempura.data.data;
+        //// const productosTempura = await axios.get('/api/menus/categ/fritos');
+        //// const tempura = productosTempura.data.data;
+
+        const tempura = products.filter(i => i.categoria === 'Tempura-Roll');
 
         tempura.forEach( i => {
             const {nombre, precio, imagen, id} = i;
@@ -95,8 +103,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
         //Categoria Nigiri:
-        const productosNigiri = await axios.get('/api/menus/categ/nigiri');
-        const nigiri = productosNigiri.data.data;
+        //// const productosNigiri = await axios.get('/api/menus/categ/nigiri');
+        //// const nigiri = productosNigiri.data.data;
+
+        const nigiri = products.filter(i => i.categoria === 'Nigiri-Sushi')
 
         nigiri.forEach( i => {
             const {nombre, precio, imagen, id} = i;
@@ -122,8 +132,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
         //Categoria Temaki:
-        const productosTemaki = await axios.get('/api/menus/categ/temaki');
-        const temaki = productosTemaki.data.data;
+        //// const productosTemaki = await axios.get('/api/menus/categ/temaki');
+        //// const temaki = productosTemaki.data.data;
+
+        const temaki = products.filter(i => i.categoria === 'Temaki-Sushi');
 
         temaki.forEach( i => {
             const {nombre, precio, imagen, id} = i;
@@ -147,8 +159,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
         //Categoria Entradas:
-        const productosEntradas = await axios.get('/api/menus/categ/entradas');
-        const entradas = productosEntradas.data.data;
+        //// const productosEntradas = await axios.get('/api/menus/categ/entradas');
+        //// const entradas = productosEntradas.data.data;
+
+        const entradas = products.filter(i => i.categoria === 'Entradas');
 
         entradas.forEach( i => {
             const {nombre, precio, imagen, id} = i;
@@ -172,8 +186,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
         //Categoria Postres:
-        const productosPostres = await axios.get('/api/menus/categ/postres');
-        const postres = productosPostres.data.data;
+        //// const productosPostres = await axios.get('/api/menus/categ/postres');
+        //// const postres = productosPostres.data.data;
+
+        const postres = products.filter(i => i.categoria === 'Postres');
 
         postres.forEach( i => {
             const {nombre, precio, imagen, id} = i;
@@ -443,7 +459,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         articulosCarrito = [];
         
     }else{
-        console.log(cart.items)
 
         articulosCarrito = [...cart.items];
 
