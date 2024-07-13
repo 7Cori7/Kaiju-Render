@@ -1,5 +1,7 @@
 const foot = document.querySelector('#foot');
 
+const year = new Date().getFullYear();
+
 function crearFooterLogin(){
     foot.innerHTML = `
         <!--Footer Movil-->
@@ -12,7 +14,7 @@ function crearFooterLogin(){
             <a href="../signup" class="hover:bg-white hover:rounded-md hover:px-5 hover:py-2 hover:text-black px-5 py-2 transition ease-in-out delay-150 duration-300">SIGN-UP</a>
         </div>
         <div class="w-[60%]">
-                <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR 2023 todos los derechos reservados</p>
+                <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR ${year} todos los derechos reservados</p>
                 <p class="fuente-A text-white text-lg mt-5 uppercase">Creado por Corina IDL</p>
         </div>
         </div>
@@ -27,7 +29,7 @@ function crearFooterLogin(){
             <span class="border-l-2"></span>
             <a href="../signup" class="hover:bg-white hover:rounded-md hover:px-5 hover:py-2 hover:text-black px-5 py-2 transition ease-in-out delay-150 duration-300">SIGN-UP</a>
         </div>
-        <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR 2023 todos los derechos reservados</p>
+        <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR ${year} todos los derechos reservados</p>
         <p class="fuente-A text-white text-lg mt-5 uppercase">Creado por Corina IDL</p>
         </div>
         
@@ -47,7 +49,7 @@ function crearFooterSignin(){
         <a class="link-act px-2 py-2" aria-disabled="true">SIGN-UP</a>
     </div>
     <div class="w-[60%]">
-                <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR 2023 todos los derechos reservados</p>
+                <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR ${year} todos los derechos reservados</p>
                 <p class="fuente-A text-white text-lg mt-5 uppercase">Creado por Corina IDL</p>
     </div>
     </div>
@@ -62,7 +64,7 @@ function crearFooterSignin(){
         <span class="border-l-2"></span>
         <a class="link-act px-2 py-2" aria-disabled="true">SIGN-UP</a>
     </div>
-    <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR 2023 todos los derechos reservados</p>
+    <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR ${year} todos los derechos reservados</p>
     <p class="fuente-A text-white text-lg mt-5 uppercase">Creado por Corina IDL</p>
     </div>
     
@@ -90,7 +92,7 @@ if(window.location.pathname === '/login/'){
             <a href="../signup" class="hover:bg-white hover:rounded-md hover:px-5 hover:py-2 hover:text-black px-5 py-2 transition ease-in-out delay-150 duration-300">SIGN-UP</a>
         </div>
         <div class="w-[60%]">
-                <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR 2023 todos los derechos reservados</p>
+                <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR ${year} todos los derechos reservados</p>
                 <p class="fuente-A text-white text-lg mt-5 uppercase">Creado por Corina IDL</p>
         </div>
         </div>
@@ -105,7 +107,7 @@ if(window.location.pathname === '/login/'){
             <span class="border-l-2"></span>
             <a href="../signup" class="hover:bg-white hover:rounded-md hover:px-5 hover:py-2 hover:text-black px-5 py-2 transition ease-in-out delay-150 duration-300">SIGN-UP</a>
         </div>
-        <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR 2023 todos los derechos reservados</p>
+        <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR ${year} todos los derechos reservados</p>
         <p class="fuente-A text-white text-lg mt-5 uppercase">Creado por Corina IDL</p>
         </div>
         
@@ -140,7 +142,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <a href="/api/users/logout" class="hover:bg-white hover:rounded-md hover:px-5 hover:py-2 hover:text-black px-5 py-2 transition ease-in-out delay-150 duration-300">SALIR</a>
                 </div>
                 <div class="w-[60%]">
-                <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR 2023 todos los derechos reservados</p>
+                <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR ${year} todos los derechos reservados</p>
                 <p class="fuente-A text-white text-lg mt-5 uppercase">Creado por Corina IDL</p>
                 </div>
                 </div>
@@ -155,7 +157,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <span class="border-l-2"></span>
                     <a href="/api/users/logout" class="hover:bg-white hover:rounded-md hover:px-5 hover:py-2 hover:text-black px-5 py-2 transition ease-in-out delay-150 duration-300">SALIR</a>
                 </div>
-                <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR 2023 todos los derechos reservados</p>
+                <p class="fuente-A text-white text-lg mt-14">KAIJU SUHI-BAR ${year} todos los derechos reservados</p>
                 <p class="fuente-A text-white text-lg mt-5 uppercase">Creado por Corina IDL</p>
                 </div>
                 

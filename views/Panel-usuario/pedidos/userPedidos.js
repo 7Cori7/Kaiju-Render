@@ -1,10 +1,14 @@
 //*IMPRIMIR LISTA DE PEDIDOS DELIVERY:
 const listadoDelivery = document.querySelector('#listado-delivery');
 const vacio = document.querySelector('#vacio');
+const spinner1 = document.querySelector("#spinner-1");
+const spinner2 = document.querySelector("#spinner-2");
 
 document.addEventListener('DOMContentLoaded', async () => {
 
     try{
+
+        let timeout;
 
         const persona = await axios.get('/api/users/galleta');
         const person = persona.data.data;
@@ -15,8 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         const list = lista.data.data;
 
         const pedidoUser = list.some(i => i.cliente.id === id);
-
-        console.log(pedidoUser)
 
         if(pedidoUser){
 
@@ -51,11 +53,19 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             });
 
-            vacio.classList.add('hidden');
+            timeout = setTimeout(() => {
+                clearTimeout(timeout);
+                spinner1.classList.add("hidden");
+                vacio.classList.add('hidden');
+            },500);
 
 
         }else{
-            vacio.classList.remove('hidden');
+            timeout = setTimeout(() => {
+                clearTimeout(timeout);
+                spinner1.classList.add('hidden');
+                vacio.classList.remove('hidden');
+            },500);
         }
 
         
@@ -78,6 +88,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     try{
 
+        let timeout;
+        
         const persona = await axios.get('/api/users/galleta');
         const person = persona.data.data;
 
@@ -132,10 +144,20 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             });
 
-            vacio2.classList.add('hidden');
+            timeout = setTimeout(() => {
+                clearTimeout(timeout);
+                spinner2.classList.add("hidden");
+                vacio2.classList.add('hidden');
+            },500);
 
         }else{
-            vacio2.classList.remove('hidden');
+
+            timeout = setTimeout(() => {
+                clearTimeout(timeout);
+                spinner2.classList.add("hidden");
+                vacio2.classList.remove('hidden');
+            },500);
+    
         }
 
         

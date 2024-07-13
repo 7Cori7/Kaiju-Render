@@ -1,11 +1,14 @@
 //*IMPRIMIR HISTORIAL DE COMPRAS:
 const listaHistorial = document.querySelector('#lista-historial');
 const vacio = document.querySelector('#vacio');
+const spinner = document.querySelector('#spinner');
 let historial = [];
 
 window.addEventListener('load', async () => {
 
     try{
+
+        let timeout;
 
         const persona = await axios.get('/api/users/galleta');
         const person = persona.data.data;
@@ -16,30 +19,37 @@ window.addEventListener('load', async () => {
         const listaD = await axios.get('/api/deliveries/lista');
         const listDelivery = listaD.data.data;
         const userDelivery = listDelivery.filter(i => i.cliente.id === id);
-        console.log('deliveries', userDelivery)
 
         //pickup
         const listaP = await axios.get('/api/pickups/lista');
         const listPickup = listaP.data.data;
         const userPickup = listPickup.filter(i => i.cliente.id === id) 
-        console.log('pickups', userPickup)
 
         //ventas
         const listaV = await axios.get('/api/ventas/lista');
         const listVenta = listaV.data.data;
         const userVenta = listVenta.filter(i => i.cliente === id);
-        console.log('ventas', userVenta);
 
         if(userDelivery.length > 0 || userPickup.length > 0 || userVenta.length > 0){
 
             historial = [...userDelivery, ...userPickup, ...userVenta];
-            vacio.classList.add('hidden');
+
+            timeout = setTimeout(()=>{
+                clearTimeout(timeout);
+                spinner.classList.add('hidden');
+                vacio.classList.add('hidden');
+            },500);
 
         }else{
-            vacio.classList.remove('hidden');
-        }
 
-        console.log(historial)
+            historial = [...userDelivery, ...userPickup, ...userVenta];
+
+            timeout = setTimeout(()=>{
+                clearTimeout(timeout);
+                spinner.classList.add('hidden');
+                vacio.classList.remove('hidden');
+            },500);
+        }
 
         const sorted = historial.sort((a,b) => {
             
@@ -48,51 +58,7 @@ window.addEventListener('load', async () => {
 
         });
 
-        sorted.forEach(i => {
-
-            const {createdAt, total, formaPago, id} = i;
-
-
-            const div = document.createElement('div');
-            div.classList.add('w-full', 'shadow-2xl', 'overflow-hidden', 'sm:rounded-lg', 'border-b', 'border-gray-200', 'bg-gray-100');
-            div.innerHTML = `
-
-            <div class="m-10 flex flex-col lg:flex-row gap-7">
-                            
-                <div>
-                    <p class="text-azul text-2xl">${createdAt.split('T')[0]}</p>
-                    <p class="text-sm text-gray-400">ID: ${id}</p>
-                </div>
-
-                <div class="hidden lg:flex w-[20%]"></div>
-
-                <div class="lg:w-[50%]">
-
-                    <div class="flex justify-between pb-2 lg:pb-5">
-                        <p class="hidden lg:flex">Pedido:</p>
-                        <a href="#" data-pedido="${id}" class="open-Pedidos text-azul hover:text-blue-950">Ver Detalles</a>
-                    </div>
-
-                    <div class="flex justify-between pb-2 lg:pb-5">
-                        <p>Forma de pago:</p>
-                        <p class="font-bold">${formaPago}</p>
-                    </div>
-
-                    <div class="flex justify-between pb-2 lg:pb-5">
-                        <p>Pago Total:</p>
-                        <p class="font-bold">$${total}</p>
-                    </div>
-
-                    
-                </div>
-
-            </div>   
-
-            `;
-
-            listaHistorial.appendChild(div);
-
-        });
+        printHistorial(sorted);
 
     }catch(error){
 
@@ -102,6 +68,55 @@ window.addEventListener('load', async () => {
     }
 
 });
+
+function printHistorial(sortedList){
+
+    sortedList.forEach(i => {
+
+        const {createdAt, total, formaPago, id} = i;
+
+
+        const div = document.createElement('div');
+        div.classList.add('w-full', 'shadow-2xl', 'overflow-hidden', 'sm:rounded-lg', 'border-b', 'border-gray-200', 'bg-gray-100');
+        div.innerHTML = `
+
+        <div class="m-10 flex flex-col lg:flex-row gap-7">
+                        
+            <div>
+                <p class="text-azul text-2xl">${createdAt.split('T')[0]}</p>
+                <p class="text-sm text-gray-400">ID: ${id}</p>
+            </div>
+
+            <div class="hidden lg:flex w-[20%]"></div>
+
+            <div class="lg:w-[50%]">
+
+                <div class="flex justify-between pb-2 lg:pb-5">
+                    <p class="hidden lg:flex">Pedido:</p>
+                    <a href="#" data-pedido="${id}" class="open-Pedidos text-azul hover:text-blue-950">Ver Detalles</a>
+                </div>
+
+                <div class="flex justify-between pb-2 lg:pb-5">
+                    <p>Forma de pago:</p>
+                    <p class="font-bold">${formaPago}</p>
+                </div>
+
+                <div class="flex justify-between pb-2 lg:pb-5">
+                    <p>Pago Total:</p>
+                    <p class="font-bold">$${total}</p>
+                </div>
+
+                
+            </div>
+
+        </div>   
+
+        `;
+
+        listaHistorial.appendChild(div);
+
+    });
+}
 
 
 //*MODAL DE PEDIDOS:

@@ -6,7 +6,6 @@ const catNigiri = document.querySelector('#lista-nigiri');
 const catTemaki = document.querySelector('#lista-temakis');
 const catEntradas = document.querySelector('#lista-entradas');
 const catPostres = document.querySelector('#lista-postres');
-const mensaje = document.querySelector('#mensaje');
 
 
 //* OBTENER PRODUCTOS DE LA API
@@ -511,7 +510,7 @@ comprarBtn.addEventListener('click', () => {
 
 });
 
-telDelivery.addEventListener('change', e => {
+telDelivery.addEventListener('input', e => {
     updateTelInput(e.target.value);
 })
 
@@ -526,20 +525,6 @@ inputRadio.forEach(radio => {
             textArea.classList.add('hidden');
             textArea.classList.remove('flex');
 
-            // if(!abierto){
-
-            //     mensaje.innerHTML = 'lo sentimos estamos cerrados';
-            //     setTimeout(()=>{
-            //         mensaje.innerHTML = '';
-            //         formDelivery.reset();
-            //         modalDelivery.close();
-            //     },2000);
-
-            // }else{
-                
-            //     geolocationAPI();
-            // }
-
             geolocationAPI();
 
         }else if(seleccion === 'escribir'){
@@ -549,20 +534,7 @@ inputRadio.forEach(radio => {
             mapa.classList.add('hidden');
             mapa.classList.remove('flex');
 
-            // if(!abierto){
-
-            //     mensaje.innerHTML = 'lo sentimos estamos cerrados';
-            //     setTimeout(()=>{
-            //         mensaje.innerHTML = '';
-            //         formDelivery.reset();
-            //         modalDelivery.close();
-            //     },2000);
-
-            // }else{
-            //     textArea.addEventListener('change', validacion);
-            // }
-
-            textArea.addEventListener('change', validacion);
+            textArea.addEventListener('input', validacion);
 
         }
     });

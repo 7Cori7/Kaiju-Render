@@ -1,6 +1,7 @@
 const listaReservas = document.querySelector('#lista-reservas');
 const vacio = document.querySelector('#vacio');
-const modalQR = document.querySelector('[data-modal-QR]')
+const modalQR = document.querySelector('[data-modal-QR]');
+const spinner = document.querySelector('#spinner');
 
 var hoy = new Date();
 var dd = hoy.getDate();
@@ -22,6 +23,8 @@ async function obtenerReservas(){
 
     try{
 
+        let timeout;
+
         const persona = await axios.get('/api/users/galleta');
         const person = persona.data.data;
 
@@ -31,7 +34,6 @@ async function obtenerReservas(){
         const list = lista.data.data;
 
         const listaUsuario = list.filter(i=> i.correo === email);
-        console.log(listaUsuario)
 
         if(listaUsuario.length > 0){
 
@@ -72,12 +74,20 @@ async function obtenerReservas(){
             
                 });
 
-            vacio.classList.add('hidden');
+            
+            timeout = setTimeout(()=>{
+                clearTimeout(timeout);
+                spinner.classList.add('hidden');
+                vacio.classList.add('hidden');
+            },500)
 
         }else{
-
-            vacio.classList.remove('hidden');
-
+            
+            timeout = setTimeout(()=>{
+                clearTimeout(timeout);
+                spinner.classList.add('hidden');
+                vacio.classList.remove('hidden');
+            },500)
         } 
         
 

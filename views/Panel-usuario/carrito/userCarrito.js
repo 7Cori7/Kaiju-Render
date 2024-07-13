@@ -2,7 +2,7 @@ const listaCarrito = document.querySelector('#lista-carrito');
 const vacio = document.querySelector('#vacio');
 const comprarBtn = document.querySelector('#comprar-btn');
 const mensaje = document.querySelector('#mensaje');
-const mensaje2 = document.querySelector('#mensaje-2');
+const spinner = document.querySelector('#spinner');
 
 //*MANEJAR LOS HORARIOS DEL LOCAL:
 const hoy = new Date();
@@ -36,26 +36,33 @@ articulosCarrito = [];
 //*COOKIE DEL CARRITO
 document.addEventListener('DOMContentLoaded', async () => {
 
-    const carrito = await axios.get('/api/pedidos/cart/list');
-    const cart = carrito.data.data;
+    try{
 
-    if(!carrito){
-        
-        articulosCarrito = [];
-        
-    }else{
-        console.log(cart.items)
+        const carrito = await axios.get('/api/pedidos/cart/list');
+        const cart = carrito.data.data;
 
-        articulosCarrito = [...cart.items];
+        if(!carrito){
 
-        carritoHTML();
+            articulosCarrito = [];
+            
+        }else{
 
+            articulosCarrito = [...cart.items];
+
+            carritoHTML();
+        }
+
+    }catch(error){
+
+        console.error(error);
     }
 
 });
 
 //*IMPRIMIR CONTENIDO DEL CARRITO:
 function carritoHTML(){
+
+    let timeout;
 
     articulosCarrito.forEach(i => {
 
@@ -94,11 +101,19 @@ function carritoHTML(){
     });
 
     if(articulosCarrito.length > 0){
-        vacio.classList.add('hidden');
-        comprarBtn.classList.remove('hidden');
+        timeout = setTimeout(()=>{
+            clearTimeout(timeout);
+            spinner.classList.add('hidden');
+            vacio.classList.add('hidden');
+            comprarBtn.classList.remove('hidden');  
+        }, 500);
     }else{
-        vacio.classList.remove('hidden');
-        comprarBtn.classList.add('hidden');
+        timeout = setTimeout(()=>{
+            clearTimeout(timeout);
+            spinner.classList.add('hidden');
+            vacio.classList.remove('hidden');
+            comprarBtn.classList.add('hidden');  
+        }, 500);
     }
 };
 
@@ -404,15 +419,26 @@ let valGeoLon = false;
 
 //EVENTOS:
 delivBtn.addEventListener('click', () => {
-    
-    modalDelivery.showModal();
-    formDelivery.reset();
+
+    if(!abierto){
+
+        createNotificacion(true, 'lo sentimos estamos cerrados. Intente mañana.');
+
+    }else{
+        
+        modalDelivery.showModal();
+        formDelivery.reset();
+    }
 
 });
 
-telDelivery.addEventListener('change', e => {
-    valTel = telVal.test(e.target.value);
+const updateTelInput = debounce(tel => {
+    valTel = telVal.test(tel);
     validar(telDelivery, valTel);
+});
+
+telDelivery.addEventListener('input', e => {
+    updateTelInput(e.target.value);
 })
 
 inputRadio.forEach(radio => {
@@ -426,19 +452,7 @@ inputRadio.forEach(radio => {
             textArea.classList.add('hidden');
             textArea.classList.remove('flex');
 
-            if(!abierto){
-
-                mensaje2.innerHTML = 'lo sentimos estamos cerrados';
-                setTimeout(()=>{
-                    mensaje2.innerHTML = '';
-                    formDelivery.reset();
-                    modalDelivery.close();
-                },2000);
-
-            }else{
-                
-                geolocationAPI();
-            }
+            geolocationAPI();
 
         }else if(seleccion === 'escribir'){
 
@@ -447,16 +461,7 @@ inputRadio.forEach(radio => {
             mapa.classList.add('hidden');
             mapa.classList.remove('flex');
 
-            if(!abierto){
-                mensaje2.innerHTML = 'lo sentimos estamos cerrados';
-                setTimeout(()=>{
-                    mensaje2.innerHTML = '';
-                    formDelivery.reset();
-                    modalDelivery.close();
-                },2000);
-            }else{
-                textArea.addEventListener('change', validacion);
-            }
+            textArea.addEventListener('input', validacion);
 
         }
     });
@@ -481,12 +486,24 @@ function geolocationAPI(){
 
 };
 
-
-//FUNCIONES:
-function validacion(e){
-    valtexto = textoVal.test(e.target.value);
+const updateTextArea = debounce(text => {
+    valtexto = textoVal.test(text);
     validar(textArea, valtexto);
+});
+
+function validacion(e){
+    updateTextArea(e.target.value);
 };
+
+function debounce(cb, delay = 500){
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(()=>{
+            cb(...args);
+        }, delay);
+    }
+}
 
 const validar = (input, value) => {
 
