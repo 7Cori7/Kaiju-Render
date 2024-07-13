@@ -501,12 +501,7 @@ comprarBtn.addEventListener('click', () => {
 
     if(!abierto){
 
-        mensaje.innerHTML = 'lo sentimos estamos cerrados';
-        setTimeout(()=>{
-            mensaje.innerHTML = '';
-            formDelivery.reset();
-            modalDelivery.close();
-        },2000);
+        createNotificacion(true, 'lo sentimos estamos cerrados. Intente mañana.');
 
     }else{
         
