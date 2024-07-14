@@ -533,9 +533,6 @@ async function pedidosPickHTML(id){
                 
     });
 
-        
-
-
 };
 
 
