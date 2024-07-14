@@ -70,13 +70,15 @@ PROCESO DE HACER RESERVACIONES:
 
 
 Sitio web en render:
-
 https://kaiju-sushi-bar.onrender.com/
+
+Sitio web en vercel:
+https://kaiju-sushi.vercel.app/
+
 
 Credenciales admin:
 
 user: admin@kaiju.com
-
 pass: kaiJu2024*
 
 
