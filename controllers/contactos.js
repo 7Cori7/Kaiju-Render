@@ -54,7 +54,7 @@ contactosRouter.post('/', (request,response) => {
         async function mensajeContacto(){
 
           const msj = await transporter.sendMail({
-            from: correo,
+            from: process.env.EMAIL,
             to: process.env.EMAIL,
             subject: 'Nuevo mensaje de contacto',
             text: `Nuevo mensaje enviado por:
